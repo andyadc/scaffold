@@ -50,11 +50,7 @@ public class ChineseUtil {
             }
         }
         float result = count / chLength;
-        if (result > 0.4) {
-            return true;
-        } else {
-            return false;
-        }
+        return result > 0.4;
     }
 
 }
