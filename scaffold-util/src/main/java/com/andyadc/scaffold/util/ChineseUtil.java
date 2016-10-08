@@ -8,6 +8,9 @@ import java.util.regex.Pattern;
  */
 public class ChineseUtil {
 
+    private ChineseUtil(){
+    }
+
     /**
      * 判断字符是否是中文
      *
@@ -43,10 +46,8 @@ public class ChineseUtil {
         float count = 0;
         for (int i = 0; i < ch.length; i++) {
             char c = ch[i];
-            if (!Character.isLetterOrDigit(c)) {
-                if (!isChinese(c)) {
-                    count = count + 1;
-                }
+            if (!Character.isLetterOrDigit(c) && !isChinese(c)) {
+                count = count + 1;
             }
         }
         float result = count / chLength;
