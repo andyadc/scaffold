@@ -65,7 +65,7 @@ public class StringUtil {
      * Checks if some strings has any blank string.<br>
      * If strings == null, return true
      *
-     * @param strings
+     * @param strings the strings
      * @return true if any string is blank, otherwise false.
      */
     public static boolean isAnyBlank(String... strings) {
@@ -83,7 +83,7 @@ public class StringUtil {
     /**
      * Checks if all the strings is not blank.
      *
-     * @param strings
+     * @param strings the strings
      * @return true if all string is not blank, otherwise false.
      */
     public static boolean isAllNotBlank(String... strings) {
@@ -96,7 +96,7 @@ public class StringUtil {
      * </p>
      * If strings == null, return true
      *
-     * @param strings
+     * @param strings the strings
      * @return true is any string is empty, otherwise false.
      */
     public static boolean isAnyEmpty(String... strings) {
@@ -114,7 +114,7 @@ public class StringUtil {
     /**
      * Checks if all the strings is not empty.
      *
-     * @param strings
+     * @param strings the strings
      * @return true if all string is not empty, otherwise false.
      */
     public static boolean isAllNotEmpty(String... strings) {
