@@ -8,6 +8,9 @@ package com.andyadc.scaffold.util;
  */
 public class StringUtil {
 
+    private StringUtil() {
+    }
+
     /**
      * <p>Checks if a String is empty ("") or null.</p>
      * <p>
