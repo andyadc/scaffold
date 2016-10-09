@@ -193,7 +193,7 @@ public class HttpUtil {
             StringWriter writer = new StringWriter();
 
             char[] chars = new char[256];
-            int count = 0;
+            int count;
             while ((count = reader.read(chars)) > 0) {
                 writer.write(chars, 0, count);
             }
