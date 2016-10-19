@@ -11,6 +11,6 @@
     <packaging>jar</packaging>
 
     <name>scaffold-cache</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/andyadc/scaffold</url>
 
 </project>
