@@ -132,4 +132,24 @@ public class StringUtil {
         return !isAnyEmpty(strings);
     }
 
+    /**
+     * <p>Reverses a String as per {@link StringBuilder#reverse()}.</p>
+     * <p>A {@code null} String returns {@code null}.</p>
+     *
+     * <pre>
+     * StringUtils.reverse(null)  = null
+     * StringUtils.reverse("")    = ""
+     * StringUtils.reverse("bat") = "tab"
+     * </pre>
+     *
+     * @param str the String to reverse, may be null
+     * @return the reversed String, {@code null} if null String input
+     */
+    public static String reverse(String str) {
+        if (str == null) {
+            return null;
+        }
+        return new StringBuilder(str).reverse().toString();
+    }
+
 }
