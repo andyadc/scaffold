@@ -33,6 +33,10 @@ public class StringUtil {
         return !isEmpty(str);
     }
 
+    public static <T extends CharSequence> T defaultIfEmpty(T str, T defaultStr) {
+        return isEmpty(str) ? defaultStr : str;
+    }
+
     /**
      * <p>Checks if a CharSequence is whitespace, empty ("") or null.</p>
      * <p>
@@ -62,6 +66,10 @@ public class StringUtil {
 
     public static boolean isNotBlank(CharSequence str) {
         return !isBlank(str);
+    }
+
+    public static <T extends CharSequence> T defaultIfBlank(T str, T defaultStr) {
+        return isBlank(str) ? defaultStr : str;
     }
 
     /**
