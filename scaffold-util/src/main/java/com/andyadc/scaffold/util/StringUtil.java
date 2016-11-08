@@ -12,7 +12,7 @@ public class StringUtil {
     }
 
     /**
-     * <p>Checks if a String is empty ("") or null.</p>
+     * <p>Checks if a CharSequence is empty ("") or null.</p>
      * <p>
      * <pre>
      * StringUtil.isEmpty(null)      = true
@@ -22,19 +22,19 @@ public class StringUtil {
      * StringUtil.isEmpty("  bob  ") = false
      * </pre>
      *
-     * @param str the String to check, may be null
+     * @param str the CharSequence to check, may be null
      * @return <code>true</code> if the String is empty or null
      */
-    public static boolean isEmpty(String str) {
+    public static boolean isEmpty(CharSequence str) {
         return str == null || str.length() == 0;
     }
 
-    public static boolean isNotEmpty(String str) {
+    public static boolean isNotEmpty(CharSequence str) {
         return !isEmpty(str);
     }
 
     /**
-     * <p>Checks if a String is whitespace, empty ("") or null.</p>
+     * <p>Checks if a CharSequence is whitespace, empty ("") or null.</p>
      * <p>
      * <pre>
      * StringUtil.isBlank(null)      = true
@@ -44,10 +44,10 @@ public class StringUtil {
      * StringUtil.isBlank("  bob  ") = false
      * </pre>
      *
-     * @param str the String to check, may be null
+     * @param str the CharSequence to check, may be null
      * @return <code>true</code> if the String is null, empty or whitespace
      */
-    public static boolean isBlank(String str) {
+    public static boolean isBlank(CharSequence str) {
         int strLen;
         if (str == null || (strLen = str.length()) == 0) {
             return true;
@@ -60,22 +60,22 @@ public class StringUtil {
         return true;
     }
 
-    public static boolean isNotBlank(String str) {
+    public static boolean isNotBlank(CharSequence str) {
         return !isBlank(str);
     }
 
     /**
-     * Checks if some strings has any blank string.<br>
+     * Checks if some CharSequences has any blank string.<br>
      * If strings == null, return true
      *
-     * @param strings the strings
-     * @return true if any string is blank, otherwise false.
+     * @param strings the CharSequences
+     * @return true if any CharSequence is blank, otherwise false.
      */
-    public static boolean isAnyBlank(String... strings) {
+    public static boolean isAnyBlank(CharSequence... strings) {
         if (strings == null) {
             return true;
         }
-        for (String s : strings) {
+        for (CharSequence s : strings) {
             if (isBlank(s)) {
                 return true;
             }
@@ -84,29 +84,29 @@ public class StringUtil {
     }
 
     /**
-     * Checks if all the strings is not blank.
+     * Checks if all the CharSequences is not blank.
      *
-     * @param strings the strings
-     * @return true if all string is not blank, otherwise false.
+     * @param strings the CharSequences
+     * @return true if all CharSequence is not blank, otherwise false.
      */
-    public static boolean isAllNotBlank(String... strings) {
+    public static boolean isAllNotBlank(CharSequence... strings) {
         return !isAnyBlank(strings);
     }
 
     /**
      * <p>
-     * Checks if some strings has any empty string.
+     * Checks if some CharSequences has any empty string.
      * </p>
      * If strings == null, return true
      *
-     * @param strings the strings
-     * @return true is any string is empty, otherwise false.
+     * @param strings the CharSequences
+     * @return true is any CharSequence is empty, otherwise false.
      */
-    public static boolean isAnyEmpty(String... strings) {
+    public static boolean isAnyEmpty(CharSequence... strings) {
         if (strings == null) {
             return true;
         }
-        for (String s : strings) {
+        for (CharSequence s : strings) {
             if (isEmpty(s)) {
                 return true;
             }
@@ -115,12 +115,12 @@ public class StringUtil {
     }
 
     /**
-     * Checks if all the strings is not empty.
+     * Checks if all the CharSequences is not empty.
      *
-     * @param strings the strings
-     * @return true if all string is not empty, otherwise false.
+     * @param strings the CharSequences
+     * @return true if all CharSequence is not empty, otherwise false.
      */
-    public static boolean isAllNotEmpty(String... strings) {
+    public static boolean isAllNotEmpty(CharSequence... strings) {
         return !isAnyEmpty(strings);
     }
 
