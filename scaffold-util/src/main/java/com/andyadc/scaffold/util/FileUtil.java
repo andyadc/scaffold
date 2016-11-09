@@ -18,7 +18,7 @@ public class FileUtil {
     /**
      * Read input stream as bytes
      *
-     * @param inputStream
+     * @param inputStream input stream
      * @return byte array from input stream.
      * @throws IOException
      */
@@ -38,7 +38,7 @@ public class FileUtil {
     /**
      * Read a file as string
      *
-     * @param filePath
+     * @param filePath file path
      * @return string from a file path.
      * @throws IOException
      */
@@ -59,8 +59,8 @@ public class FileUtil {
     /**
      * Write string to a file
      *
-     * @param content
-     * @param filePath
+     * @param content content
+     * @param filePath file path
      * @throws Exception
      */
     public static void writeStringToFile(String content, String filePath)
@@ -80,7 +80,7 @@ public class FileUtil {
     /**
      * Get file from a file path.
      *
-     * @param filePath
+     * @param filePath file path
      * @return the file object of specified file path
      * @throws IOException
      */
@@ -91,8 +91,8 @@ public class FileUtil {
     /**
      * Copy a file
      *
-     * @param src
-     * @param dst
+     * @param src source
+     * @param dst destination
      * @throws IOException
      */
     public static void copy(File src, File dst) throws IOException {
