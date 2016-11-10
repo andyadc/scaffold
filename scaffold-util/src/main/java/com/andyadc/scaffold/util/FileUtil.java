@@ -8,8 +8,8 @@ import java.io.*;
  * @author andaicheng
  */
 public class FileUtil {
-    private static final int BUFFER_SIZE = 16 * 1024;
 
+    private static final int BUFFER_SIZE = 16 * 1024;
 
     private FileUtil() {
         throw new UnsupportedOperationException();
@@ -59,7 +59,7 @@ public class FileUtil {
     /**
      * Write string to a file
      *
-     * @param content content
+     * @param content  content
      * @param filePath file path
      * @throws Exception
      */
