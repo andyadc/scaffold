@@ -17,8 +17,8 @@ import java.util.Set;
  */
 public class HttpUtil {
 
-    public static final String DEFAULT_CHARSET = "UTF-8";
-    public static final String DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded;charset=";
+    private static final String DEFAULT_CHARSET = "UTF-8";
+    private static final String DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded;charset=";
     private static final Map<String, String> DEFAULT_HEADER = new HashMap<>();
 
     static {
