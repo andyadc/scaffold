@@ -6,20 +6,20 @@ package com.andyadc.scaffold.util;
  * @author andaicheng
  * @version 1.0, 2016-10-07
  */
-public class StringUtil {
+public class StringUtils {
 
-    private StringUtil() {
+    private StringUtils() {
     }
 
     /**
      * <p>Checks if a CharSequence is empty ("") or null.</p>
      * <p>
      * <pre>
-     * StringUtil.isEmpty(null)      = true
-     * StringUtil.isEmpty("")        = true
-     * StringUtil.isEmpty(" ")       = false
-     * StringUtil.isEmpty("bob")     = false
-     * StringUtil.isEmpty("  bob  ") = false
+     * StringUtils.isEmpty(null)      = true
+     * StringUtils.isEmpty("")        = true
+     * StringUtils.isEmpty(" ")       = false
+     * StringUtils.isEmpty("bob")     = false
+     * StringUtils.isEmpty("  bob  ") = false
      * </pre>
      *
      * @param str the CharSequence to check, may be null
@@ -41,11 +41,11 @@ public class StringUtil {
      * <p>Checks if a CharSequence is whitespace, empty ("") or null.</p>
      * <p>
      * <pre>
-     * StringUtil.isBlank(null)      = true
-     * StringUtil.isBlank("")        = true
-     * StringUtil.isBlank(" ")       = true
-     * StringUtil.isBlank("bob")     = false
-     * StringUtil.isBlank("  bob  ") = false
+     * StringUtils.isBlank(null)      = true
+     * StringUtils.isBlank("")        = true
+     * StringUtils.isBlank(" ")       = true
+     * StringUtils.isBlank("bob")     = false
+     * StringUtils.isBlank("  bob  ") = false
      * </pre>
      *
      * @param str the CharSequence to check, may be null

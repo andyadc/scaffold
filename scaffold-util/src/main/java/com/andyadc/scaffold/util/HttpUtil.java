@@ -49,7 +49,7 @@ public class HttpUtil {
         for (Entry<String, String> entry : entries) {
             String name = entry.getKey();
             String value = entry.getValue();
-            if (StringUtil.isAllNotEmpty(name, value)) {
+            if (StringUtils.isAllNotEmpty(name, value)) {
                 if (hasParam) {
                     query.append("&");
                 } else {
@@ -160,7 +160,7 @@ public class HttpUtil {
             return getStreamAsString(conn.getInputStream(), charset);
         } else {
             String msg = getStreamAsString(es, charset);
-            if (StringUtil.isEmpty(msg)) {
+            if (StringUtils.isEmpty(msg)) {
                 throw new IOException(conn.getResponseCode() + ":" + conn.getResponseMessage());
             } else {
                 throw new IOException(msg);
@@ -171,13 +171,13 @@ public class HttpUtil {
     private static String getResponseCharset(String ctype) {
         String charset = DEFAULT_CHARSET;
 
-        if (StringUtil.isNotEmpty(ctype)) {
+        if (StringUtils.isNotEmpty(ctype)) {
             String[] params = ctype.split(";");
             for (String param : params) {
                 param = param.trim();
                 if (param.startsWith("charset")) {
                     String[] pair = param.split("=", 2);
-                    if (pair.length == 2 && StringUtil.isNotEmpty(pair[1])) {
+                    if (pair.length == 2 && StringUtils.isNotEmpty(pair[1])) {
                         charset = pair[1].trim();
                     }
                     break;
