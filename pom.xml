@@ -28,6 +28,7 @@
         <module>scaffold-util</module>
         <module>scaffold-cache</module>
         <module>scaffold-serialization</module>
+        <module>scaffold-showcase</module>
     </modules>
 
     <properties>
