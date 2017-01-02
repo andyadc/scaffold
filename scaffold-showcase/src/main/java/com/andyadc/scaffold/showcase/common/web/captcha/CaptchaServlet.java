@@ -95,13 +95,13 @@ public final class CaptchaServlet extends HttpServlet {
 
         wordFactory = new RandomWordFactory();
         wordFactory.setCharacters(CHARACTERS);
-        int l = Integer.valueOf(StringUtils.defaultIfBlank(length, "4"));
+        int l = Integer.parseInt(StringUtils.defaultIfBlank(length, "4"));
         wordFactory.setMaxLength(l);
         wordFactory.setMinLength(l);
         configurableCaptchaService.setWordFactory(wordFactory);
 
-        configurableCaptchaService.setHeight(Integer.valueOf(StringUtils.defaultIfBlank(height, "30")));
-        configurableCaptchaService.setWidth(Integer.valueOf(StringUtils.defaultIfBlank(width, "100")));
+        configurableCaptchaService.setHeight(Integer.parseInt(StringUtils.defaultIfBlank(height, "30")));
+        configurableCaptchaService.setWidth(Integer.parseInt(StringUtils.defaultIfBlank(width, "100")));
     }
 
     @Override
