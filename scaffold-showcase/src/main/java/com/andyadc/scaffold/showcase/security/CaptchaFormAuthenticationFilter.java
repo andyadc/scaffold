@@ -39,11 +39,6 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
     private SystemService systemService;
 
     @Override
-    protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
-        return super.onAccessDenied(request, response);
-    }
-
-    @Override
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
 
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) createToken(request, response);
@@ -121,6 +116,7 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
         return super.onLoginFailure(token, e, request, response);
     }
 
+    @Override
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
         String username = getUsername(request);
         String password = getPassword(request);
