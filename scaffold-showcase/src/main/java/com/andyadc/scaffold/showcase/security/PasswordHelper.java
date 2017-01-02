@@ -12,29 +12,30 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * @author andaicheng
  */
-@Service
+@Component
 public class PasswordHelper {
     private static final Logger LOG = LoggerFactory.getLogger(PasswordHelper.class);
 
     private static final RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
-    private static final String algorithmName = "SHA-1";
-    private static final int hashIterations = 1024;
+
+    private static final String ALGORITHM_NAME = "SHA-256";
+    private static final int HASH_ITERATIONS = 1024;
 
     private static final HashedCredentialsMatcher matcher;
 
     static {
-        matcher = new HashedCredentialsMatcher(algorithmName);
-        matcher.setHashIterations(hashIterations);
+        matcher = new HashedCredentialsMatcher(ALGORITHM_NAME);
+        matcher.setHashIterations(HASH_ITERATIONS);
     }
 
     public void encryptPassword(AuthUser user) {
         user.setSalt(randomNumberGenerator.nextBytes().toHex());
-        String password = new SimpleHash(algorithmName, user.getPassword(), ByteSource.Util.bytes(user.getCredentialsSalt()), hashIterations).toHex();
+        String password = new SimpleHash(ALGORITHM_NAME, user.getPassword(), ByteSource.Util.bytes(user.getCredentialsSalt()), HASH_ITERATIONS).toHex();
         user.setPassword(password);
     }
 

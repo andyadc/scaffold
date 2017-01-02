@@ -8,8 +8,8 @@
 
     <bean id="credentialsMatcher" class="com.andyadc.scaffold.showcase.security.RetryLimitHashedCredentialsMatcher">
         <constructor-arg ref="shiroCacheManager"/>
-        <property name="hashAlgorithmName" value="SHA-1"/>
-        <property name="hashIterations" value="1024"/>
+        <property name="hashAlgorithmName" value="${hash.algorithm.name}"/>
+        <property name="hashIterations" value="${hash.iterations}"/>
         <property name="storedCredentialsHexEncoded" value="true"/>
         <property name="systemService" ref="systemService"/>
     </bean>
