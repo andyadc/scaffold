@@ -24,12 +24,13 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
-    private static final String LOGIN_PAGE = "login";
+    private static final String PAGE_LOGIN = "login";
+    private static final String PAGE_INDEX = "index";
     private static final String ATTR_MSG = "message";
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        return LOGIN_PAGE;
+        return PAGE_LOGIN;
     }
 
     @Performance
@@ -41,23 +42,23 @@ public class LoginController {
         if (StringUtils.isNotBlank(error_exception)) {
             if (CaptchaFormAuthenticationFilter.CaptchaValidationException.class.getName().equals(error_exception)) {
                 model.addAttribute(ATTR_MSG, "验证码错误!");
-                return LOGIN_PAGE;
+                return PAGE_LOGIN;
             }
             if (IncorrectCredentialsException.class.getName().equals(error_exception)) {
                 model.addAttribute(ATTR_MSG, "用户名或密码错误!");
-                return LOGIN_PAGE;
+                return PAGE_LOGIN;
             }
             if (UnknownAccountException.class.getName().equals(error_exception)) {
                 model.addAttribute(ATTR_MSG, "用户名或密码错误!");
-                return LOGIN_PAGE;
+                return PAGE_LOGIN;
             }
             if (LockedAccountException.class.getName().equals(error_exception)) {
                 model.addAttribute(ATTR_MSG, "账户被锁定!");
-                return LOGIN_PAGE;
+                return PAGE_LOGIN;
             }
             if (ExcessiveAttemptsException.class.getName().equals(error_exception)) {
                 model.addAttribute(ATTR_MSG, "请稍后尝试登录!");
-                return LOGIN_PAGE;
+                return PAGE_LOGIN;
             }
         }
         return "redirect:/index";
@@ -65,6 +66,6 @@ public class LoginController {
 
     @RequestMapping("/index")
     public String index() {
-        return "index";
+        return PAGE_INDEX;
     }
 }
