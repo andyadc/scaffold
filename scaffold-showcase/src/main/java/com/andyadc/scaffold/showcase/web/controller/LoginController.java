@@ -24,38 +24,40 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+    private static final String LOGIN_PAGE = "login";
+    private static final String ATTR_MSG = "message";
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        return "login";
+        return LOGIN_PAGE;
     }
 
     @Performance
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, Model model) {
         String error_exception = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
-        LOGGER.info("info: {}", error_exception);
+        LOGGER.info("error_exception: {}", error_exception);
 
         if (StringUtils.isNotBlank(error_exception)) {
             if (CaptchaFormAuthenticationFilter.CaptchaValidationException.class.getName().equals(error_exception)) {
-                model.addAttribute("message", "验证码错误!");
-                return "login";
+                model.addAttribute(ATTR_MSG, "验证码错误!");
+                return LOGIN_PAGE;
             }
             if (IncorrectCredentialsException.class.getName().equals(error_exception)) {
-                model.addAttribute("message", "用户名或密码错误!");
-                return "login";
+                model.addAttribute(ATTR_MSG, "用户名或密码错误!");
+                return LOGIN_PAGE;
             }
             if (UnknownAccountException.class.getName().equals(error_exception)) {
-                model.addAttribute("message", "用户名或密码错误!");
-                return "login";
+                model.addAttribute(ATTR_MSG, "用户名或密码错误!");
+                return LOGIN_PAGE;
             }
             if (LockedAccountException.class.getName().equals(error_exception)) {
-                model.addAttribute("message", "账户被锁定!");
-                return "login";
+                model.addAttribute(ATTR_MSG, "账户被锁定!");
+                return LOGIN_PAGE;
             }
             if (ExcessiveAttemptsException.class.getName().equals(error_exception)) {
-                model.addAttribute("message", "登录尝试次数过多!");
-                return "login";
+                model.addAttribute(ATTR_MSG, "请稍后尝试登录!");
+                return LOGIN_PAGE;
             }
         }
         return "redirect:/index";
