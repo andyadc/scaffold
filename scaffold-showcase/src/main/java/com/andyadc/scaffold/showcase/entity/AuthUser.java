@@ -3,6 +3,8 @@ package com.andyadc.scaffold.showcase.entity;
 
 import com.andyadc.scaffold.showcase.common.entity.BaseEntity;
 
+import java.util.Date;
+
 public class AuthUser extends BaseEntity {
 
     /**
@@ -13,6 +15,8 @@ public class AuthUser extends BaseEntity {
      * 锁定状态
      */
     public static final byte STATUS_BLOCKED = 0;
+
+    private int version;
 
     private String identifier;
 
@@ -32,13 +36,9 @@ public class AuthUser extends BaseEntity {
 
     private Byte isDeleted;
 
-    public Long getId() {
-        return id;
-    }
+    private Date createTime;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Date updateTime;
 
     public String getIdentifier() {
         return identifier;
@@ -114,5 +114,29 @@ public class AuthUser extends BaseEntity {
 
     public String getCredentialsSalt() {
         return account + salt;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }
