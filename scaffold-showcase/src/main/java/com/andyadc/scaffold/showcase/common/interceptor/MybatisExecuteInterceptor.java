@@ -31,8 +31,8 @@ import java.util.Properties;
 })
 public class MybatisExecuteInterceptor implements Interceptor {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static final Logger logger = LoggerFactory.getLogger(MybatisExecuteInterceptor.class);
+    private final DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -104,7 +104,7 @@ public class MybatisExecuteInterceptor implements Interceptor {
             if (propertyValue instanceof String) {
                 result = "'" + propertyValue + "'";
             } else if (propertyValue instanceof Date) {
-                result = "'" + DATE_FORMAT.format(propertyValue) + "'";
+                result = "'" + date_format.format(propertyValue) + "'";
             } else {
                 result = propertyValue.toString();
             }
