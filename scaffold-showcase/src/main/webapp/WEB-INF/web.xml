@@ -30,8 +30,9 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
 
+    <!-- Character Encoding filter -->
     <filter>
-        <filter-name>Set Character Encoding</filter-name>
+        <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <async-supported>true</async-supported>
         <init-param>
@@ -44,10 +45,13 @@
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>Set Character Encoding</filter-name>
+        <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
+    <!-- Shiro Security filter -->
     <filter>
         <filter-name>shiroFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -59,8 +63,9 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
+    <!-- Spring MVC Servlet -->
     <servlet>
-        <servlet-name>SpringServlet</servlet-name>
+        <servlet-name>springServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -70,7 +75,7 @@
         <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SpringServlet</servlet-name>
+        <servlet-name>springServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
