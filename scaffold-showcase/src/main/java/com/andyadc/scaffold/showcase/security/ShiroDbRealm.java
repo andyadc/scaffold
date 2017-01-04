@@ -1,7 +1,7 @@
 package com.andyadc.scaffold.showcase.security;
 
 import com.andyadc.scaffold.showcase.entity.AuthUser;
-import com.andyadc.scaffold.showcase.service.SystemService;
+import com.andyadc.scaffold.showcase.service.AuthService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -17,7 +17,7 @@ import java.util.Objects;
  */
 public class ShiroDbRealm extends AuthorizingRealm {
 
-    private SystemService systemService;
+    private AuthService authService;
 
     /**
      * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用.
@@ -35,7 +35,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
-        AuthUser authUser = systemService.findByAccount(usernamePasswordToken.getUsername());
+        AuthUser authUser = authService.findAuthUserByAccount(usernamePasswordToken.getUsername());
         if (authUser == null) {
             throw new UnknownAccountException();
         }
@@ -50,8 +50,8 @@ public class ShiroDbRealm extends AuthorizingRealm {
                 ByteSource.Util.bytes(authUser.getCredentialsSalt()), "Shiro Db Realm");
     }
 
-    public void setSystemService(SystemService systemService) {
-        this.systemService = systemService;
+    public void setAuthService(AuthService authService) {
+        this.authService = authService;
     }
 
     public static class ShiroUser implements Serializable {

@@ -1,6 +1,6 @@
 package com.andyadc.scaffold.showcase.security;
 
-import com.andyadc.scaffold.showcase.service.SystemService;
+import com.andyadc.scaffold.showcase.service.AuthService;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
 
-    private SystemService systemService;
+    private AuthService authService;
     private Cache<String, AtomicInteger> passwordRetryCache;
 
     public RetryLimitHashedCredentialsMatcher(CacheManager cacheManager) {
@@ -31,7 +31,7 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
             passwordRetryCache.put(username, retryCount);
         }
         if (retryCount.incrementAndGet() > 5) {
-            systemService.lockAuthUser(username);
+            authService.lockAuthUser(username);
             throw new ExcessiveAttemptsException();
         }
         boolean matches = super.doCredentialsMatch(token, info);
@@ -41,7 +41,7 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
         return matches;
     }
 
-    public void setSystemService(SystemService systemService) {
-        this.systemService = systemService;
+    public void setAuthService(AuthService authService) {
+        this.authService = authService;
     }
 }

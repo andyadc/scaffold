@@ -3,7 +3,7 @@ package com.andyadc.scaffold.showcase.security;
 import com.andyadc.scaffold.showcase.cache.EhCacheUtil;
 import com.andyadc.scaffold.showcase.common.web.captcha.CaptchaServlet;
 import com.andyadc.scaffold.showcase.entity.AuthUser;
-import com.andyadc.scaffold.showcase.service.SystemService;
+import com.andyadc.scaffold.showcase.service.AuthService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -36,7 +36,7 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
      **/
     private static final String CACHE_LOGIN_FAIL_PREFIX = "login_fail_times_";
 
-    private SystemService systemService;
+    private AuthService authService;
 
     @Override
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
@@ -62,7 +62,7 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
                 }
             }
 
-            AuthUser authUser = systemService.findByAccount(username);
+            AuthUser authUser = authService.findAuthUserByAccount(username);
             if (authUser != null) {
                 Integer loginTimes = (Integer) EhCacheUtil.get(CACHE_LOGIN_FAIL_PREFIX + username);
                 if (loginTimes != null && loginTimes > LOGIN_FAILURE_LIMIT) {
@@ -131,7 +131,7 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
         }
     }
 
-    public void setSystemService(SystemService systemService) {
-        this.systemService = systemService;
+    public void setAuthService(AuthService authService) {
+        this.authService = authService;
     }
 }

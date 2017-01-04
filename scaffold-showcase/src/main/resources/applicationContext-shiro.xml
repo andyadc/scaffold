@@ -11,12 +11,12 @@
         <property name="hashAlgorithmName" value="${hash.algorithm.name}"/>
         <property name="hashIterations" value="${hash.iterations}"/>
         <property name="storedCredentialsHexEncoded" value="true"/>
-        <property name="systemService" ref="systemService"/>
+        <property name="authService" ref="authService"/>
     </bean>
 
     <bean id="shiroDbRealm" class="com.andyadc.scaffold.showcase.security.ShiroDbRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
-        <property name="systemService" ref="systemService"/>
+        <property name="authService" ref="authService"/>
     </bean>
 
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -71,7 +71,7 @@
 
     <bean id="captchaFormAuthenticationFilter"
           class="com.andyadc.scaffold.showcase.security.CaptchaFormAuthenticationFilter">
-        <property name="systemService" ref="systemService"/>
+        <property name="authService" ref="authService"/>
     </bean>
 
 </beans>

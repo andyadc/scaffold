@@ -37,7 +37,7 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, Model model) {
         String error_exception = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
-        LOGGER.info("error_exception: {}", error_exception);
+        LOGGER.info("login error_exception: {}", error_exception);
 
         if (StringUtils.isNotBlank(error_exception)) {
             if (CaptchaFormAuthenticationFilter.CaptchaValidationException.class.getName().equals(error_exception)) {
