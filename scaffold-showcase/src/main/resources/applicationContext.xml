@@ -105,7 +105,7 @@
     </bean>
 
     <!-- HikariCP dataSource -->
-    <bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource">
+    <bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
         <constructor-arg ref="hikariConfig"/>
     </bean>
 
