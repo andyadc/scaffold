@@ -1,6 +1,8 @@
 package com.andyadc.scaffold.showcase.test;
 
-import com.andyadc.scaffold.showcase.mail.MailService;
+import com.andyadc.scaffold.showcase.mail.MimeMailService;
+import com.andyadc.scaffold.showcase.mail.SimpleMailService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestMailSend {
 
     @Autowired
-    private MailService mailService;
+    private SimpleMailService simpleMailService;
+    @Autowired
+    private MimeMailService mimeMailService;
 
     @Test
+    public void testSendMine() {
+        mimeMailService.sendNotificationMail("andyadc");
+    }
+
+    @Ignore
+    @Test
     public void testSend() {
-        mailService.sendMail("andaicheng@qq.com", "from spring", "hello world");
+        simpleMailService.sendMail("xx@qq.com", "from spring", "hello world");
     }
 }

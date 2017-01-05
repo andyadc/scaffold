@@ -20,4 +20,16 @@
             </props>
         </property>
     </bean>
+
+    <!-- MIME邮件服务类 -->
+    <bean id="mimeMailService" class="com.andyadc.scaffold.showcase.mail.MimeMailService">
+        <property name="mailSender" ref="mailSender"/>
+        <property name="freemarkerConfiguration" ref="freemarkerConfiguration"/>
+    </bean>
+
+    <!-- 用于生成HTML邮件内容的Freemarker配置 -->
+    <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+        <property name="templateLoaderPath" value="classpath:/mail"/>
+    </bean>
+
 </beans>

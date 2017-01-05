@@ -12,14 +12,14 @@ import java.util.Date;
  * @version 2016/12/31
  */
 @Service(value = "mailService")
-public class MailService {
+public class SimpleMailService {
 
     @Value("${mail.username}")
     private String mailFrom;
 
     private MailSender mailSender;
 
-    public MailService(MailSender mailSender) {
+    public SimpleMailService(MailSender mailSender) {
         this.mailSender = mailSender;
     }
 

@@ -113,7 +113,7 @@
 
     <import resource="applicationContext-shiro.xml"/>
     <import resource="applicationContext-redis.xml"/>
-    <import resource="applicationContext-mail.xml"/>
+    <import resource="mail/applicationContext-mail.xml"/>
     <import resource="applicationContext-javasimon.xml"/>
 
 </beans>
