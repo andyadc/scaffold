@@ -33,6 +33,7 @@
         <httpcomponents.version>4.5.2</httpcomponents.version>
         <sitemesh.version>3.0.1</sitemesh.version>
         <javasimon.version>4.1.2</javasimon.version>
+        <freemarker.version>2.3.23</freemarker.version>
         <slf4j.version>1.7.22</slf4j.version>
         <logback.version>1.1.8</logback.version>
         <junit.version>4.12</junit.version>
@@ -255,6 +256,13 @@
             <groupId>org.javasimon</groupId>
             <artifactId>javasimon-console-embed</artifactId>
             <version>${javasimon.version}</version>
+        </dependency>
+
+        <!-- freemarker -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
         </dependency>
 
         <!-- LOGGING begin -->
