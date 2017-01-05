@@ -88,6 +88,20 @@
         <url-pattern>/public/captcha.servlet</url-pattern>
     </servlet-mapping>
 
+    <!-- Java Simple Monitoring Console Servlet -->
+    <servlet>
+        <servlet-name>SimonConsoleServlet</servlet-name>
+        <servlet-class>org.javasimon.console.SimonConsoleServlet</servlet-class>
+        <init-param>
+            <param-name>url-prefix</param-name>
+            <param-value>/javasimon</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SimonConsoleServlet</servlet-name>
+        <url-pattern>/javasimon/*</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
