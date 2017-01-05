@@ -28,6 +28,7 @@
         <spring-data-redis.version>1.7.6.RELEASE</spring-data-redis.version>
         <jackson.version>2.8.5</jackson.version>
         <java-mail.version>1.4.7</java-mail.version>
+        <joda-time.version>2.9.7</joda-time.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-codec.version>1.10</commons-codec.version>
         <httpcomponents.version>4.5.2</httpcomponents.version>
@@ -214,6 +215,11 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
         </dependency>
 
         <!-- servlet -->
