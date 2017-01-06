@@ -8,7 +8,7 @@
 -->
 <configuration scan="true" scanPeriod="60 second" debug="true">
 
-    <property name="LOG_PATH" value="d:/temp/quickstart/logs"/>
+    <property name="LOG_PATH" value="d:/temp/showcase/logs"/>
 
     <!--  Output to Console -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -19,11 +19,11 @@
 
     <!-- Output to File -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH}/quickstart.log</file>
+        <file>${LOG_PATH}/showcase.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
             <fileNamePattern>
-                ${LOG_PATH}/quickstart_%d{yyyy-MM-dd}.log
+                ${LOG_PATH}/showcase_%d{yyyy-MM-dd}.log
             </fileNamePattern>
             <!-- keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
@@ -36,9 +36,9 @@
 
     <!-- sql log file -->
     <appender name="SQLFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH}/sql.log</file>
+        <file>${LOG_PATH}/showcase_sql.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/sql.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/showcase_sql.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>

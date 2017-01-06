@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
          updateCheck="false" name="defaultCache">
 
-    <diskStore path="d:/temp/quickstart/cache"/>
+    <diskStore path="d:/temp/showcase/cache"/>
 
     <!--
        name:缓存名称。
