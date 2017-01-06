@@ -24,13 +24,88 @@ public class DateUtils {
     private DateUtils() {
     }
 
-    public static void main(String[] args) {
-//        System.out.println(buildDateTime(2017, 12, 31, 13, 15, 1).toLocaleString());
-//        System.out.println(plusDays(2).toLocaleString());
-//        System.out.println(minusDays(2).toLocaleString());
-        System.out.println(new DateTime().dayOfMonth().withMinimumValue().withTimeAtStartOfDay().toString());
+    /**
+     * 获取当月第一天的日期
+     *
+     * @return <code>Date</code> yyyy-MM-dd 00:00:00
+     */
+    public static Date getFirstDayDateTimeOfMonth() {
+        return new DateTime().dayOfMonth().withMinimumValue().withTimeAtStartOfDay().toDate();
     }
 
+    /**
+     * 获取当月第一天的日期
+     *
+     * @return <code>String</code> yyyy-MM-dd 00:00:00
+     */
+    public static String getFirstDayDateTimeStrOfMonth() {
+        return new DateTime().dayOfMonth().withMinimumValue().withTimeAtStartOfDay().toString(DEFAULT_TIME_FORMAT);
+    }
+
+    /**
+     * 获取指定月第一天的日期
+     *
+     * @return <code>Date</code> yyyy-MM-dd 00:00:00
+     */
+    public static Date getFirstDayDateTimeOfMonth(Date date) {
+        return new DateTime(date).dayOfMonth().withMinimumValue().withTimeAtStartOfDay().toDate();
+    }
+
+    /**
+     * 获取当月第一天的日期
+     *
+     * @return <code>String</code> yyyy-MM-dd 00:00:00
+     */
+    public static String getFirstDayDateTimeStrOfMonth(Date date) {
+        return new DateTime(date).dayOfMonth().withMinimumValue().withTimeAtStartOfDay().toString(DEFAULT_TIME_FORMAT);
+    }
+
+    /**
+     * 获取当月最后一天的日期
+     *
+     * @return <code>Date</code> yyyy-MM-dd 23:59:59
+     */
+    public static Date getLastDayDateTimeOfMonth() {
+        return new DateTime().dayOfMonth().withMaximumValue().millisOfDay().withMaximumValue().toDate();
+    }
+
+    /**
+     * 获取当月最后一天的日期
+     *
+     * @return <code>String</code> yyyy-MM-dd 23:59:59
+     */
+    public static String getLastDayDateTimeStrOfMonth() {
+        return new DateTime().dayOfMonth().withMaximumValue().millisOfDay().withMaximumValue().toString(DEFAULT_TIME_FORMAT);
+    }
+
+    /**
+     * 获取当月最后一天的日期
+     *
+     * @return <code>Date</code> yyyy-MM-dd 23:59:59
+     */
+    public static Date getLastDayDateTimeOfMonth(Date date) {
+        return new DateTime(date).dayOfMonth().withMaximumValue().millisOfDay().withMaximumValue().toDate();
+    }
+
+    /**
+     * 获取当月最后一天的日期
+     *
+     * @return <code>String</code> yyyy-MM-dd 23:59:59
+     */
+    public static String getLastDayDateTimeStrOfMonth(Date date) {
+        return new DateTime(date).dayOfMonth().withMaximumValue().millisOfDay().withMaximumValue().toString(DEFAULT_TIME_FORMAT);
+    }
+
+    /**
+     * 构造具体日期时间
+     *
+     * @param year   年
+     * @param month  月
+     * @param day    日
+     * @param hour   小时(24)
+     * @param minute 分钟
+     * @param second 秒
+     */
     public static Date buildDateTime(int year, int month, int day, int hour, int minute, int second) {
         return new DateTime(year, month, day, hour, minute, second).toDate();
     }
