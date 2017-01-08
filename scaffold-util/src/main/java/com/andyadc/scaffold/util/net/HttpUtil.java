@@ -1,4 +1,7 @@
-package com.andyadc.scaffold.util;
+package com.andyadc.scaffold.util.net;
+
+import com.andyadc.scaffold.util.MapUtil;
+import com.andyadc.scaffold.util.StringUtils;
 
 import java.io.*;
 import java.net.HttpURLConnection;

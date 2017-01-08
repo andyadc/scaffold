@@ -1,4 +1,4 @@
-package com.andyadc.scaffold.util;
+package com.andyadc.scaffold.util.io;
 
 import java.io.*;
 
