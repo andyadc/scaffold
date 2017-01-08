@@ -18,18 +18,18 @@ import java.util.Set;
  * @author andaicheng
  * @version 1.0, 2016-10-07
  */
-public class HttpUtil {
+public class HttpUtils {
 
     private static final String DEFAULT_CHARSET = "UTF-8";
     private static final String DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded;charset=";
-    private static final Map<String, String> DEFAULT_HEADER = new HashMap<>();
+    private static final Map<String, String> DEFAULT_HEADER = new HashMap<>(4);
 
     static {
-        DEFAULT_HEADER.put("User-Agent", "http-util");
+        DEFAULT_HEADER.put("User-Agent", "Scaffold-Http");
         DEFAULT_HEADER.put("Accept", "text/xml,text/javascript,text/html");
     }
 
-    private HttpUtil() {
+    private HttpUtils() {
         throw new UnsupportedOperationException();
     }
 
@@ -41,7 +41,7 @@ public class HttpUtil {
      * @return http query string
      * @throws UnsupportedEncodingException
      */
-    public static String buildQuery(Map<String, String> params, String charset) throws UnsupportedEncodingException {
+    private static String buildQuery(Map<String, String> params, String charset) throws UnsupportedEncodingException {
         if (MapUtil.isEmpty(params)) {
             return null;
         }
