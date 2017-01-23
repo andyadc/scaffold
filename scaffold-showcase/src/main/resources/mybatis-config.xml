@@ -39,8 +39,9 @@
 
     </settings>
 
+    <!-- MyBatis 性能拦截器 -->
     <!-- <plugins>
-        <plugin interceptor="com.idea.quickstart.commom.interceptor.MybatisExecuteInterceptor" />
+        <plugin interceptor="com.andyadc.scaffold.showcase.common.interceptor.MybatisExecuteInterceptor" />
     </plugins> -->
 
 </configuration>
