@@ -12,6 +12,8 @@ import org.patchca.service.ConfigurableCaptchaService;
 import org.patchca.text.renderer.BestFitTextRenderer;
 import org.patchca.text.renderer.TextRenderer;
 import org.patchca.word.RandomWordFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -32,6 +34,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * @version 2016/4/16
  */
 public final class CaptchaServlet extends HttpServlet {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CaptchaServlet.class);
 
     private static final long serialVersionUID = 6786094675668899270L;
     private static final String CHARACTERS = "AaBbCcDdEeFfGgHhJjKkMmNnQqXxYyPpWwSsTtRrUui123456789";
@@ -69,10 +73,12 @@ public final class CaptchaServlet extends HttpServlet {
         session.setAttribute(CAPTCHA_SESSION, code);
 
         BufferedImage bufferedImage = captcha.getImage();
-        ImageIO.write(bufferedImage, "png", outputStream);
 
         try {
+            ImageIO.write(bufferedImage, "png", outputStream);
             outputStream.flush();
+        } catch (Exception e) {
+            LOG.error("doPost error!", e);
         } finally {
             outputStream.close();
         }

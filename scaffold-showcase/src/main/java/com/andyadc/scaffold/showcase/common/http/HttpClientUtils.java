@@ -141,7 +141,7 @@ public class HttpClientUtils {
                     httpPost.addHeader(key, headers.get(key));
                 }
             }
-            if (pairs != null && pairs.size() > 0) {
+            if (pairs != null && !pairs.isEmpty()) {
                 httpPost.setEntity(new UrlEncodedFormEntity(pairs, CHARSET_UTF8));
             }
             CloseableHttpResponse response = httpClient.execute(httpPost);
@@ -204,15 +204,4 @@ public class HttpClientUtils {
         return httpClient;
     }
 
-    public static void main(String[] args) {
-
-        //System.out.println(EnumUtils.getEnumDataMap(PartnerCategoryEnum.class).get(null));
-
-        String getData = doGet("https://github.com/Arronlong/httpclientUtil", null);
-        System.out.println(getData);
-        System.out.println("----------------------分割线-----------------------");
-//        Map<String, Object> paramMap = Maps.newHashMap();
-//        String postData = doPost("http://www.oschina.net/", paramMap);
-//        System.out.println(postData);
-    }
 }

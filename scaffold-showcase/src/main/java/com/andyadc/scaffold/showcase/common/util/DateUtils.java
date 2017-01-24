@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class DateUtils {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DateUtils.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DateUtils.class);
 
     public static final String DEFAULT_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
@@ -154,7 +154,7 @@ public class DateUtils {
         try {
             return new SimpleDateFormat(format).parse(date);
         } catch (ParseException e) {
-            LOGGER.error("parseDate error", e);
+            LOG.error("parseDate error", e);
             throw new RuntimeException(e);
         }
     }
@@ -166,7 +166,7 @@ public class DateUtils {
         try {
             return new SimpleDateFormat(format).parse(date);
         } catch (ParseException e) {
-            LOGGER.error("parseTime error", e);
+            LOG.error("parseTime error", e);
             throw new RuntimeException(e);
         }
     }
