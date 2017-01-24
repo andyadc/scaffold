@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LoginController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
     private static final String PAGE_LOGIN = "login";
     private static final String PAGE_INDEX = "index";
     private static final String ATTR_MSG = "message";
@@ -37,7 +37,7 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, Model model) {
         String error_exception = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
-        LOGGER.info("login error_exception: {}", error_exception);
+        LOG.info("login error_exception: {}", error_exception);
 
         if (StringUtils.isNotBlank(error_exception)) {
             if (CaptchaFormAuthenticationFilter.CaptchaValidationException.class.getName().equals(error_exception)) {

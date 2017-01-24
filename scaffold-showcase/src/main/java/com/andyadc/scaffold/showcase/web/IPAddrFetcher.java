@@ -23,7 +23,7 @@ public class IPAddrFetcher {
                 break;
             }
         }
-        String localIP = "127.0.0.1";
+        final String localIP = "127.0.0.1";
         if ((ip == null) || (ip.length() == 0) || (ip.equalsIgnoreCase(localIP)) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
         }
