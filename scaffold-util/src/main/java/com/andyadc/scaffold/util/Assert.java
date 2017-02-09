@@ -1,7 +1,7 @@
 package com.andyadc.scaffold.util;
 
 /**
- * 断言工具类
+ * Assertion utility class that assists in validating arguments.
  *
  * @author andaicheng
  */
