@@ -13,4 +13,35 @@
     <name>scaffold-cache</name>
     <url>https://github.com/andyadc/scaffold</url>
 
+    <properties>
+        <jedis.version>2.9.0</jedis.version>
+        <ehcache.version>3.2.0</ehcache.version>
+        <spymemcached.version>2.12.2</spymemcached.version>
+
+    </properties>
+
+    <dependencies>
+        <!-- Jedis is a blazingly small and sane Redis java client. -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
+        </dependency>
+
+        <!-- A client library for memcached. -->
+        <dependency>
+            <groupId>net.spy</groupId>
+            <artifactId>spymemcached</artifactId>
+            <version>${spymemcached.version}</version>
+        </dependency>
+
+
+    </dependencies>
+
 </project>
