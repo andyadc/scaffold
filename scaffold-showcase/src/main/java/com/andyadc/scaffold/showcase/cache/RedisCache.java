@@ -2,7 +2,6 @@ package com.andyadc.scaffold.showcase.cache;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -22,14 +21,10 @@ public class RedisCache {
 
     private static final Logger LOG = LoggerFactory.getLogger(RedisCache.class);
 
-    @Autowired
+    //@Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
-    public RedisTemplate<String, Object> getRedisTemplate() {
-        return redisTemplate;
-    }
-
-    public void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
+    public RedisCache(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
