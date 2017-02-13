@@ -7,11 +7,11 @@ import java.io.*;
  *
  * @author andaicheng
  */
-public class FileUtil {
+public class FileUtils {
 
     private static final int BUFFER_SIZE = 16 * 1024;
 
-    private FileUtil() {
+    private FileUtils() {
         throw new UnsupportedOperationException();
     }
 
