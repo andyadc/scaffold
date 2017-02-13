@@ -1,6 +1,6 @@
 package com.andyadc.scaffold.util.net;
 
-import com.andyadc.scaffold.util.MapUtil;
+import com.andyadc.scaffold.util.MapUtils;
 import com.andyadc.scaffold.util.StringUtils;
 
 import java.io.*;
@@ -42,7 +42,7 @@ public class HttpUtils {
      * @throws UnsupportedEncodingException
      */
     private static String buildQuery(Map<String, String> params, String charset) throws UnsupportedEncodingException {
-        if (MapUtil.isEmpty(params)) {
+        if (MapUtils.isEmpty(params)) {
             return null;
         }
 
