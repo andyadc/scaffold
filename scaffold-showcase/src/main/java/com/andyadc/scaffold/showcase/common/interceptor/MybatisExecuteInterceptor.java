@@ -54,7 +54,7 @@ public class MybatisExecuteInterceptor implements Interceptor {
         long end = System.currentTimeMillis();
         long timing = end - start;
 
-        logger.info("SQL execution time: {}ms, ID: {}, SQL detail: {}", timing, statementId, sql);
+        logger.info("SQL executed time: {}ms, ID: {}, SQL detail: {}", timing, statementId, sql);
         return result;
     }
 
