@@ -1,5 +1,6 @@
 package com.andyadc.scaffold.serialization;
 
+import com.andyadc.scaffold.serialization.binary.FSTSerializer;
 import com.andyadc.scaffold.serialization.binary.JDKSerializer;
 import com.andyadc.scaffold.serialization.compression.CompressorType;
 import com.andyadc.scaffold.serialization.json.FastjsonSerializer;
@@ -52,15 +53,13 @@ public class SerializerExecutor {
     public static <T> T deserialize(byte[] bytes, SerializerType serializerType, CompressorType compressorType, boolean compress, boolean serializerLogPrint) {
         if (compress) {
             print(bytes, null, false, true, serializerLogPrint);
-
             bytes = decompress(bytes, compressorType);
-
             print(bytes, null, false, false, serializerLogPrint);
         }
 
         T object = null;
         if (serializerType == SerializerType.FST_BINARY) {
-
+            object = FSTSerializer.deserialize(bytes);
         } else if (serializerType == SerializerType.KRYO_BINARY) {
 
         } else if (serializerType == SerializerType.JDK_BINARY) {
