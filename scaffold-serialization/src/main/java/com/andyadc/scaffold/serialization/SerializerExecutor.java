@@ -46,7 +46,26 @@ public class SerializerExecutor {
     }
 
     public static <T> byte[] serialize(T object, SerializerType serializerType, CompressorType compressorType, boolean compress, boolean serializerLogPrint) {
-        return null;
+        byte[] bytes = null;
+        if (serializerType == SerializerType.FST_BINARY) {
+            bytes = FSTSerializer.serialize(object);
+        } else if (serializerType == SerializerType.KRYO_BINARY) {
+
+        } else if (serializerType == SerializerType.JDK_BINARY) {
+            bytes = JDKSerializer.serialize(object);
+        } else {
+            throw new SerializerException("Invalid serializer type of binary : " + serializerType);
+        }
+
+        if (compress) {
+            print(bytes, null, true, false, serializerLogPrint);
+            bytes = compress(bytes, compressorType);
+            print(bytes, null, true, true, serializerLogPrint);
+        } else {
+            print(bytes, object.getClass(), true, false, serializerLogPrint);
+        }
+
+        return bytes;
 
     }
 
