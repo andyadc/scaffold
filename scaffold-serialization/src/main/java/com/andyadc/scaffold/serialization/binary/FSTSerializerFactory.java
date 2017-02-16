@@ -2,6 +2,9 @@ package com.andyadc.scaffold.serialization.binary;
 
 import org.apache.commons.lang3.SerializationException;
 import org.apache.commons.pool2.ObjectPool;
+import org.apache.commons.pool2.PooledObject;
+import org.apache.commons.pool2.PooledObjectFactory;
+import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.nustaq.serialization.FSTConfiguration;
 
 /**
@@ -24,6 +27,32 @@ public class FSTSerializerFactory {
     }
 
     public static ObjectPool<FSTConfiguration> createPool() {
+        new GenericObjectPool<FSTConfiguration>(new PooledObjectFactory<FSTConfiguration>() {
+            @Override
+            public PooledObject<FSTConfiguration> makeObject() throws Exception {
+                return null;
+            }
+
+            @Override
+            public void destroyObject(PooledObject<FSTConfiguration> p) throws Exception {
+
+            }
+
+            @Override
+            public boolean validateObject(PooledObject<FSTConfiguration> p) {
+                return false;
+            }
+
+            @Override
+            public void activateObject(PooledObject<FSTConfiguration> p) throws Exception {
+
+            }
+
+            @Override
+            public void passivateObject(PooledObject<FSTConfiguration> p) throws Exception {
+
+            }
+        });
         return null;
     }
 
