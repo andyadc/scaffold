@@ -17,10 +17,14 @@ public class FSTSerializerFactory {
 
     public static void initialize() {
         if (usePool) {
-
+            createPool();
         } else {
             fstConfiguration = createFstConfiguratio();
         }
+    }
+
+    public static ObjectPool<FSTConfiguration> createPool() {
+        return null;
     }
 
     public static FSTConfiguration createFstConfiguratio() {
