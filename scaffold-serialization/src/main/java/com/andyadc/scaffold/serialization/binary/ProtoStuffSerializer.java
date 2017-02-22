@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version 2016/12/30
  */
 @SuppressWarnings("unchecked")
-public class ProtoStuffSerializer {
+public class ProtostuffSerializer {
 
     private static final Objenesis OBJENESIS = new ObjenesisStd(true);
     private static final ConcurrentHashMap<Class<?>, Schema<?>> SCHEMA_MAP = new ConcurrentHashMap<>();
@@ -25,7 +25,7 @@ public class ProtoStuffSerializer {
         }
     };
 
-    private ProtoStuffSerializer() {
+    private ProtostuffSerializer() {
     }
 
     public static <T> byte[] serialize(T object) {
