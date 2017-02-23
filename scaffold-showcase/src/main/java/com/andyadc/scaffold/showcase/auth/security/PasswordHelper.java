@@ -1,6 +1,6 @@
-package com.andyadc.scaffold.showcase.security;
+package com.andyadc.scaffold.showcase.auth.security;
 
-import com.andyadc.scaffold.showcase.entity.AuthUser;
+import com.andyadc.scaffold.showcase.auth.entity.AuthUser;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;

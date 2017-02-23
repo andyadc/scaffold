@@ -56,7 +56,7 @@
         <appender-ref ref="FILE"/>
     </appender>
 
-    <logger name="com.andyadc.scaffold.showcase.mapper" level="DEBUG">
+    <logger name="com.andyadc.scaffold.showcase.auth.mapper" level="DEBUG">
         <appender-ref ref="SQLFILE"/>
     </logger>
 

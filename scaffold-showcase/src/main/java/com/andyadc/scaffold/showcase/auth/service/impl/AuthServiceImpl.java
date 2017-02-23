@@ -1,8 +1,8 @@
-package com.andyadc.scaffold.showcase.service.impl;
+package com.andyadc.scaffold.showcase.auth.service.impl;
 
-import com.andyadc.scaffold.showcase.entity.AuthUser;
-import com.andyadc.scaffold.showcase.mapper.AuthUserMapper;
-import com.andyadc.scaffold.showcase.service.AuthService;
+import com.andyadc.scaffold.showcase.auth.entity.AuthUser;
+import com.andyadc.scaffold.showcase.auth.mapper.AuthUserMapper;
+import com.andyadc.scaffold.showcase.auth.service.AuthService;
 import org.javasimon.aop.Monitored;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package com.andyadc.scaffold.showcase.security;
+package com.andyadc.scaffold.showcase.auth.security;
 
-import com.andyadc.scaffold.showcase.service.AuthService;
+import com.andyadc.scaffold.showcase.auth.service.AuthService;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;

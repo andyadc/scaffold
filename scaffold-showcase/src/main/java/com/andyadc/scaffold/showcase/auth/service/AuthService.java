@@ -1,6 +1,6 @@
-package com.andyadc.scaffold.showcase.service;
+package com.andyadc.scaffold.showcase.auth.service;
 
-import com.andyadc.scaffold.showcase.entity.AuthUser;
+import com.andyadc.scaffold.showcase.auth.entity.AuthUser;
 
 /**
  * @author andaicheng

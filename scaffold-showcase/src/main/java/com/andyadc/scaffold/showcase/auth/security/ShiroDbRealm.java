@@ -1,9 +1,9 @@
-package com.andyadc.scaffold.showcase.security;
+package com.andyadc.scaffold.showcase.auth.security;
 
+import com.andyadc.scaffold.showcase.auth.entity.AuthUser;
 import com.andyadc.scaffold.showcase.auth.enums.AuthUserState;
+import com.andyadc.scaffold.showcase.auth.service.AuthService;
 import com.andyadc.scaffold.showcase.common.enums.DeletionEnum;
-import com.andyadc.scaffold.showcase.entity.AuthUser;
-import com.andyadc.scaffold.showcase.service.AuthService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

@@ -1,4 +1,4 @@
-package com.andyadc.scaffold.showcase.entity;
+package com.andyadc.scaffold.showcase.auth.entity;
 
 
 import com.andyadc.scaffold.showcase.common.entity.BaseEntity;
@@ -6,6 +6,8 @@ import com.andyadc.scaffold.showcase.common.entity.BaseEntity;
 import java.util.Date;
 
 public class AuthUser extends BaseEntity {
+
+    private static final long serialVersionUID = -6392690869599988364L;
 
     private int version;
 

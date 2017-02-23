@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.andyadc.scaffold.showcase.mapper.AuthUserMapper">
-    <resultMap id="BaseResultMap" type="com.andyadc.scaffold.showcase.entity.AuthUser">
+<mapper namespace="com.andyadc.scaffold.showcase.auth.mapper.AuthUserMapper">
+    <resultMap id="BaseResultMap" type="com.andyadc.scaffold.showcase.auth.entity.AuthUser">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="identifier" jdbcType="VARCHAR" property="identifier"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -53,7 +53,8 @@
         WHERE id = #{id,jdbcType=BIGINT}
     </delete>
 
-    <insert id="insertSelective" parameterType="com.andyadc.scaffold.showcase.entity.AuthUser" useGeneratedKeys="true"
+    <insert id="insertSelective" parameterType="com.andyadc.scaffold.showcase.auth.entity.AuthUser"
+            useGeneratedKeys="true"
             keyProperty="id">
         INSERT INTO t_auth_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -140,7 +141,7 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.andyadc.scaffold.showcase.entity.AuthUser">
+    <update id="updateByPrimaryKeySelective" parameterType="com.andyadc.scaffold.showcase.auth.entity.AuthUser">
         UPDATE t_auth_user
         <set>
             <if test="identifier != null">

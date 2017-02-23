@@ -1,4 +1,4 @@
-package com.andyadc.scaffold.showcase.security;
+package com.andyadc.scaffold.showcase.auth.security;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.crypto.hash.Sha1Hash;
