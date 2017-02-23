@@ -7,15 +7,6 @@ import java.util.Date;
 
 public class AuthUser extends BaseEntity {
 
-    /**
-     * 删除标记
-     */
-    public static final byte DELETED = 1;
-    /**
-     * 锁定状态
-     */
-    public static final byte STATUS_BLOCKED = 0;
-
     private int version;
 
     private String identifier;
@@ -32,7 +23,7 @@ public class AuthUser extends BaseEntity {
 
     private String email;
 
-    private Byte status;
+    private Byte state;
 
     private Byte isDeleted;
 
@@ -96,12 +87,12 @@ public class AuthUser extends BaseEntity {
         this.email = email == null ? null : email.trim();
     }
 
-    public Byte getStatus() {
-        return status;
+    public Byte getState() {
+        return state;
     }
 
-    public void setStatus(Byte status) {
-        this.status = status;
+    public void setState(Byte state) {
+        this.state = state;
     }
 
     public Byte getIsDeleted() {

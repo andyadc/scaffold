@@ -10,7 +10,7 @@
         <result column="salt" jdbcType="VARCHAR" property="salt"/>
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="status" jdbcType="TINYINT" property="status"/>
+        <result column="state" jdbcType="TINYINT" property="state"/>
         <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
@@ -18,16 +18,16 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, identifier, name, account, password, salt, phone, email, status, is_deleted,
+        id, identifier, name, account, password, salt, phone, email, state, is_deleted,
         create_time, update_time, version
     </sql>
 
     <sql id="Simple_Column_List">
-        id, identifier, account, password, salt, auth_type, status, is_deleted
+        id, identifier, account, password, salt, auth_type, state, is_deleted
     </sql>
 
     <update id="lockAuthUserByAccount" parameterType="java.lang.String">
-        UPDATE t_auth_user SET status = 0 WHERE account =  #{account,jdbcType=VARCHAR}
+        UPDATE t_auth_user SET state = 0 WHERE account = #{account,jdbcType=VARCHAR}
     </update>
 
     <update id="deleteAuthUserLogic" parameterType="java.lang.Long">
@@ -81,8 +81,8 @@
             <if test="email != null">
                 email,
             </if>
-            <if test="status != null">
-                status,
+            <if test="state != null">
+                state,
             </if>
             <if test="isDeleted != null">
                 is_deleted,
@@ -122,8 +122,8 @@
             <if test="email != null">
                 #{email,jdbcType=VARCHAR},
             </if>
-            <if test="status != null">
-                #{status,jdbcType=TINYINT},
+            <if test="state != null">
+                #{state,jdbcType=TINYINT},
             </if>
             <if test="isDeleted != null">
                 #{isDeleted,jdbcType=TINYINT},
@@ -164,8 +164,8 @@
             <if test="email != null">
                 email = #{email,jdbcType=VARCHAR},
             </if>
-            <if test="status != null">
-                status = #{status,jdbcType=TINYINT},
+            <if test="state != null">
+                state = #{state,jdbcType=TINYINT},
             </if>
             <if test="isDeleted != null">
                 is_deleted = #{isDeleted,jdbcType=TINYINT},
