@@ -1,6 +1,12 @@
 package com.andyadc.scaffold.showcase.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.http.HttpServletRequest;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.util.Enumeration;
 
 /**
@@ -8,6 +14,8 @@ import java.util.Enumeration;
  * @version 2017/1/8
  */
 public class IPAddrFetcher {
+
+    private static final Logger LOG = LoggerFactory.getLogger(IPAddrFetcher.class);
 
     /**
      * 获取客户端IP地址，支持代理服务器
@@ -35,4 +43,27 @@ public class IPAddrFetcher {
         }
         return ip;
     }
+
+    public static String getServerUniqueIP() {
+        try {
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+            while (interfaces.hasMoreElements()) {
+                NetworkInterface ni = interfaces.nextElement();
+                Enumeration<InetAddress> inetAddresses = ni.getInetAddresses();
+
+                while (inetAddresses.hasMoreElements()) {
+                    InetAddress address = inetAddresses.nextElement();
+                    if (address instanceof Inet4Address) {
+                        if (!"127.0.0.1".equals(address.getHostAddress())) {
+                            return address.getHostAddress();
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            LOG.error("Get Server IP Error", e);
+        }
+        return null;
+    }
+
 }
