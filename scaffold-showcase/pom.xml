@@ -10,7 +10,7 @@
     <url>https://github.com/andyadc/scaffold</url>
 
     <properties>
-        <jetty.version>9.4.1.v20170120</jetty.version>
+        <jetty.version>9.4.2.v20170220</jetty.version>
         <webserver.port>9999</webserver.port>
 
         <spring.version>4.3.6.RELEASE</spring.version>
