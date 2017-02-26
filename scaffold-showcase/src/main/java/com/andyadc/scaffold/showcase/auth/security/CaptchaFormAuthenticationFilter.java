@@ -65,7 +65,7 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
             AuthUser authUser = authService.findAuthUserByAccount(username);
             if (authUser != null) {
                 Integer loginTimes = (Integer) EhCacheUtil.get(CACHE_LOGIN_FAIL_PREFIX + username);
-                if (loginTimes != null && loginTimes > LOGIN_FAILURE_LIMIT) {
+                if (loginTimes != null && loginTimes >= LOGIN_FAILURE_LIMIT) {
                     captcha = request.getParameter(CAPTACHE_PARAM);
                     if (!CaptchaServlet.validateCaptcha((HttpServletRequest) request, captcha)) {
                         throw new CaptchaValidationException("验证码不正确");
