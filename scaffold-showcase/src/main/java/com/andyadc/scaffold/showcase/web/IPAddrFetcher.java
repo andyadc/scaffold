@@ -53,10 +53,8 @@ public class IPAddrFetcher {
 
                 while (inetAddresses.hasMoreElements()) {
                     InetAddress address = inetAddresses.nextElement();
-                    if (address instanceof Inet4Address) {
-                        if (!"127.0.0.1".equals(address.getHostAddress())) {
-                            return address.getHostAddress();
-                        }
+                    if (address instanceof Inet4Address && !"127.0.0.1".equals(address.getHostAddress())) {
+                        return address.getHostAddress();
                     }
                 }
             }
