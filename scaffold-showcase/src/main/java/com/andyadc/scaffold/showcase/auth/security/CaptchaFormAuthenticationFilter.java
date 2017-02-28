@@ -33,7 +33,7 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 
     /**
      * 登录失败缓存前缀
-     **/
+     */
     private static final String CACHE_LOGIN_FAIL_PREFIX = "login_fail_times_";
 
     private AuthService authService;
