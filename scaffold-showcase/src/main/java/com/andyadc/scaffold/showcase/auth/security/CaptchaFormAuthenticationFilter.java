@@ -46,20 +46,23 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
             String username = getUsername(request);
             request.setAttribute(KEY_AUTH_USERNAME_VALUE, username);
 
+            //TODO 不能从页面获取失败次数
             String failStr = request.getParameter("failTimes");
             int times = 0;
             if (StringUtils.isNotBlank(failStr)) {
                 times = Integer.parseInt(failStr);
             }
-            if (times >= LOGIN_FAILURE_LIMIT) {
+            if (times == LOGIN_FAILURE_LIMIT) {
                 request.setAttribute(KEY_AUTH_CAPTCHA_REQUIRED, Boolean.TRUE);
             }
 
             String captcha = request.getParameter(CAPTACHE_PARAM);
-            if (StringUtils.isNotBlank(captcha)) {
-                if (!CaptchaServlet.validateCaptcha((HttpServletRequest) request, captcha)) {
-                    throw new CaptchaValidationException("验证码不正确");
-                }
+            if (times > LOGIN_FAILURE_LIMIT && StringUtils.isBlank(captcha)) {
+                throw new CaptchaValidationException("请输入验证码");
+            }
+
+            if (StringUtils.isNotBlank(captcha) && !CaptchaServlet.validateCaptcha((HttpServletRequest) request, captcha)) {
+                throw new CaptchaValidationException("验证码不正确");
             }
 
             AuthUser authUser = authService.findAuthUserByAccount(username);
