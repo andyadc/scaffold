@@ -21,7 +21,6 @@ public class RedisCache {
 
     private static final Logger LOG = LoggerFactory.getLogger(RedisCache.class);
 
-    //@Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
     public RedisCache(RedisTemplate redisTemplate) {
