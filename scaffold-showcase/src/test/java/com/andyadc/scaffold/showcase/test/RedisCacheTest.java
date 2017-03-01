@@ -22,7 +22,7 @@ public class RedisCacheTest {
 
     @Test
     public void testAdd() {
-        redisCache.put("adc", "567", 10000);
+        redisCache.put("adc", "qwerty", 10000);
     }
 
     @Test

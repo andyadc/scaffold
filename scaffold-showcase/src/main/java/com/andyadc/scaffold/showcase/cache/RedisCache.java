@@ -23,24 +23,20 @@ public class RedisCache {
 
     private RedisTemplate<String, Object> redisTemplate;
 
-    public RedisCache(RedisTemplate redisTemplate) {
+    public RedisCache(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
     public Object get(Object key) {
-        final String keyf = key.toString();
+        final byte[] keyb = key.toString().getBytes();
         Object object;
 
-        object = redisTemplate.execute(new RedisCallback<Object>() {
-            @Override
-            public Object doInRedis(RedisConnection connection) {
-                byte[] key = keyf.getBytes();
-                byte[] value = connection.get(key);
-                if (value == null) {
-                    return null;
-                }
-                return toObject(value);
+        object = redisTemplate.execute((RedisConnection connection) -> {
+            byte[] value = connection.get(keyb);
+            if (value == null) {
+                return null;
             }
+            return toObject(value);
         });
         return object;
     }
@@ -49,28 +45,23 @@ public class RedisCache {
         final String keyf = key.toString();
         final Object valuef = value;
 
-        redisTemplate.execute(new RedisCallback<Long>() {
-            @Override
-            public Long doInRedis(RedisConnection connection) {
-                byte[] keyb = keyf.getBytes();
-                byte[] valueb = toByteArray(valuef);
-                connection.set(keyb, valueb);
-                if (liveTime > 0) {
-                    connection.expire(keyb, liveTime);
-                }
-                return 1L;
+        redisTemplate.execute((RedisConnection connection) -> {
+            byte[] keyb = keyf.getBytes();
+            byte[] valueb = toByteArray(valuef);
+            connection.set(keyb, valueb);
+            if (liveTime > 0) {
+                connection.expire(keyb, liveTime);
             }
+            return 1L;
         });
     }
 
     public void del(Object key) {
         final String keyf = key.toString();
-        redisTemplate.execute(new RedisCallback<Long>() {
-            @Override
-            public Long doInRedis(RedisConnection connection) {
-                return connection.del(keyf.getBytes());
-            }
-        });
+
+        redisTemplate.execute((RedisConnection connection) ->
+                connection.del(keyf.getBytes())
+        );
     }
 
     public void exprie(Object key, final long liveTime) {
