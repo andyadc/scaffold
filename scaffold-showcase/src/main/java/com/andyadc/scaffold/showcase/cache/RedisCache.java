@@ -64,7 +64,7 @@ public class RedisCache {
         );
     }
 
-    public void exprie(Object key, final long liveTime) {
+    public void expire(Object key, final long liveTime) {
         final String keyf = key.toString();
         redisTemplate.execute(new RedisCallback<Boolean>() {
             @Override
@@ -72,6 +72,7 @@ public class RedisCache {
                 return connection.expire(keyf.getBytes(), liveTime);
             }
         });
+
     }
 
     public Boolean exist(Object key) {
