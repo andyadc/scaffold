@@ -87,10 +87,10 @@ public class RedisCache {
     }
 
     /**
-     * 对key的值做加加操作,并返回新的值。 incr一个不存在的key，则设置key为1 方法描述: <br>
+     * 对key的值做加加操作,并返回新的值。 incr一个不存在的key，则设置key为1
      *
      * @param key key
-     * @return 返回值：Long <br>
+     * @return 返回值：Long
      */
     public Long incr(Object key) {
         final String keyf = key.toString();
@@ -101,10 +101,10 @@ public class RedisCache {
     }
 
     /**
-     * 对key的值做的是减减操作，decr一个不存在key，则设置key为-1 <br>
+     * 对key的值做的是减减操作，decr一个不存在key，则设置key为-1
      *
      * @param key key
-     * @return 返回值：Long <br>
+     * @return 返回值：Long
      */
     public Long decr(Object key) {
         final String keyf = key.toString();
@@ -119,7 +119,7 @@ public class RedisCache {
     //------------------------------------------------------------------
 
     /**
-     * < Object转byte[] >. <br>
+     * < Object转byte[] >
      */
     private byte[] toByteArray(Object obj) {
         byte[] bytes = null;
@@ -138,7 +138,7 @@ public class RedisCache {
     }
 
     /**
-     * < byte[]转Object >. <br>
+     * < byte[]转Object >
      */
     private Object toObject(byte[] bytes) {
         Object obj = null;
