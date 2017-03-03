@@ -27,7 +27,7 @@
     </sql>
 
     <update id="lockAuthUserByAccount" parameterType="java.lang.String">
-        UPDATE t_auth_user SET state = 0 WHERE account = #{account,jdbcType=VARCHAR}
+        UPDATE t_auth_user SET state = 2 WHERE account = #{account,jdbcType=VARCHAR}
     </update>
 
     <update id="deleteAuthUserLogic" parameterType="java.lang.Long">
