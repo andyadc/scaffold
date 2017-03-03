@@ -1,4 +1,4 @@
-package com.andyadc.scaffold.showcase.web;
+package com.andyadc.scaffold.showcase.common.web.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
