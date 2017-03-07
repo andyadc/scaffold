@@ -1,6 +1,7 @@
 package com.andyadc.scaffold.showcase.test;
 
 import com.andyadc.scaffold.showcase.sys.service.SysService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class SysServiceTest {
     @Autowired
     private SysService sysService;
 
+    @Ignore
     @Test
     public void testGetNow() {
         System.out.println(sysService.getNowDateTime());

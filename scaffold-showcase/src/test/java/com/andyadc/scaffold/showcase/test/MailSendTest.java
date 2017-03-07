@@ -22,6 +22,7 @@ public class MailSendTest {
     @Autowired
     private MimeMailService mimeMailService;
 
+    @Ignore
     @Test
     public void testSendMine() {
         mimeMailService.sendNotificationMail("andyadc");

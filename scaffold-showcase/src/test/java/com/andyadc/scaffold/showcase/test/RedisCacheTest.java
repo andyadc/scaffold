@@ -3,6 +3,7 @@ package com.andyadc.scaffold.showcase.test;
 import com.andyadc.scaffold.showcase.cache.RedisCache;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,13 @@ public class RedisCacheTest {
     @Autowired
     private RedisCache redisCache;
 
+    @Ignore
     @Test
     public void testAdd() {
         redisCache.put("adc", "qwerty", 10000);
     }
 
+    @Ignore
     @Test
     public void testGet() {
         System.out.println(redisCache.get("adc"));
