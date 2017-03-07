@@ -30,7 +30,7 @@
                   maxEntriesLocalDisk="100000"/>
 
     <!-- 系统缓存 -->
-    <cache name="sysCache" maxEntriesLocalHeap="100" eternal="true"
+    <cache name="sysCache" maxEntriesLocalHeap="100" eternal="false"
            overflowToDisk="true"/>
 
 </ehcache>
