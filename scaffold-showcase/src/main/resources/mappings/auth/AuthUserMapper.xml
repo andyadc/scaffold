@@ -150,9 +150,9 @@
             <if test="name != null">
                 name = #{name,jdbcType=VARCHAR},
             </if>
-            <if test="account != null">
+            <!--<if test="account != null">
                 account = #{account,jdbcType=VARCHAR},
-            </if>
+            </if>-->
             <if test="password != null">
                 password = #{password,jdbcType=VARCHAR},
             </if>
@@ -171,9 +171,9 @@
             <if test="isDeleted != null">
                 is_deleted = #{isDeleted,jdbcType=TINYINT},
             </if>
-            <if test="createTime != null">
+            <!--<if test="createTime != null">
                 create_time = #{createTime,jdbcType=TIMESTAMP},
-            </if>
+            </if>-->
             <if test="updateTime != null">
                 update_time = #{updateTime,jdbcType=TIMESTAMP},
             </if>
