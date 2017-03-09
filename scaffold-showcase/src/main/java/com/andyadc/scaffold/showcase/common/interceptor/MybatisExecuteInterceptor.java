@@ -17,13 +17,16 @@ import org.springframework.util.CollectionUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
 /**
- * MyBatis 性能拦截器，用于输出每条 SQL 语句及其执行时间<br>
- * 测试用
+ * MyBatis性能拦截器,用于输出每条SQL语句及其执行时间.
+ * <br>
+ * Only for test environment
  */
 @Intercepts({
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
@@ -31,7 +34,7 @@ import java.util.Properties;
 })
 public class MybatisExecuteInterceptor implements Interceptor {
 
-    private static final Logger logger = LoggerFactory.getLogger(MybatisExecuteInterceptor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MybatisExecuteInterceptor.class);
     private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
@@ -47,14 +50,12 @@ public class MybatisExecuteInterceptor implements Interceptor {
         Configuration configuration = mappedStatement.getConfiguration();
         String sql = getSql(boundSql, parameterObject, configuration);
 
-        long start = System.currentTimeMillis();
-
+        Instant begin = Instant.now();
         Object result = invocation.proceed();
+        Instant end = Instant.now();
+        long duration = Duration.between(begin, end).toMillis();
 
-        long end = System.currentTimeMillis();
-        long timing = end - start;
-
-        logger.info("SQL executed time: {}ms, ID: {}, SQL detail: {}", timing, statementId, sql);
+        LOG.info("SQL executed duration: {}ms, ID: {}, SQL detail: {}", duration, statementId, sql);
         return result;
     }
 
