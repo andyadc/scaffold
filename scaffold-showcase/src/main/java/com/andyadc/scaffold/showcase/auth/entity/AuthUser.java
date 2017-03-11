@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class AuthUser extends BaseEntity {
 
-    private static final long serialVersionUID = -6392690869599988364L;
+    private static final long serialVersionUID = -7830790559829715043L;
 
     private int version;
 
@@ -131,5 +131,15 @@ public class AuthUser extends BaseEntity {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return "AuthUser{" +
+                "name='" + name + '\'' +
+                ", account='" + account + '\'' +
+                ", state=" + state +
+                ", isDeleted=" + isDeleted +
+                '}';
     }
 }
