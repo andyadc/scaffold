@@ -22,4 +22,9 @@ public @interface MetaData {
      * 注释说明：用于描述代码内部用法说明
      */
     String comments() default "";
+
+    /**
+     * 类描述: 可以说明实体对应的数据库表名
+     */
+    String tableName() default "";
 }
