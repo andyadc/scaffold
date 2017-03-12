@@ -3,6 +3,8 @@ package com.andyadc.scaffold.showcase.common.thread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.TimeUnit;
+
 public class ThreadUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(ThreadUtils.class);
@@ -10,21 +12,27 @@ public class ThreadUtils {
     private ThreadUtils() {
     }
 
-    public static void sleepOneSecond() {
-        sleepSeconds(1);
+    /**
+     * sleep等待, 单位为毫秒, 已捕捉并处理InterruptedException.
+     */
+    public static void sleep(long durationMillis) {
+        try {
+            Thread.sleep(durationMillis);
+        } catch (InterruptedException e) {
+            LOG.error("sleep error", e);
+            Thread.currentThread().interrupt();
+        }
     }
 
     /**
-     * sleep seconds
-     *
-     * @param seconds sleep seconds
+     * sleep等待，已捕捉并处理InterruptedException.
      */
-    public static void sleepSeconds(int seconds) {
+    public static void sleep(long duration, TimeUnit unit) {
         try {
-            LOG.debug("Thread {} sleep {} seconds...", Thread.currentThread().getName(), seconds);
-            Thread.sleep(seconds * 1000L);
+            Thread.sleep(unit.toMillis(duration));
         } catch (InterruptedException e) {
-            LOG.error(e.getMessage(), e);
+            LOG.error("sleep error", e);
+            Thread.currentThread().interrupt();
         }
     }
 }
