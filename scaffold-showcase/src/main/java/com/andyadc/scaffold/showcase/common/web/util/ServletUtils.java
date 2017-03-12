@@ -11,6 +11,9 @@ import java.util.Map;
  */
 public class ServletUtils {
 
+    private ServletUtils() {
+    }
+
     /**
      * 获取所有请求参数
      */
