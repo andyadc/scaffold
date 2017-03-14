@@ -32,7 +32,7 @@
         <joda-time.version>2.9.7</joda-time.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-codec.version>1.10</commons-codec.version>
-        <httpcomponents.version>4.5.2</httpcomponents.version>
+        <httpcomponents.version>4.5.3</httpcomponents.version>
         <sitemesh.version>3.0.1</sitemesh.version>
         <javasimon.version>4.1.2</javasimon.version>
         <freemarker.version>2.3.23</freemarker.version>
