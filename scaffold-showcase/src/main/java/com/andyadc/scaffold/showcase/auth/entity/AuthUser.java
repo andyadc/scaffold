@@ -1,13 +1,15 @@
 package com.andyadc.scaffold.showcase.auth.entity;
 
 
+import com.andyadc.scaffold.showcase.common.annotation.MetaData;
 import com.andyadc.scaffold.showcase.common.entity.BaseEntity;
 
 import java.util.Date;
 
+@MetaData(value = "系统权限用户", tableName = "t_auth_user")
 public class AuthUser extends BaseEntity {
 
-    private static final long serialVersionUID = -6392690869599988364L;
+    private static final long serialVersionUID = -7830790559829715043L;
 
     private int version;
 
@@ -131,5 +133,15 @@ public class AuthUser extends BaseEntity {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return "AuthUser{" +
+                "name='" + name + '\'' +
+                ", account='" + account + '\'' +
+                ", state=" + state +
+                ", isDeleted=" + isDeleted +
+                '}';
     }
 }

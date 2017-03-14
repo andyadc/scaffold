@@ -115,5 +115,6 @@
     <import resource="applicationContext-redis.xml"/>
     <import resource="mail/applicationContext-mail.xml"/>
     <import resource="applicationContext-javasimon.xml"/>
+    <import resource="applicationContext-executor.xml"/>
 
 </beans>
