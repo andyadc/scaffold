@@ -17,6 +17,9 @@ public class IPAddrFetcher {
 
     private static final Logger LOG = LoggerFactory.getLogger(IPAddrFetcher.class);
 
+    private IPAddrFetcher() {
+    }
+
     /**
      * 获取客户端IP地址，支持代理服务器
      */
