@@ -32,7 +32,7 @@ public class HttpFormRequestUtils {
     private static final String CHARSET_UTF8 = "UTF-8";
 
     static {
-        RequestConfig config = RequestConfig.custom().setConnectTimeout(60000).setSocketTimeout(15000).build();
+        RequestConfig config = RequestConfig.custom().setConnectTimeout(5000).setSocketTimeout(5000).build();
         httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
     }
 
@@ -66,20 +66,23 @@ public class HttpFormRequestUtils {
             httpPost.setEntity(httpEntity);
 
             CloseableHttpResponse response = httpClient.execute(httpPost);
-            int statusCode = response.getStatusLine().getStatusCode();
-            LOG.info("response status code: {}", statusCode);
-            if (statusCode != HttpStatus.SC_OK) {
-                httpPost.abort();
-                throw new RuntimeException("error status code: " + statusCode);
-            }
+            try {
+                int statusCode = response.getStatusLine().getStatusCode();
+                LOG.info("response status code: {}", statusCode);
+                if (statusCode != HttpStatus.SC_OK) {
+                    httpPost.abort();
+                    throw new RuntimeException("error status code: " + statusCode);
+                }
 
-            HttpEntity respEntity = response.getEntity();
-            if (respEntity != null) {
-                responseStr = EntityUtils.toString(respEntity, CHARSET_UTF8);
-                LOG.info("response string: {}", responseStr);
+                HttpEntity respEntity = response.getEntity();
+                if (respEntity != null) {
+                    responseStr = EntityUtils.toString(respEntity, CHARSET_UTF8);
+                    LOG.info("response string: {}", responseStr);
+                }
+                EntityUtils.consume(respEntity);
+            } finally {
+                response.close();
             }
-            EntityUtils.consume(respEntity);
-            response.close();
 
             return responseStr;
         } catch (Exception e) {
