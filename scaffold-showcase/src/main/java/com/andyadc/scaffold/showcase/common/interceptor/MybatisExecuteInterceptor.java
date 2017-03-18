@@ -13,7 +13,6 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.CollectionUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -76,7 +75,7 @@ public class MybatisExecuteInterceptor implements Interceptor {
         String sql = boundSql.getSql().replaceAll("[\\s]+", " ");
         List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
         TypeHandlerRegistry typeHandlerRegistry = configuration.getTypeHandlerRegistry();
-        if (!CollectionUtils.isEmpty(parameterMappings)) {
+        if (parameterMappings != null && !parameterMappings.isEmpty()) {
             for (int i = 0; i < parameterMappings.size(); i++) {
                 ParameterMapping parameterMapping = parameterMappings.get(i);
                 if (parameterMapping.getMode() != ParameterMode.OUT) {
