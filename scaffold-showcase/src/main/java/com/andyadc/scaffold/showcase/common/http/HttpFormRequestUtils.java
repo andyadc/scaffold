@@ -36,6 +36,9 @@ public class HttpFormRequestUtils {
         httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
     }
 
+    private HttpFormRequestUtils() {
+    }
+
     public static String formRequest(String requestUrl, Map<String, String> requestParams, String fileName, String filePath) {
         String responseStr = "";
         if (StringUtils.isBlank(requestUrl)) {
