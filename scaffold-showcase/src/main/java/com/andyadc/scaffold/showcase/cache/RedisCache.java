@@ -74,9 +74,9 @@ public class RedisCache {
     public Boolean exist(Object key) {
         final String keyf = key.toString();
 
-        return redisTemplate.execute((RedisConnection connection) -> {
-            return connection.exists(keyf.getBytes());
-        });
+        return redisTemplate.execute((RedisConnection connection) ->
+                connection.exists(keyf.getBytes())
+        );
     }
 
     public void clear() {
@@ -95,9 +95,9 @@ public class RedisCache {
     public Long incr(Object key) {
         final String keyf = key.toString();
 
-        return redisTemplate.execute((RedisConnection connection) -> {
-            return connection.incr(keyf.getBytes());
-        });
+        return redisTemplate.execute((RedisConnection connection) ->
+                connection.incr(keyf.getBytes())
+        );
     }
 
     /**
@@ -109,9 +109,9 @@ public class RedisCache {
     public Long decr(Object key) {
         final String keyf = key.toString();
 
-        return redisTemplate.execute((RedisConnection connection) -> {
-            return connection.decr(keyf.getBytes());
-        });
+        return redisTemplate.execute((RedisConnection connection) ->
+                connection.decr(keyf.getBytes())
+        );
     }
 
     //------------------------------------------------------------------
