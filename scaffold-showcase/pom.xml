@@ -26,7 +26,7 @@
         <h2.version>1.4.193</h2.version>
         <jedis.version>2.9.0</jedis.version>
         <spring-data-redis.version>1.8.1.RELEASE</spring-data-redis.version>
-        <jackson.version>2.8.7</jackson.version>
+        <jackson.version>2.8.8</jackson.version>
         <java-mail.version>1.4.7</java-mail.version>
         <quartz.version>2.2.3</quartz.version>
         <joda-time.version>2.9.7</joda-time.version>
