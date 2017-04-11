@@ -14,7 +14,7 @@
     <url>https://github.com/andyadc/scaffold</url>
 
     <properties>
-        <joda-time.version>2.9.7</joda-time.version>
+        <joda-time.version>2.9.9</joda-time.version>
         <guava.version>20.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
     </properties>
