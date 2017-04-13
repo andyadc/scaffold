@@ -2,6 +2,7 @@ package com.andyadc.scaffold.showcase.common.http;
 
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
+import org.apache.http.config.SocketConfig;
 import org.apache.http.conn.DnsResolver;
 import org.apache.http.conn.HttpConnectionFactory;
 import org.apache.http.conn.ManagedHttpClientConnection;
@@ -46,7 +47,22 @@ public class HttpClientUtil {
             //DNS 解析器
             DnsResolver dnsResolver = SystemDefaultDnsResolver.INSTANCE;
 
+            //创建池化连接管理器
             manager = new PoolingHttpClientConnectionManager(socketFactoryRegistry, connectionFactory, dnsResolver);
+
+            //默认为Socket配置
+            SocketConfig socketConfig = SocketConfig.custom().setTcpNoDelay(true).build();
+            manager.setDefaultSocketConfig(socketConfig);
+
+            manager.setMaxTotal(300); // 设置整个连接池的最大连接数
+            //每个路由的默认最大连接, 每个路由实际最大连接数默认为
+            //DefaultMaxPerRoute控制, 而MaxTotal是控制整个池子最大数
+            //设置过小无法支持大并发(ConnectionPoolTimeoutException: Timeout waiting for connection from pool)
+            //路由是对MaxTotal的细分
+            manager.setDefaultMaxPerRoute(200);// 每个路由最大连接数
+            // 从连接池获取连接时, 链接不活跃多长时间需要进行一次验证, 默认2s
+            manager.setValidateAfterInactivity(5 * 1000);
+
 
         }
 
