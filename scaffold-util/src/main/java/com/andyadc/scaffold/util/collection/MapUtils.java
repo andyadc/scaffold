@@ -1,4 +1,4 @@
-package com.andyadc.scaffold.util;
+package com.andyadc.scaffold.util.collection;
 
 import java.util.Map;
 
