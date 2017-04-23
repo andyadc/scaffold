@@ -1,10 +1,10 @@
 package com.andyadc.scaffold.util.concurrent.threadpool;
 
 import com.andyadc.scaffold.util.Assert;
+import com.andyadc.scaffold.util.base.annotation.NotNull;
+import com.andyadc.scaffold.util.base.annotation.Nullable;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
