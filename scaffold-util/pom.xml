@@ -16,6 +16,7 @@
     <properties>
         <joda-time.version>2.9.9</joda-time.version>
         <guava.version>20.0</guava.version>
+        <orika.version>1.5.1</orika.version>
         <commons-lang3.version>3.5</commons-lang3.version>
     </properties>
 
@@ -34,6 +35,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>1.5.1</version>
         </dependency>
     </dependencies>
 
