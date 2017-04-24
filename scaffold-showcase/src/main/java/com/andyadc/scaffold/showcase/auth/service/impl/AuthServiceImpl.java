@@ -6,6 +6,7 @@ import com.andyadc.scaffold.showcase.auth.service.AuthService;
 import org.javasimon.aop.Monitored;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author andaicheng
@@ -27,4 +28,15 @@ public class AuthServiceImpl implements AuthService {
     public boolean lockAuthUser(String account) {
         return authUserMapper.lockAuthUserByAccount(account) > 0;
     }
+
+    @Transactional
+    @Override
+    public AuthUser saveAuthUser(AuthUser authUser) {
+        if (authUser.getId() != null && authUser.getId() > 0)
+            authUserMapper.updateByPrimaryKeySelective(authUser);
+        else
+            authUserMapper.insertSelective(authUser);
+        return authUser;
+    }
+
 }

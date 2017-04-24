@@ -11,4 +11,6 @@ public interface AuthService {
     AuthUser findAuthUserByAccount(String account);
 
     boolean lockAuthUser(String account);
+
+    AuthUser saveAuthUser(AuthUser authUser);
 }
