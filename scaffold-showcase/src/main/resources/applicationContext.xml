@@ -52,21 +52,18 @@
 
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.andyadc.scaffold"/>
-        <property name="annotationClass"
-                  value="com.andyadc.scaffold.showcase.common.repository.MyBatisRepository"/>
+        <property name="annotationClass" value="com.andyadc.scaffold.showcase.common.repository.MyBatisRepository"/>
     </bean>
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg ref="sqlSessionFactory"/>
     </bean>
 
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="hikariDataSource"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager"
-                          proxy-target-class="true"/>
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
     <!-- 定义aspectj -->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
