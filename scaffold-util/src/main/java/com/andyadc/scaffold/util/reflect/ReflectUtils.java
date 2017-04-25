@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ReflectUtils {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ReflectUtils.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ReflectUtils.class);
 
 
 }
