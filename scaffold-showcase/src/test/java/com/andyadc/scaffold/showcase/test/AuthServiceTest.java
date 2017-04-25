@@ -4,6 +4,7 @@ import com.andyadc.scaffold.showcase.auth.entity.AuthUser;
 import com.andyadc.scaffold.showcase.auth.service.AuthService;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class AuthServiceTest {
     @Autowired
     private AuthService authService;
 
+    @Ignore
     @Test
     public void testSaveAuthUser() {
         AuthUser authUser = new AuthUser();
