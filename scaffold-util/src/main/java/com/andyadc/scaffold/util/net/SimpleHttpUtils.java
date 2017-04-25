@@ -24,7 +24,7 @@ import java.util.Set;
  * @author andaicheng
  * @version 1.0, 2016-10-07
  */
-public class HttpUtils {
+public class SimpleHttpUtils {
 
     private static final String DEFAULT_CHARSET = "UTF-8";
     private static final String DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded;charset=";
@@ -35,7 +35,7 @@ public class HttpUtils {
         DEFAULT_HEADER.put("Accept", "text/xml,text/javascript,text/html");
     }
 
-    private HttpUtils() {
+    private SimpleHttpUtils() {
         throw new UnsupportedOperationException();
     }
 
