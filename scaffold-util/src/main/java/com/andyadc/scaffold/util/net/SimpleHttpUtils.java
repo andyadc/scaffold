@@ -42,7 +42,7 @@ public class SimpleHttpUtils {
     /**
      * Build http query string.
      *
-     * @param params params
+     * @param params  params
      * @param charset charset
      * @return http query string
      * @throws UnsupportedEncodingException
@@ -64,7 +64,7 @@ public class SimpleHttpUtils {
                 } else {
                     hasParam = true;
                 }
-                query.append(name).append("=").append(URLEncoder.encode(value, charset));
+                query.append(name).append("=").append(URLEncoder.encode(value, StringUtils.defaultIfBlank(charset, DEFAULT_CHARSET)));
             }
         }
 
@@ -75,8 +75,8 @@ public class SimpleHttpUtils {
      * Execute http post request, using query string as post content with
      * default charset(UTF-8).
      *
-     * @param url url
-     * @param params params
+     * @param url            url
+     * @param params         params
      * @param connectTimeout an int that specifies the connect timeout value in milliseconds
      * @param readTimeout    an int that specifies the read timeout value in milliseconds
      * @return post response
@@ -90,9 +90,9 @@ public class SimpleHttpUtils {
      * Execute http post request, using query string as post content with
      * dedicated charset.
      *
-     * @param url url
-     * @param params params
-     * @param charset charset
+     * @param url            url
+     * @param params         params
+     * @param charset        charset
      * @param connectTimeout an int that specifies the connect timeout value in milliseconds
      * @param readTimeout    an int that specifies the read timeout value in milliseconds
      * @return post response
@@ -113,12 +113,12 @@ public class SimpleHttpUtils {
      * Execute http post request, use dedicated content and content type with
      * dedicated header.
      *
-     * @param url url
-     * @param contentType contentType
-     * @param content content
+     * @param url            url
+     * @param contentType    contentType
+     * @param content        content
      * @param connectTimeout an int that specifies the connect timeout value in milliseconds
      * @param readTimeout    an int that specifies the read timeout value in milliseconds
-     * @param header header
+     * @param header         header
      * @return post response
      * @throws IOException
      */
