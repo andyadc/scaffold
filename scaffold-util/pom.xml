@@ -10,7 +10,7 @@
     <artifactId>scaffold-util</artifactId>
     <packaging>jar</packaging>
 
-    <name>scaffold-util</name>
+    <name>Scaffold Util</name>
     <url>https://github.com/andyadc/scaffold</url>
 
     <properties>

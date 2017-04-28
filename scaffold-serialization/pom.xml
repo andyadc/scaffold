@@ -10,7 +10,7 @@
     <artifactId>scaffold-serialization</artifactId>
     <packaging>jar</packaging>
 
-    <name>scaffold-serialization</name>
+    <name>Scaffold Serialization</name>
     <url>https://github.com/andyadc/scaffold</url>
 
     <properties>
