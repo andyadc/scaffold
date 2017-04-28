@@ -29,6 +29,7 @@
         <module>scaffold-cache</module>
         <module>scaffold-serialization</module>
         <module>scaffold-showcase</module>
+        <module>scaffold-lock</module>
     </modules>
 
     <properties>
