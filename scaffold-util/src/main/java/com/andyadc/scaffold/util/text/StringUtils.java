@@ -1,5 +1,7 @@
 package com.andyadc.scaffold.util.text;
 
+import com.andyadc.scaffold.util.Assert;
+
 /**
  * A string utility class that manipulates string.
  *
@@ -10,6 +12,26 @@ public class StringUtils {
 
     private StringUtils() {
     }
+
+    /**
+     * A String for a space character.
+     */
+    public static final String SPACE = " ";
+
+    /**
+     * The empty String {@code ""}.
+     */
+    public static final String EMPTY = "";
+
+    /**
+     * A String for linefeed LF ("\n").
+     */
+    public static final String LF = "\n";
+
+    /**
+     * A String for carriage return CR ("\r").
+     */
+    public static final String CR = "\r";
 
     /**
      * <p>Checks if a CharSequence is empty ("") or null.</p>
@@ -135,7 +157,7 @@ public class StringUtils {
     /**
      * <p>Reverses a String as per {@link StringBuilder#reverse()}.</p>
      * <p>A {@code null} String returns {@code null}.</p>
-     *
+     * <p>
      * <pre>
      * StringUtils.reverse(null)  = null
      * StringUtils.reverse("")    = ""
@@ -152,4 +174,40 @@ public class StringUtils {
         return new StringBuilder(str).reverse().toString();
     }
 
+    /**
+     * Returns a string consisting of a specific number of concatenated copies of an input string. For
+     * example, {@code repeat("hey", 3)} returns the string {@code "heyheyhey"}.
+     *
+     * @param string any non-null string
+     * @param count  the number of times to repeat it; a nonnegative integer
+     * @return a string containing {@code string} repeated {@code count} times (the empty string if
+     * {@code count} is zero)
+     * @throws IllegalArgumentException if {@code count} is negative
+     */
+    public static String repeat(String string, int count) {
+        if (isEmpty(string))
+            return "";
+
+        if (count <= 1) {
+            Assert.isTrue(count >= 0, "invalid count: " + count);
+            return (count == 0) ? "" : string;
+        }
+
+        // IF YOU MODIFY THE CODE HERE, you must update StringsRepeatBenchmark
+        final int len = string.length();
+        final long longSize = (long) len * (long) count;
+        final int size = (int) longSize;
+        if (size != longSize) {
+            throw new ArrayIndexOutOfBoundsException("Required array size too large: " + longSize);
+        }
+
+        final char[] array = new char[size];
+        string.getChars(0, len, array, 0);
+        int n;
+        for (n = len; n < size - n; n <<= 1) {
+            System.arraycopy(array, 0, array, n, n);
+        }
+        System.arraycopy(array, 0, array, n, size - n);
+        return new String(array);
+    }
 }
