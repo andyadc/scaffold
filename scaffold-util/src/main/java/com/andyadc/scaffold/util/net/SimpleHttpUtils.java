@@ -1,7 +1,7 @@
 package com.andyadc.scaffold.util.net;
 
-import com.andyadc.scaffold.util.StringUtils;
 import com.andyadc.scaffold.util.collection.MapUtils;
+import com.andyadc.scaffold.util.text.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
