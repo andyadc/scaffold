@@ -15,6 +15,7 @@
 
     <properties>
         <jedis.version>2.9.0</jedis.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 
     <dependencies>
@@ -22,6 +23,23 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${jedis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 </project>
