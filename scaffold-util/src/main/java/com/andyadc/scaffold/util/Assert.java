@@ -1,7 +1,5 @@
 package com.andyadc.scaffold.util;
 
-import com.andyadc.scaffold.util.text.StringUtils;
-
 /**
  * Assertion utility class that assists in validating arguments.
  * <p>

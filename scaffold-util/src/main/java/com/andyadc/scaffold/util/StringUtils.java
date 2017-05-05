@@ -1,6 +1,4 @@
-package com.andyadc.scaffold.util.text;
-
-import com.andyadc.scaffold.util.Assert;
+package com.andyadc.scaffold.util;
 
 /**
  * A string utility class that manipulates string.
