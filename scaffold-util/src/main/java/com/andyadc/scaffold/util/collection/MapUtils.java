@@ -4,11 +4,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Provides utility methods
+ * Provides utility methods.
  *
  * @author andaicheng
  */
-public class MapUtils {
+public final class MapUtils {
 
     /**
      * <code>MapUtils</code> should not normally be instantiated.
@@ -43,7 +43,7 @@ public class MapUtils {
     /**
      * <p>Reverses a Map<K, V> to Map<V, K>.</p>
      */
-    public static <K, V> Map<V, K> reverse(Map<K, V> source) {
+    public static <K, V> Map<V, K> reverse(final Map<K, V> source) {
         Map<V, K> target = null;
         if (isNotEmpty(source)) {
             target = new LinkedHashMap<>(source.size());

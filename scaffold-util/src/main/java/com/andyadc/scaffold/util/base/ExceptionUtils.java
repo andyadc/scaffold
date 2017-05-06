@@ -29,11 +29,16 @@ public abstract class ExceptionUtils {
      * 示例代码:
      * <p>
      * <pre>
-     * try{ ... }catch(Exception e){ throw unchecked(t); }
+     * try {
+     *      ...
+     * } catch (Exception e) {
+     *      throw unchecked(t);
+     *  }
+     * </pre>
      *
      * @see org.apache.commons.lang3.exception.ExceptionUtils#wrapAndThrow(Throwable)
      */
-    public static RuntimeException unchecked(Throwable t) {
+    public static RuntimeException unchecked(final Throwable t) {
 
         Throwable unwrapped = unwrap(t);
         if (unwrapped instanceof RuntimeException) {
@@ -54,7 +59,7 @@ public abstract class ExceptionUtils {
      * <p>
      * from Quasar and Tomcat's ExceptionUtils
      */
-    public static Throwable unwrap(Throwable t) {
+    public static Throwable unwrap(final Throwable t) {
         if (t instanceof java.util.concurrent.ExecutionException
                 || t instanceof java.lang.reflect.InvocationTargetException
                 || t instanceof java.lang.reflect.UndeclaredThrowableException) {
@@ -68,7 +73,7 @@ public abstract class ExceptionUtils {
      *
      * @see Throwables#getStackTraceAsString(Throwable)
      */
-    public static String stackTraceText(Throwable t) {
+    public static String stackTraceText(final Throwable t) {
         return Throwables.getStackTraceAsString(t);
     }
 
@@ -77,7 +82,7 @@ public abstract class ExceptionUtils {
      *
      * @see Throwables#getRootCause(Throwable)
      */
-    public static Throwable getRootCause(Throwable t) {
+    public static Throwable getRootCause(final Throwable t) {
         return Throwables.getRootCause(t);
     }
 
@@ -85,7 +90,7 @@ public abstract class ExceptionUtils {
      * 判断异常是否由某些底层的异常引起.
      */
     @SuppressWarnings("unchecked")
-    public static boolean isCausedBy(Throwable t, Class<? extends Exception>... causeExceptionClasses) {
+    public static boolean isCausedBy(final Throwable t, final Class<? extends Exception>... causeExceptionClasses) {
         Throwable cause = t;
 
         while (cause != null) {
@@ -104,7 +109,7 @@ public abstract class ExceptionUtils {
      *
      * @see org.apache.commons.lang3.exception.ExceptionUtils#getMessage(Throwable)
      */
-    public static String getMessageWithExceptionName(Throwable t) {
+    public static String getMessageWithExceptionName(final Throwable t) {
         return org.apache.commons.lang3.exception.ExceptionUtils.getMessage(t);
     }
 
@@ -126,7 +131,7 @@ public abstract class ExceptionUtils {
     public static <T extends Throwable> T setStackTrace(T exception, Class<?> throwClass, String throwClazz) {
         exception.setStackTrace(
                 new StackTraceElement[]{new StackTraceElement(throwClass.getName(), throwClazz, null, -1)});
-        return exception;// NOSONAR
+        return exception; // NOSONAR
     }
 
     /**
@@ -136,17 +141,17 @@ public abstract class ExceptionUtils {
      * <p>
      * 但Cause链依然不能清除, 只能清除每一个Cause的StackTrace.
      */
-    public static <T extends Throwable> T clearStackTrace(T exception) {
+    public static <T extends Throwable> T clearStackTrace(final T exception) {
         Throwable cause = exception;
         while (cause != null) {
             cause.setStackTrace(EMPTY_STACK_TRACE);
             cause = cause.getCause();
         }
-        return exception;// NOSONAR
+        return exception; // NOSONAR
     }
 
     /**
-     * 适用于Message经常变更的异常, 可通过clone()不经过构造函数的构造异常再设定新的异常信息
+     * 适用于Message经常变更的异常, 可通过clone()不经过构造函数的构造异常再设定新的异常信息.
      */
     public static class CloneableException extends Exception implements Cloneable {
 
@@ -171,7 +176,7 @@ public abstract class ExceptionUtils {
         public CloneableException clone() {
             try {
                 return (CloneableException) super.clone();
-            } catch (CloneNotSupportedException e) {// NOSONAR
+            } catch (CloneNotSupportedException e) { // NOSONAR
                 return null;
             }
         }

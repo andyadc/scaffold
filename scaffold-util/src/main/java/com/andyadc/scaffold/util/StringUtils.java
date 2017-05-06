@@ -6,30 +6,30 @@ package com.andyadc.scaffold.util;
  * @author andaicheng
  * @version 1.0, 2016-10-07
  */
-public class StringUtils {
-
-    private StringUtils() {
-    }
+public final class StringUtils {
 
     /**
      * A String for a space character.
      */
     public static final String SPACE = " ";
-
     /**
      * The empty String {@code ""}.
      */
     public static final String EMPTY = "";
-
     /**
      * A String for linefeed LF ("\n").
      */
     public static final String LF = "\n";
-
     /**
      * A String for carriage return CR ("\r").
      */
     public static final String CR = "\r";
+
+    /**
+     * Cannot instantiate.
+     */
+    private StringUtils() {
+    }
 
     /**
      * <p>Checks if a CharSequence is empty ("") or null.</p>
@@ -45,15 +45,48 @@ public class StringUtils {
      * @param str the CharSequence to check, may be null
      * @return <code>true</code> if the String is empty or null
      */
-    public static boolean isEmpty(CharSequence str) {
+    public static boolean isEmpty(final CharSequence str) {
         return str == null || str.length() == 0;
     }
 
-    public static boolean isNotEmpty(CharSequence str) {
-        return !isEmpty(str);
+    /**
+     * <p>Checks if a CharSequence is not empty ("") and not null.</p>
+     * <p>
+     * <pre>
+     * StringUtils.isNotEmpty(null)      = false
+     * StringUtils.isNotEmpty("")        = false
+     * StringUtils.isNotEmpty(" ")       = true
+     * StringUtils.isNotEmpty("bob")     = true
+     * StringUtils.isNotEmpty("  bob  ") = true
+     * </pre>
+     *
+     * @param cs the CharSequence to check, may be null
+     * @return {@code true} if the CharSequence is not empty and not null
+     */
+    public static boolean isNotEmpty(final CharSequence cs) {
+        return !isEmpty(cs);
     }
 
-    public static <T extends CharSequence> T defaultIfEmpty(T str, T defaultStr) {
+    /**
+     * /**
+     * <p>Returns either the passed in CharSequence, or if the CharSequence is
+     * empty or {@code null}, the value of {@code defaultStr}.</p>
+     * <p>
+     * <pre>
+     * StringUtils.defaultIfEmpty(null, "NULL")  = "NULL"
+     * StringUtils.defaultIfEmpty("", "NULL")    = "NULL"
+     * StringUtils.defaultIfEmpty(" ", "NULL")   = " "
+     * StringUtils.defaultIfEmpty("bat", "NULL") = "bat"
+     * StringUtils.defaultIfEmpty("", null)      = null
+     * </pre>
+     *
+     * @param <T>        the specific kind of CharSequence
+     * @param str        the CharSequence to check, may be null
+     * @param defaultStr the default CharSequence to return
+     *                   if the input is empty ("") or {@code null}, may be null
+     * @return the passed in CharSequence, or the default
+     */
+    public static <T extends CharSequence> T defaultIfEmpty(final T str, final T defaultStr) {
         return isEmpty(str) ? defaultStr : str;
     }
 
@@ -71,7 +104,7 @@ public class StringUtils {
      * @param str the CharSequence to check, may be null
      * @return <code>true</code> if the String is null, empty or whitespace
      */
-    public static boolean isBlank(CharSequence str) {
+    public static boolean isBlank(final CharSequence str) {
         int strLen;
         if (str == null || (strLen = str.length()) == 0) {
             return true;
@@ -84,11 +117,44 @@ public class StringUtils {
         return true;
     }
 
-    public static boolean isNotBlank(CharSequence str) {
-        return !isBlank(str);
+    /**
+     * * <p>Checks if a CharSequence is not empty (""), not null and not whitespace only.</p>
+     * <p>
+     * <pre>
+     * StringUtils.isNotBlank(null)      = false
+     * StringUtils.isNotBlank("")        = false
+     * StringUtils.isNotBlank(" ")       = false
+     * StringUtils.isNotBlank("bob")     = true
+     * StringUtils.isNotBlank("  bob  ") = true
+     * </pre>
+     *
+     * @param cs the CharSequence to check, may be null
+     * @return {@code true} if the CharSequence is
+     * not empty and not null and not whitespace
+     */
+    public static boolean isNotBlank(final CharSequence cs) {
+        return !isBlank(cs);
     }
 
-    public static <T extends CharSequence> T defaultIfBlank(T str, T defaultStr) {
+    /**
+     * * <p>Returns either the passed in CharSequence, or if the CharSequence is
+     * whitespace, empty ("") or {@code null}, the value of {@code defaultStr}.</p>
+     * <p>
+     * <pre>
+     * StringUtils.defaultIfBlank(null, "NULL")  = "NULL"
+     * StringUtils.defaultIfBlank("", "NULL")    = "NULL"
+     * StringUtils.defaultIfBlank(" ", "NULL")   = "NULL"
+     * StringUtils.defaultIfBlank("bat", "NULL") = "bat"
+     * StringUtils.defaultIfBlank("", null)      = null
+     * </pre>
+     *
+     * @param <T>        the specific kind of CharSequence
+     * @param str        the CharSequence to check, may be null
+     * @param defaultStr the default CharSequence to return
+     *                   if the input is whitespace, empty ("") or {@code null}, may be null
+     * @return the passed in CharSequence, or the default
+     */
+    public static <T extends CharSequence> T defaultIfBlank(final T str, final T defaultStr) {
         return isBlank(str) ? defaultStr : str;
     }
 
@@ -99,7 +165,7 @@ public class StringUtils {
      * @param strings the CharSequences
      * @return true if any CharSequence is blank, otherwise false.
      */
-    public static boolean isAnyBlank(CharSequence... strings) {
+    public static boolean isAnyBlank(final CharSequence... strings) {
         if (strings == null) {
             return true;
         }
@@ -117,7 +183,7 @@ public class StringUtils {
      * @param strings the CharSequences
      * @return true if all CharSequence is not blank, otherwise false.
      */
-    public static boolean isAllNotBlank(CharSequence... strings) {
+    public static boolean isAllNotBlank(final CharSequence... strings) {
         return !isAnyBlank(strings);
     }
 
@@ -130,7 +196,7 @@ public class StringUtils {
      * @param strings the CharSequences
      * @return true is any CharSequence is empty, otherwise false.
      */
-    public static boolean isAnyEmpty(CharSequence... strings) {
+    public static boolean isAnyEmpty(final CharSequence... strings) {
         if (strings == null) {
             return true;
         }
@@ -148,7 +214,7 @@ public class StringUtils {
      * @param strings the CharSequences
      * @return true if all CharSequence is not empty, otherwise false.
      */
-    public static boolean isAllNotEmpty(CharSequence... strings) {
+    public static boolean isAllNotEmpty(final CharSequence... strings) {
         return !isAnyEmpty(strings);
     }
 
@@ -165,7 +231,7 @@ public class StringUtils {
      * @param str the String to reverse, may be null
      * @return the reversed String, {@code null} if null String input
      */
-    public static String reverse(String str) {
+    public static String reverse(final String str) {
         if (str == null) {
             return null;
         }
@@ -182,9 +248,10 @@ public class StringUtils {
      * {@code count} is zero)
      * @throws IllegalArgumentException if {@code count} is negative
      */
-    public static String repeat(String string, int count) {
-        if (isEmpty(string))
+    public static String repeat(final String string, final int count) {
+        if (isEmpty(string)) {
             return "";
+        }
 
         if (count <= 1) {
             Assert.isTrue(count >= 0, "invalid count: " + count);

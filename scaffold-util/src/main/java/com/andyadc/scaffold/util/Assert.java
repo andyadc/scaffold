@@ -8,10 +8,10 @@ package com.andyadc.scaffold.util;
  * @author andaicheng
  * @version 1.0.0
  */
-public class Assert {
+public final class Assert {
 
     /**
-     * Cannot instantiate
+     * Cannot instantiate.
      */
     private Assert() {
     }
@@ -24,7 +24,7 @@ public class Assert {
      * @param message    the exception message to use if the assertion fails
      * @throws IllegalArgumentException if expression is {@code false}
      */
-    public static void isTrue(boolean expression, String message) {
+    public static void isTrue(final boolean expression, final String message) {
         if (!expression) {
             throw new IllegalArgumentException(message);
         }
@@ -37,7 +37,7 @@ public class Assert {
      * @param expression a boolean expression
      * @throws IllegalArgumentException if expression is {@code false}
      */
-    public static void isTrue(boolean expression) {
+    public static void isTrue(final boolean expression) {
         isTrue(expression, "[Assertion failed] - this expression must be true");
     }
 
@@ -49,32 +49,32 @@ public class Assert {
      * @param message the exception message to use if the assertion fails
      * @throws IllegalArgumentException if the object is not {@code null}
      */
-    public static void isNull(Object object, String message) {
+    public static void isNull(final Object object, final String message) {
         if (object != null) {
             throw new IllegalArgumentException(message);
         }
     }
 
     /**
-     * Assert that an object is {@code null} .
+     * Assert that an object is {@code null}.
      * <pre class="code">Assert.isNull(value);</pre>
      *
      * @param object the object to check
      * @throws IllegalArgumentException if the object is not {@code null}
      */
-    public static void isNull(Object object) {
+    public static void isNull(final Object object) {
         isNull(object, "[Assertion failed] - the object argument must be null");
     }
 
     /**
-     * Assert that an object is not {@code null}
+     * Assert that an object is not {@code null}.
      * <pre class="code">Assert.notNull(clazz, "The class must not be null");</pre>
      *
      * @param object  the object to check
      * @param message the exception message to use if the assertion fails
      * @throws IllegalArgumentException if the object is {@code null}
      */
-    public static void notNull(Object object, String message) {
+    public static void notNull(final Object object, final String message) {
         if (object == null) {
             throw new IllegalArgumentException(message);
         }
@@ -87,7 +87,7 @@ public class Assert {
      * @param object the object to check
      * @throws IllegalArgumentException if the object is {@code null}
      */
-    public static void notNull(Object object) {
+    public static void notNull(final Object object) {
         notNull(object, "[Assertion failed] - this argument is required; it must not be null");
     }
 
@@ -100,7 +100,7 @@ public class Assert {
      * @param message the exception message to use if the assertion fails
      * @throws IllegalArgumentException if the text does not contain valid text content
      */
-    public static void hasText(String text, String message) {
+    public static void hasText(final String text, final String message) {
         if (StringUtils.isBlank(text)) {
             throw new IllegalArgumentException(message);
         }
@@ -113,7 +113,7 @@ public class Assert {
      * @param text the String to check
      * @throws IllegalArgumentException if the text does not contain valid text content
      */
-    public static void hasText(String text) {
+    public static void hasText(final String text) {
         hasText(text,
                 "[Assertion failed] - this String argument must have text; it must not be null, empty, or blank");
     }

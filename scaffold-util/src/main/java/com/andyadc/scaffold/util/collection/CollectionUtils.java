@@ -6,7 +6,7 @@ import java.util.Collection;
  * @author andaicheng
  * @version 2017/4/25
  */
-public class CollectionUtils {
+public final class CollectionUtils {
 
     /**
      * <code>CollectionUtils</code> should not normally be instantiated.

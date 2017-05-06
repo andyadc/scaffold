@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
  * @author andaicheng
  * @version 2017/5/5
  */
-public class ArrayUtils {
+public final class ArrayUtils {
 
     /**
      * An empty immutable {@code Object} array.
@@ -85,6 +85,9 @@ public class ArrayUtils {
      */
     public static final Character[] EMPTY_CHARACTER_OBJECT_ARRAY = new Character[0];
 
+    /**
+     * Cannot instantiate.
+     */
     private ArrayUtils() {
     }
 
