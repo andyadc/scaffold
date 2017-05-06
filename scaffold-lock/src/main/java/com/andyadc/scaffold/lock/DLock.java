@@ -22,7 +22,7 @@ public interface DLock {
      * @param lockKey lock key resource, which associated with a shared resource
      * @return <code>true</code> if the lock was acquired and <code>false</code> if lock acquired failed.
      */
-    boolean tryLock(String lockKey);
+    boolean lock(String lockKey);
 
     /**
      * Acquires the lock with specified lock key if it is free within the given TTL time.
