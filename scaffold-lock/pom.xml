@@ -15,7 +15,11 @@
 
     <properties>
         <jedis.version>2.9.0</jedis.version>
+
         <zookeeper.version>3.4.10</zookeeper.version>
+        <curator.version>2.12.0</curator.version>
+        <zkclient.version>0.10</zkclient.version>
+
         <logback.version>1.2.3</logback.version>
     </properties>
 
@@ -36,6 +40,17 @@
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>${zkclient.version}</version>
         </dependency>
 
         <dependency>
