@@ -24,7 +24,7 @@ import java.util.Set;
  * @author andaicheng
  * @version 1.0, 2016-10-07
  */
-public class SimpleHttpUtils {
+public final class SimpleHttpUtils {
 
     private static final String DEFAULT_CHARSET = "UTF-8";
     private static final String DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded;charset=";

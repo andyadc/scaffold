@@ -17,7 +17,7 @@ public class ChineseUtils {
      * @param c 字符
      * @return 是否是中文
      */
-    public static boolean isChinese(char c) {
+    public static boolean isChinese(final char c) {
         Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
         return ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
                 || ub == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
@@ -33,7 +33,7 @@ public class ChineseUtils {
      * @param strName 字符串
      * @return 是否是乱码
      */
-    public static boolean isMessyCode(String strName) {
+    public static boolean isMessyCode(final String strName) {
         Pattern p = Pattern.compile("\\s*|\t*|\r*|\n*");
         Matcher m = p.matcher(strName);
         String after = m.replaceAll("");

@@ -24,7 +24,7 @@ public class SerializationUtils {
      * @param object the object to serialize
      * @return an array of bytes representing the object in a portable fashion
      */
-    public static byte[] serialize(Object object) {
+    public static byte[] serialize(final Object object) {
         if (object == null) {
             return null;
         }
@@ -45,7 +45,7 @@ public class SerializationUtils {
      * @param bytes a serialized object
      * @return the result of deserializing the bytes
      */
-    public static Object deserialize(byte[] bytes) {
+    public static Object deserialize(final byte[] bytes) {
         if (bytes == null) {
             return null;
         }
