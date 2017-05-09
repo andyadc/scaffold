@@ -18,7 +18,10 @@
     <!--<context:property-placeholder-->
     <!--ignore-unresolvable="true" location="classpath*:/application.properties"/>-->
 
-    <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+    <!--
+    org.springframework.beans.factory.config.PropertyPlaceholderConfigurer
+    -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
                 <value>classpath*:/application.properties</value>

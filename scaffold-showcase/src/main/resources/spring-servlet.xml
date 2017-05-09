@@ -14,6 +14,9 @@
     <!-- 静态资源映射 -->
     <mvc:resources mapping="/static/**" location="/static/"/>
 
+    <!-- 加载配置文件供mvc容器使用 -->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath*:/application.properties"/>
+
     <!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL -->
     <mvc:default-servlet-handler/>
 
