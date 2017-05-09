@@ -15,34 +15,56 @@ import java.util.concurrent.TimeUnit;
 public interface DLock {
 
     /**
-     * Acquires the lock with specified lock key
+     * Acquires the lock.
      * <p>
-     * If the lock is available this method returns immediately with the value <code>true</code>, otherwise <code>false</code>
+     * <p>If the lock is not available then the current thread becomes
+     * disabled for thread scheduling purposes and lies dormant until the
+     * lock has been acquired.
      *
-     * @param lockKey lock key resource, which associated with a shared resource
-     * @return <code>true</code> if the lock was acquired and <code>false</code> if lock acquired failed.
+     * @throws Exception distributed errors, connection interruptions
      */
-    boolean lock(String lockKey);
+    void lock() throws Exception;
 
     /**
-     * Acquires the lock with specified lock key if it is free within the given TTL time.
+     * Acquires the lock only if it is free at the time of invocation.
      * <p>
-     * If the lock is available this method returns immediately with the value <code>true</code>, otherwise <code>false</code>
+     * <p>Acquires the lock if it is available and returns immediately
+     * with the value {@code true}.
+     * If the lock is not available then this method will return
+     * immediately with the value {@code false}.
+     * <p>
+     * <p>This usage ensures that the lock is unlocked if it was acquired, and
+     * doesn't try to unlock if the lock was not acquired.
      *
-     * @param lockKey lock key resource, which associated with a shared resource
-     * @param ttl     lock time to live
-     * @param unit    time unit for ttl
-     * @return <code>true</code> if the lock was acquired and <code>false</code> if lock acquired failed.
+     * @return {@code true} if the lock was acquired and
+     * {@code false} otherwise
+     * @throws Exception distributed errors, connection interruptions
      */
-    boolean tryLock(String lockKey, int ttl, TimeUnit unit);
+    boolean tryLock() throws Exception;
 
     /**
-     * Releases the lock with specified lock key.
+     * Acquires the lock if it is free within the given waiting time
      * <p>
-     * <b>Tip:</b> make sure you hold the lock, you release lock by invoking {@link #unlock(String)}
+     * <p>If the lock is available this method returns immediately
+     * with the value {@code true}.
+     * If the lock is not available then
+     * the current thread becomes disabled for thread scheduling
+     * purposes and lies dormant until one of three things happens:
      *
-     * @param lockKey lock key resource
-     * @return <code>true</code> if the lock was released and <code>false</code> if lock released failed.
+     * @param time the maximum time to wait for the lock
+     * @param unit the time unit of the {@code time} argument
+     * @return {@code true} if the lock was acquired and {@code false}
+     * if the waiting time elapsed before the lock was acquired
+     * @throws Exception distributed errors, connection interruptions
      */
-    boolean unlock(String lockKey);
+    boolean tryLock(long time, TimeUnit unit) throws Exception;
+
+    /**
+     * Releases the lock.
+     * <p>
+     * <p>make sure you hold the lock, you release lock by invoking {#unlock()}
+     *
+     * @throws Exception distributed errors, connection interruptions
+     */
+    void unlock() throws Exception;
 }
