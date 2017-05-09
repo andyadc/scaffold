@@ -20,10 +20,12 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author andaicheng
  */
+//@RequestMapping("/admin")
 @Controller
 public class LoginController {
 
     private static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
+
     private static final String PAGE_LOGIN = "login";
     private static final String PAGE_INDEX = "index";
     private static final String ATTR_MSG = "message";

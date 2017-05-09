@@ -82,7 +82,7 @@
                                        style="width: 100px; margin-right: 10px;"/>
                                 <img style="cursor: pointer;margin-top: 5px;margin-left: 5px" alt="验证码"
                                      src="${ctx}/static/images/captcha_placeholder.jpg" title="看不清？点击刷新"
-                                     id="img_captcha" onclick="javascript:refreshCaptcha();"/>
+                                     id="img_captcha" onclick="refreshCaptcha();"/>
                             </div>
                         </dd>
                     </dl>
