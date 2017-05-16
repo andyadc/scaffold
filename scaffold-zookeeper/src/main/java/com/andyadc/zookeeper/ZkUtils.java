@@ -90,7 +90,7 @@ public class ZkUtils {
      * @return a list of elements where every element starts with one of the prefixes specified.
      */
     public static List<String> filterByPrefix(List<String> nodes, String... prefixes) {
-        List<String> lockChildren = new ArrayList<String>();
+        List<String> lockChildren = new ArrayList<>();
         for (String child : nodes) {
             for (String prefix : prefixes) {
                 if (child.startsWith(prefix)) {
