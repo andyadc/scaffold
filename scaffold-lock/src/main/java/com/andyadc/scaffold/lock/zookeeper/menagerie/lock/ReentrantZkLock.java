@@ -21,7 +21,7 @@ public class ReentrantZkLock implements DLock {
     private final ThreadLocal<LockHolder> locks = new ThreadLocal<>();
 
     @Override
-    public void lock() throws Exception {
+    public final void lock() throws Exception {
         if (checkReentrancy()) {
             return;
         }
@@ -30,19 +30,19 @@ public class ReentrantZkLock implements DLock {
     }
 
     @Override
-    public boolean tryLock() throws Exception {
+    public final boolean tryLock() throws Exception {
         return checkReentrancy();
 
     }
 
     @Override
-    public boolean tryLock(long time, TimeUnit unit) throws Exception {
+    public final boolean tryLock(long time, TimeUnit unit) throws Exception {
         return checkReentrancy();
 
     }
 
     @Override
-    public void unlock() throws Exception {
+    public final void unlock() throws Exception {
         LockHolder nodeToRemove = locks.get();
         if (nodeToRemove == null) {
             throw new IllegalMonitorStateException("Attempting to unlock without first obtaining that lock on this thread");
