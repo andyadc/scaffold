@@ -28,7 +28,7 @@ public final class ZkSessionPoller {
     private final long pollIntervalMs;
     /*The zookeeper instance to check*/
     private final ZooKeeper zk;
-    private final Object disconnectTimeLock = "Lock";
+    private static final Object disconnectTimeLock = "Lock";
     private Long startDisconnectTime;
 
     private final ConnectionListener pollListener;
