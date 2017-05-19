@@ -10,6 +10,12 @@ package com.andyadc.zookeeper;
 public interface ConnectionListener {
 
     /**
+     * Fired to indicated that the ZooKeeper client has reconnected to the ZooKeeper service after having
+     * been disconnected, but before the session timeout has expired.
+     */
+    void syncConnected();
+
+    /**
      * * Fired to indicate that the ZooKeeper Session has expired.
      * <p>
      * When this has been called, some data structures (any structure based on ephemeral nodes) may no longer be
@@ -24,4 +30,16 @@ public interface ConnectionListener {
      */
     void expired();
 
+    /**
+     * Indicates that the connection to ZooKeeper has been lost.
+     * <p>
+     * <p>Connections to ZooKeeper may be lost due to network partitions or due to ZooKeeper servers failing. In
+     * many situations, becoming disconnected is transient, as the client may quickly reconnect to another server
+     * in the ensemble. If, however, the client cannot connect to a ZooKeeper server within the specified session
+     * timeout, then the ZooKeeper session is terminated by the ensemble, and the client transitions to the expired
+     * state. Note, however, that the client is <em>not</em> guaranteed to receive notification of session expiration,
+     * only of disconnection. It is therefore recommended that services which are subject to disconnection generally
+     * cease operations, or at the very least pause operations, while a connection is re-established.
+     */
+    void disconnected();
 }
