@@ -3,11 +3,14 @@ package com.andyadc.scaffold.lock.zookeeper.menagerie.lock;
 import com.andyadc.scaffold.lock.DLock;
 import com.andyadc.zookeeper.ZkPrimitive;
 import com.andyadc.zookeeper.ZkSessionManager;
+import com.andyadc.zookeeper.ZkUtils;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -87,6 +90,54 @@ public class ReentrantZkLock extends ZkPrimitive implements DLock {
 
         }
 
+    }
+
+    /**
+     * Asks ZooKeeper for a lock of a given type.
+     * <p>
+     * When this method has completed, either the state of the ZooKeeper server is such that this party now
+     * holds the lock of the correct type, or, if the {@code watch} parameter is true, any and all necessary
+     * Watcher elements have been set.
+     * <p>
+     * Classes which override this method MUST adhere to the requested watch rule, or else the semantics
+     * of the lock interface may be broken. That is, if the {@code watch} parameter is true, then a watch
+     * needs to have been set by the end of this method.
+     * <p>
+     * It is recommended that classes which override this method also override {@link #getBaseLockPath()} and
+     * {@link #getLockPrefix()} as well.
+     *
+     * @param zk       the ZooKeeper client to use
+     * @param lockNode the node to lock on
+     * @param watch    whether or not to watch other nodes if the lock is behind someone else
+     * @return true if the lock has been acquired, false otherwise
+     * @throws KeeperException      if Something bad happens on the ZooKeeper server
+     * @throws InterruptedException if communication between ZooKeeper and the client fail in some way
+     */
+    protected boolean tryAcquireDistributed(ZooKeeper zk, String lockNode, boolean watch) throws KeeperException, InterruptedException {
+        List<String> locks = ZkUtils.filterByPrefix(zk.getChildren(baseNode, false), getLockPrefix());
+        ZkUtils.sortBySequence(locks, lockDelimiter);
+
+        String myNodeName = lockNode.substring(lockNode.lastIndexOf('/') + 1);
+        int myPos = locks.indexOf(myNodeName);
+
+        int nextNodePos = myPos - 1;
+
+        while (nextNodePos >= 0) {
+            Stat stat;
+            if (watch)
+                stat = zk.exists(baseNode + "/" + locks.get(nextNodePos), signalWatcher);
+            else
+                stat = zk.exists(baseNode + "/" + locks.get(nextNodePos), false);
+
+            if (stat != null)
+                //there is a node which already has the lock, so we need to wait for notification that that
+                //node is gone
+                return false;
+            else
+                nextNodePos--;
+        }
+
+        return true;
     }
 
     /**
