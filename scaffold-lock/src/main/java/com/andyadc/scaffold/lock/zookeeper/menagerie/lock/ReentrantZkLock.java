@@ -1,6 +1,12 @@
 package com.andyadc.scaffold.lock.zookeeper.menagerie.lock;
 
 import com.andyadc.scaffold.lock.DLock;
+import com.andyadc.zookeeper.ZkPrimitive;
+import com.andyadc.zookeeper.ZkSessionManager;
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.ZooKeeper;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -9,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author andaicheng
  * @version 2017/5/10
  */
-public class ReentrantZkLock implements DLock {
+public class ReentrantZkLock extends ZkPrimitive implements DLock {
 
     private static final String lockPrefix = "lock";
 
@@ -20,12 +26,37 @@ public class ReentrantZkLock implements DLock {
 
     private final ThreadLocal<LockHolder> locks = new ThreadLocal<>();
 
+    /**
+     * Constructs a new Lock on the specified node, using Open ACL privileges.
+     *
+     * @param baseNode         the node to lock on
+     * @param zkSessionManager the session manager to use.
+     */
+    public ReentrantZkLock(String baseNode, ZkSessionManager zkSessionManager) {
+        super(baseNode, zkSessionManager, ZooDefs.Ids.OPEN_ACL_UNSAFE);
+    }
+
     @Override
     public final void lock() throws Exception {
         if (checkReentrancy()) {
             return;
         }
 
+        //set a connection listener to listen for session expiration
+        setConnectionListener();
+
+        ZooKeeper zk = zkSessionManager.getZooKeeper();
+
+        String lockNode;
+        try {
+            lockNode = zk.create(getBaseLockPath(), emptyNode, privileges, CreateMode.EPHEMERAL_SEQUENTIAL);
+
+
+        } catch (KeeperException e) {
+
+        } catch (InterruptedException e) {
+
+        }
 
     }
 
@@ -80,6 +111,24 @@ public class ReentrantZkLock implements DLock {
      */
     public final boolean hasLock() {
         return locks.get() != null;
+    }
+
+    /**
+     * Gets the prefix to use for locks of this type.
+     *
+     * @return the prefix to prepend to all nodes created by this lock.
+     */
+    protected String getLockPrefix() {
+        return lockPrefix;
+    }
+
+    /**
+     * Gets the base path for a lock node of this type.
+     *
+     * @return the base lock path(all the way up to a delimiter for sequence elements)
+     */
+    protected String getBaseLockPath() {
+        return baseNode + "/" + getLockPrefix() + lockDelimiter;
     }
 
     /*-------------------------------------------------------------------------------------------------------------*/

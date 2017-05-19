@@ -9,6 +9,7 @@
 
     <artifactId>scaffold-zookeeper</artifactId>
     <packaging>jar</packaging>
+    <version>0.0.1</version>
 
     <name>Scaffold Zookeeper</name>
     <url>https://github.com/andyadc/scaffold</url>
