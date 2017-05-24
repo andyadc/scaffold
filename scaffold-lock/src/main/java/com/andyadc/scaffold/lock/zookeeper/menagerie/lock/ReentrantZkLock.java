@@ -94,7 +94,29 @@ public class ReentrantZkLock extends ZkPrimitive implements DLock {
 
     @Override
     public final boolean tryLock(long time, TimeUnit unit) throws Exception {
-        return checkReentrancy();
+        if (checkReentrancy())
+            return true;
+
+        ZooKeeper zk = zkSessionManager.getZooKeeper();
+        try {
+            String lockNode = zk.create(getBaseLockPath(), emptyNode, privileges, CreateMode.EPHEMERAL_SEQUENTIAL);
+
+            //try to determine its position in the queue
+            boolean lockAcquired = tryAcquireDistributed(zk, lockNode, false);
+            if (!lockAcquired) {
+                //we didn't get the lock, so return false
+                zk.delete(lockNode, -1);
+                return false;
+            } else {
+                //we have the lock, so it goes on the queue
+                locks.set(new LockHolder(lockNode));
+                return true;
+            }
+        } catch (KeeperException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
