@@ -86,14 +86,22 @@ public class ReentrantZkLock extends ZkPrimitive implements DLock {
 
     }
 
+    /**
+     * Acquires the lock only if it is free at the time of invocation.
+     * <p><p>
+     * Note: If the ZooKeeper Session expires while this thread is processing, nothing is required to happen.
+     *
+     * @return true if the lock has been acquired, false otherwise
+     * @throws RuntimeException wrapping :
+     *                          <ul>
+     *                          <li>{@link KeeperException} if there is trouble
+     *                          processing a request with the ZooKeeper servers.
+     *                          <li> {@link InterruptedException} if there is an error communicating between the ZooKeeper client and servers.
+     *                          </ul>
+     * @inheritDoc
+     */
     @Override
     public final boolean tryLock() throws Exception {
-        return checkReentrancy();
-
-    }
-
-    @Override
-    public final boolean tryLock(long time, TimeUnit unit) throws Exception {
         if (checkReentrancy())
             return true;
 
@@ -117,6 +125,36 @@ public class ReentrantZkLock extends ZkPrimitive implements DLock {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    /**
+     * Acquires the lock only if it is free within the given waiting time and the current thread has not been
+     * interrupted.
+     * <p><p>
+     * Note: If the ZooKeeper Session expires while this thread is waiting, an {@link InterruptedException} will be
+     * thrown.
+     *
+     * @param time the maximum time to wait, in milliseconds
+     * @param unit the TimeUnit to use
+     * @return true if the lock is acquired before the timeout expires
+     * @throws InterruptedException if one of the four following conditions hold:
+     *                              <ol>
+     *                              <li value="1">The Thread is interrupted upon entry to the method
+     *                              <li value="2">Another thread interrupts this thread while it is waiting to acquire the lock
+     *                              <li value="3">There is a communication problem between the ZooKeeper client and the ZooKeeper server.
+     *                              <li value="4">The ZooKeeper session expires and invalidates this lock.
+     *                              </ol>
+     * @inheritDoc
+     * @see #tryLock(long, TimeUnit)
+     */
+    @Override
+    public final boolean tryLock(long time, TimeUnit unit) throws Exception {
+        if (Thread.interrupted())
+            throw new InterruptedException();
+
+        return checkReentrancy();
+
 
     }
 
