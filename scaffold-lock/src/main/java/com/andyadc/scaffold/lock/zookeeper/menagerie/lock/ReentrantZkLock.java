@@ -54,11 +54,34 @@ public class ReentrantZkLock extends ZkPrimitive implements DLock {
         try {
             lockNode = zk.create(getBaseLockPath(), emptyNode, privileges, CreateMode.EPHEMERAL_SEQUENTIAL);
 
+            while (true) {
+                if (broken)
+                    throw new RuntimeException("ZooKeeper Session has expired, invalidating this lock object");
 
+                localLock.unlock();
+                try {
+                    //ask ZooKeeper for the lock
+                    boolean acquiredLock = tryAcquireDistributed(zk, lockNode, true);
+                    if (!acquiredLock) {
+                        //we don't have the lock, so we need to wait for our watcher to fire
+                        //this method is not interruptible, so need to wait appropriately
+                        condition.awaitUninterruptibly();
+                    } else {
+                        //we have the lock, so return happy
+                        locks.set(new LockHolder(lockNode));
+                        return;
+                    }
+                } finally {
+                    localLock.unlock();
+                }
+            }
         } catch (KeeperException e) {
-
+            throw new RuntimeException(e);
         } catch (InterruptedException e) {
-
+            throw new RuntimeException(e);
+        } finally {
+            //we no longer care about having a ConnectionListener here
+            removeConnectionListener();
         }
 
     }
