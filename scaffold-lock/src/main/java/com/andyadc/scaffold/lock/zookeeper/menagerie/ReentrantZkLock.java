@@ -1,4 +1,4 @@
-package com.andyadc.scaffold.lock.zookeeper.menagerie.lock;
+package com.andyadc.scaffold.lock.zookeeper.menagerie;
 
 import com.andyadc.scaffold.lock.DLock;
 import com.andyadc.zookeeper.ZkPrimitive;
@@ -13,6 +13,7 @@ import org.apache.zookeeper.data.Stat;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
 
 /**
  * @author andaicheng
@@ -39,6 +40,25 @@ public class ReentrantZkLock extends ZkPrimitive implements DLock {
         super(baseNode, zkSessionManager, ZooDefs.Ids.OPEN_ACL_UNSAFE);
     }
 
+    /**
+     * Acquires the lock.
+     * <p>
+     * If the lock is not available, then the current thread becomes disabled for thread scheduling purposes and
+     * lies dormant until the lock as been acquired.
+     * <p>
+     * Note: If the ZooKeeper session expires while this method is waiting, a {@link RuntimeException} will be thrown.
+     *
+     * @throws RuntimeException wrapping:
+     *                          <ul>
+     *                          <li> {@link KeeperException} if the ZooKeeper server
+     *                          encounters a problem
+     *                          <li> {@link InterruptedException} if there is a communication problem between
+     *                          the ZooKeeper client and server
+     *                          <li> If the ZooKeeper session expires
+     *                          </ul>
+     * @inheritDoc
+     * @see Lock#lock()
+     */
     @Override
     public final void lock() throws Exception {
         if (checkReentrancy()) {
@@ -88,7 +108,7 @@ public class ReentrantZkLock extends ZkPrimitive implements DLock {
 
     /**
      * Acquires the lock only if it is free at the time of invocation.
-     * <p><p>
+     * <p>
      * Note: If the ZooKeeper Session expires while this thread is processing, nothing is required to happen.
      *
      * @return true if the lock has been acquired, false otherwise
@@ -131,7 +151,7 @@ public class ReentrantZkLock extends ZkPrimitive implements DLock {
     /**
      * Acquires the lock only if it is free within the given waiting time and the current thread has not been
      * interrupted.
-     * <p><p>
+     * <p>
      * Note: If the ZooKeeper Session expires while this thread is waiting, an {@link InterruptedException} will be
      * thrown.
      *
@@ -153,24 +173,86 @@ public class ReentrantZkLock extends ZkPrimitive implements DLock {
         if (Thread.interrupted())
             throw new InterruptedException();
 
-        return checkReentrancy();
+        if (checkReentrancy())
+            return true;
 
+        ZooKeeper zk = zkSessionManager.getZooKeeper();
+        //add a connection listener
+        setConnectionListener();
+        String lockNode;
+        try {
+            lockNode = zk.create(getBaseLockPath(), emptyNode, privileges, CreateMode.EPHEMERAL_SEQUENTIAL);
+
+            while (true) {
+                if (Thread.interrupted()) {
+                    zk.delete(lockNode, -1);
+                    throw new InterruptedException();
+                } else if (broken) {
+                    throw new InterruptedException("The ZooKeeper Session expired and invalidated this lock");
+                }
+                boolean localAcquired = localLock.tryLock(time, unit);
+                try {
+                    if (!localAcquired) {
+                        //delete the lock node and return false
+                        zk.delete(lockNode, -1);
+                        return false;
+                    }
+                    //ask ZooKeeper for the lock
+                    boolean acquiredLock = tryAcquireDistributed(zk, lockNode, true);
+
+                    if (!acquiredLock) {
+                        //we don't have the lock, so we need to wait for our watcher to fire
+                        boolean alerted = condition.await(time, unit);
+                        if (!alerted) {
+                            //we timed out, so delete the node and return false
+                            zk.delete(lockNode, -1);
+                            return false;
+                        }
+                    } else {
+                        //we have the lock, so return happy
+                        locks.set(new LockHolder(lockNode));
+                        return true;
+                    }
+                } finally {
+                    localLock.unlock();
+                }
+            }
+        } catch (KeeperException e) {
+            throw new RuntimeException(e);
+        } finally {
+            //don't care about the connection any more
+            removeConnectionListener();
+        }
 
     }
 
+    /**
+     * Releases the currently held lock.
+     *
+     * @throws RuntimeException wrapping:
+     *                          <ul>
+     *                          <li> {@link KeeperException} if the ZooKeeper server fails to process the unlock
+     *                          request
+     *                          <li> {@link InterruptedException} if the ZooKeeper client and server have trouble communicating
+     *                          </ul>
+     * @inheritDoc
+     */
     @Override
     public final void unlock() throws Exception {
         LockHolder nodeToRemove = locks.get();
-        if (nodeToRemove == null) {
+        if (nodeToRemove == null)
             throw new IllegalMonitorStateException("Attempting to unlock without first obtaining that lock on this thread");
-        }
 
         int numLocks = nodeToRemove.decrementLock();
         if (numLocks == 0) {
             locks.remove();
-
-            // TODO delete node
-
+            try {
+                ZkUtils.safeDelete(zkSessionManager.getZooKeeper(), nodeToRemove.lockNode(), -1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } catch (KeeperException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
