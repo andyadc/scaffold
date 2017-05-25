@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @version 2017/1/4
  */
 @Monitored
-@Service
+@Service("authService")
 public class AuthServiceImpl implements AuthService {
 
     @Autowired
