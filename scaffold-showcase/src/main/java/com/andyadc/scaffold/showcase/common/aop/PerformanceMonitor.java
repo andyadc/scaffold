@@ -20,7 +20,7 @@ public class PerformanceMonitor {
         Instant begin = Instant.now();
         Object ret = point.proceed();
         Instant end = Instant.now();
-        LOG.info("{}, method: {}, consumed: {}ms", point.getTarget().getClass(), point.getSignature().getName(),
+        LOG.info("{}, method: {}, elapsed time: {}ms", point.getTarget().getClass(), point.getSignature().getName(),
                 Duration.between(begin, end).toMillis());
         return ret;
     }

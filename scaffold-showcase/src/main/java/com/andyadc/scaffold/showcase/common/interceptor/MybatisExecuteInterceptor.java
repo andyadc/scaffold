@@ -5,7 +5,11 @@ import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.mapping.ParameterMode;
-import org.apache.ibatis.plugin.*;
+import org.apache.ibatis.plugin.Interceptor;
+import org.apache.ibatis.plugin.Intercepts;
+import org.apache.ibatis.plugin.Invocation;
+import org.apache.ibatis.plugin.Plugin;
+import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
@@ -54,7 +58,7 @@ public class MybatisExecuteInterceptor implements Interceptor {
         Instant end = Instant.now();
         long duration = Duration.between(begin, end).toMillis();
 
-        LOG.info("SQL executed duration: {}ms, ID: {}, SQL detail: {}", duration, statementId, sql);
+        LOG.info("SQL execute elapsed time: {}ms, ID: {}, detail: {}", duration, statementId, sql);
         return result;
     }
 
