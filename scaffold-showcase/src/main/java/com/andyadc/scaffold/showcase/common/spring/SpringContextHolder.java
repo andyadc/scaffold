@@ -24,14 +24,13 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
     private static final Logger LOG = LoggerFactory.getLogger(SpringContextHolder.class);
     private static ApplicationContext applicationContext = null;
 
-
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
-        LOG.info("注入ApplicationContext到SpringContextHolder:" + applicationContext);
+        LOG.info("注入ApplicationContext到SpringContextHolder: {}", applicationContext);
 
         if (SpringContextHolder.applicationContext != null) {
-            LOG.info("SpringContextHolder中的ApplicationContext被覆盖, 原有ApplicationContext为:"
-                    + SpringContextHolder.applicationContext);
+            LOG.info("SpringContextHolder中的ApplicationContext被覆盖, 原有ApplicationContext为: {}"
+                    , SpringContextHolder.applicationContext);
         }
 
         SpringContextHolder.applicationContext = applicationContext;
@@ -100,7 +99,7 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
      * 清除SpringContextHolder中的ApplicationContext为Null.
      */
     public static void clear() {
-        LOG.info("清除SpringContextHolder中的ApplicationContext:" + applicationContext);
+        LOG.info("清除SpringContextHolder中的ApplicationContext: {}", applicationContext);
         applicationContext = null;
     }
 
