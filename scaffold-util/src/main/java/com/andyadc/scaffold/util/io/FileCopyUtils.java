@@ -211,6 +211,7 @@ public abstract class FileCopyUtils {
             try {
                 out.close();
             } catch (IOException ex) {
+                // NO-OP
             }
         }
     }

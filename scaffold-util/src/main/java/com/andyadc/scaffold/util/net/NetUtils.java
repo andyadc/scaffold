@@ -18,6 +18,9 @@ public class NetUtils {
 
     private static final Random random = new Random();
 
+    private NetUtils() {
+    }
+
     /**
      * 测试端口是否空闲可用, from Spring SocketUtils
      */

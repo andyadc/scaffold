@@ -16,6 +16,9 @@ import java.math.RoundingMode;
  */
 public class MathUtils {
 
+    private MathUtils() {
+    }
+
     /////// 2 的倍数的计算////
 
     /**

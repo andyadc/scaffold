@@ -25,6 +25,9 @@ public class BeanMapper {
         mapper = mapperFactory.getMapperFacade();
     }
 
+    private BeanMapper() {
+    }
+
     /**
      * 简单的复制出新类型对象.
      * <p>
