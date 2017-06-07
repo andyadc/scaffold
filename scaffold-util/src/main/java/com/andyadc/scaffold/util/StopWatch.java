@@ -107,7 +107,7 @@ public class StopWatch {
      *
      * @see #stop()
      */
-    public void start() throws IllegalStateException {
+    public void start() {
         start("");
     }
 
@@ -118,7 +118,7 @@ public class StopWatch {
      * @param taskName the name of the task to start
      * @see #stop()
      */
-    public void start(String taskName) throws IllegalStateException {
+    public void start(String taskName) {
         if (this.running) {
             throw new IllegalStateException("Can't start StopWatch: it's already running");
         }
@@ -134,7 +134,7 @@ public class StopWatch {
      *
      * @see #start()
      */
-    public void stop() throws IllegalStateException {
+    public void stop() {
         if (!this.running) {
             throw new IllegalStateException("Can't stop StopWatch: it's not running");
         }
@@ -171,7 +171,7 @@ public class StopWatch {
     /**
      * Return the time taken by the last task.
      */
-    public long getLastTaskTimeMillis() throws IllegalStateException {
+    public long getLastTaskTimeMillis() {
         if (this.lastTaskInfo == null) {
             throw new IllegalStateException("No tasks run: can't get last task interval");
         }
@@ -181,7 +181,7 @@ public class StopWatch {
     /**
      * Return the name of the last task.
      */
-    public String getLastTaskName() throws IllegalStateException {
+    public String getLastTaskName() {
         if (this.lastTaskInfo == null) {
             throw new IllegalStateException("No tasks run: can't get last task name");
         }
@@ -191,7 +191,7 @@ public class StopWatch {
     /**
      * Return the last task as a TaskInfo object.
      */
-    public TaskInfo getLastTaskInfo() throws IllegalStateException {
+    public TaskInfo getLastTaskInfo() {
         if (this.lastTaskInfo == null) {
             throw new IllegalStateException("No tasks run: can't get last task info");
         }
