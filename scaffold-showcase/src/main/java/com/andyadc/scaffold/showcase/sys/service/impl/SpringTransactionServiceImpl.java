@@ -1,6 +1,5 @@
 package com.andyadc.scaffold.showcase.sys.service.impl;
 
-import com.andyadc.scaffold.showcase.sys.entity.SpringTransaction;
 import com.andyadc.scaffold.showcase.sys.handle.SpringTransactionHandle;
 import com.andyadc.scaffold.showcase.sys.mapper.SpringTransactionMapper;
 import com.andyadc.scaffold.showcase.sys.service.SpringTransactionService;
@@ -20,15 +19,7 @@ public class SpringTransactionServiceImpl implements SpringTransactionService {
     private SpringTransactionHandle handle;
 
     @Override
-    public void service1(SpringTransaction transaction) {
+    public void service1() {
 
-    }
-
-    @Override
-    public void save(SpringTransaction transaction) {
-        if (transaction.getId() != null)
-            mapper.updateByPrimaryKeySelective(transaction);
-        else
-            mapper.insertSelective(transaction);
     }
 }
