@@ -1,5 +1,6 @@
 package com.andyadc.scaffold.showcase.sys.handle.impl;
 
+import com.andyadc.scaffold.showcase.sys.entity.SpringTransaction;
 import com.andyadc.scaffold.showcase.sys.handle.SpringTransactionHandle;
 import org.springframework.stereotype.Service;
 
@@ -9,4 +10,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SpringTransactionHandleImpl implements SpringTransactionHandle {
+
+    @Override
+    public void handle1(SpringTransaction transaction) {
+
+    }
 }

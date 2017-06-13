@@ -9,4 +9,6 @@ import com.andyadc.scaffold.showcase.sys.entity.SpringTransaction;
 public interface SpringTransactionService {
 
     void save(SpringTransaction transaction);
+
+    void service1(SpringTransaction transaction);
 }
