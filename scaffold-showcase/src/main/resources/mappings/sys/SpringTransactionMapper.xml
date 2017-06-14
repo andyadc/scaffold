@@ -15,6 +15,10 @@
     id, name, age, number, create_time, update_time, version
   </sql>
 
+    <update id="updateIfNumberIsZero">
+        UPDATE spring_transaction SET number = #{number} WHERE id = #{id} AND (ISNULL(number) OR number = 0)
+    </update>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

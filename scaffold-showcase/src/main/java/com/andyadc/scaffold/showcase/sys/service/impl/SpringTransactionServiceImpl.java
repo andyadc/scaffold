@@ -5,6 +5,7 @@ import com.andyadc.scaffold.showcase.sys.mapper.SpringTransactionMapper;
 import com.andyadc.scaffold.showcase.sys.service.SpringTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author andaicheng
@@ -21,5 +22,12 @@ public class SpringTransactionServiceImpl implements SpringTransactionService {
     @Override
     public void service1() {
 
+    }
+
+    @Transactional
+    @Override
+    public boolean updateIfNumberIsZero(long id, int num) {
+        int c = mapper.updateIfNumberIsZero(id, num);
+        return c > 0;
     }
 }
