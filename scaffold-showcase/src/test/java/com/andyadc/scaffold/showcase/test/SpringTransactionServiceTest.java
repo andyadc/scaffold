@@ -31,6 +31,11 @@ public class SpringTransactionServiceTest {
     private TaskExecutor taskExecutor;
 
     @Test
+    public void testService1() {
+        springTransactionService.service1();
+    }
+
+    @Test
     public void testUpdateIfNull() {
         Instant begin = Instant.now();
         long id = 3;
