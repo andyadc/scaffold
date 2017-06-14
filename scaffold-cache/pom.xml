@@ -15,8 +15,8 @@
 
     <properties>
         <jedis.version>2.9.0</jedis.version>
-        <ehcache.version>3.3.0</ehcache.version>
-        <spymemcached.version>2.12.2</spymemcached.version>
+        <ehcache.version>3.3.1</ehcache.version>
+        <spymemcached.version>2.12.3</spymemcached.version>
 
     </properties>
 

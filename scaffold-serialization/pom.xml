@@ -14,7 +14,7 @@
     <url>https://github.com/andyadc/scaffold</url>
 
     <properties>
-        <commons.lang3.version>3.5</commons.lang3.version>
+        <commons.lang3.version>3.6</commons.lang3.version>
         <commons.pool2.version>2.4.2</commons.pool2.version>
         <fst.version>2.50</fst.version>
         <kryo.version>4.0.0</kryo.version>
