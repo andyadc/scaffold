@@ -3,6 +3,7 @@ package com.andyadc.scaffold.showcase.test;
 import com.andyadc.scaffold.showcase.sys.service.SpringTransactionService;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -30,11 +31,13 @@ public class SpringTransactionServiceTest {
     @Autowired
     private TaskExecutor taskExecutor;
 
+    @Ignore
     @Test
     public void testService1() {
         springTransactionService.service1();
     }
 
+    @Ignore
     @Test
     public void testUpdateIfNull() {
         Instant begin = Instant.now();
