@@ -1,7 +1,7 @@
 package com.andyadc.scaffold.showcase.auth.security;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.crypto.hash.Sha1Hash;
+import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,7 +17,7 @@ public class UserTokenGenerator {
         long currentTime = System.currentTimeMillis() / 1000;
         long expDate = currentTime + TOKEN_EXP_DATE;
         String sign = userId + "-" + expDate + "-" + FIXED_KEY;
-        sign = new Sha1Hash(sign).toString();
+        sign = new Sha256Hash(sign).toString();
         sign = userId + "-" + expDate + "-" + sign;
         return sign;
     }
@@ -31,7 +31,7 @@ public class UserTokenGenerator {
                     return false;
                 }
                 String sign = strs[0] + "-" + strs[1] + "-" + FIXED_KEY;
-                sign = new Sha1Hash(sign).toString();
+                sign = new Sha256Hash(sign).toString();
                 return sign.equals(strs[2]);
             }
         }
