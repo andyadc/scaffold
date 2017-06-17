@@ -27,9 +27,9 @@ public class AuthUser extends BaseEntity {
 
     private String email;
 
-    private Byte state;
+    private int state;
 
-    private Byte isDeleted;
+    private int isDeleted;
 
     private Date createTime;
 
@@ -91,19 +91,19 @@ public class AuthUser extends BaseEntity {
         this.email = email == null ? null : email.trim();
     }
 
-    public Byte getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(Byte state) {
+    public void setState(int state) {
         this.state = state;
     }
 
-    public Byte getIsDeleted() {
+    public int getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Byte isDeleted) {
+    public void setIsDeleted(int isDeleted) {
         this.isDeleted = isDeleted;
     }
 

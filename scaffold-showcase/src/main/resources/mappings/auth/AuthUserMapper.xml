@@ -10,8 +10,8 @@
         <result column="salt" jdbcType="VARCHAR" property="salt"/>
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="state" jdbcType="TINYINT" property="state"/>
-        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="is_deleted" jdbcType="INTEGER" property="isDeleted"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
         <result column="version" jdbcType="INTEGER" property="version"/>
@@ -124,10 +124,10 @@
                 #{email,jdbcType=VARCHAR},
             </if>
             <if test="state != null">
-                #{state,jdbcType=TINYINT},
+                #{state,jdbcType=INTEGER},
             </if>
             <if test="isDeleted != null">
-                #{isDeleted,jdbcType=TINYINT},
+                #{isDeleted,jdbcType=INTEGER},
             </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
@@ -166,14 +166,11 @@
                 email = #{email,jdbcType=VARCHAR},
             </if>
             <if test="state != null">
-                state = #{state,jdbcType=TINYINT},
+                state = #{state,jdbcType=INTEGER},
             </if>
             <if test="isDeleted != null">
-                is_deleted = #{isDeleted,jdbcType=TINYINT},
+                is_deleted = #{isDeleted,jdbcType=INTEGER},
             </if>
-            <!--<if test="createTime != null">
-                create_time = #{createTime,jdbcType=TIMESTAMP},
-            </if>-->
             <if test="updateTime != null">
                 update_time = #{updateTime,jdbcType=TIMESTAMP},
             </if>
