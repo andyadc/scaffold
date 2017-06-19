@@ -3,15 +3,18 @@ package com.andyadc.scaffold.showcase.web.controller;
 import com.andyadc.scaffold.showcase.auth.security.CaptchaFormAuthenticationFilter;
 import com.andyadc.scaffold.showcase.common.annotation.Performance;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,8 +33,12 @@ public class LoginController {
     private static final String PAGE_INDEX = "index";
     private static final String ATTR_MSG = "message";
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @GetMapping(value = "/login")
     public String login() {
+        Subject subject = SecurityUtils.getSubject();
+        if (subject != null && subject.isAuthenticated()) {
+            subject.logout();
+        }
         return PAGE_LOGIN;
     }
 
@@ -66,7 +73,7 @@ public class LoginController {
         return "redirect:/index";
     }
 
-    @RequestMapping("/index")
+    @GetMapping("/index")
     public String index() {
         return PAGE_INDEX;
     }
