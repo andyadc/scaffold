@@ -8,13 +8,15 @@ import com.rabbitmq.client.ConnectionFactory;
  * @author andaicheng
  * @version 2017/6/20
  */
-public class HelloRabbit {
+public class Producer {
 
     private static final String QUEUE_NAME = "hello";
 
     public static void main(String[] args) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
+        factory.setUsername("admin");
+        factory.setPassword("andyadc");
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
