@@ -164,6 +164,13 @@
             <version>${spring-data-redis.version}</version>
         </dependency>
 
+        <!-- rabbitmq -->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>4.1.1</version>
+        </dependency>
+
         <!-- mail -->
         <dependency>
             <groupId>javax.mail</groupId>
