@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!-- 引入配置文件 -->
+    <properties resource="mybatis-generator/config.properties"/>
+
+    <!-- classPathEntry:数据库的JDBC驱动 -->
+    <classPathEntry location="${jdbcClassPath}"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!-- 去除自动生成的注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${jdbcConnection.driverClass}"
+                        connectionURL="${jdbcConnection.connectionURL}"
+                        userId="${jdbcConnection.userId}"
+                        password="${jdbcConnection.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成实体类 -->
+        <javaModelGenerator targetPackage="${javaModel.targetPackage}"
+                            targetProject="${javaModel.targetProject}">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成mapper.xml文件 -->
+        <sqlMapGenerator targetPackage="${sqlMap.targetPackage}"
+                         targetProject="${sqlMap.targetProject}">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成mapper接口 -->
+        <javaClientGenerator targetPackage="${javaClient.targetPackage}"
+                             targetProject="${javaClient.targetProject}"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
+        <table tableName="users" domainObjectName="Users"
+               enableSelectByExample="false" enableDeleteByExample="false"
+               enableUpdateByExample="false" selectByExampleQueryId="false"
+               enableCountByExample="false">
+            <!-- <generatedKey column="id" sqlStatement="MySQL"/> -->
+
+            <!-- 忽略列，不生成bean 字段 -->
+            <ignoreColumn column="FRED"/>
+            <!-- 指定列的java数据类型 -->
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
