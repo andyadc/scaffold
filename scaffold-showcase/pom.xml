@@ -349,13 +349,6 @@
             <version>1.20</version>
         </dependency>
 
-        <!-- jwt -->
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>3.2.0</version>
-        </dependency>
-
         <!-- test -->
         <dependency>
             <groupId>junit</groupId>
