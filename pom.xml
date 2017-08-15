@@ -31,6 +31,7 @@
         <module>scaffold-showcase</module>
         <module>scaffold-lock</module>
         <module>scaffold-zookeeper</module>
+        <module>scaffold-middleware</module>
     </modules>
 
     <properties>
