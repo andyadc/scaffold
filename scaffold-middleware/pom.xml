@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>scaffold</artifactId>
+        <groupId>com.andyadc</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <version>0.0.1</version>
+
+    <artifactId>scaffold-middleware</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Scaffold Middleware</name>
+    <url>https://github.com/andyadc/scaffold</url>
+
+    <properties>
+        <kafka-clients.version>0.11.0.0</kafka-clients.version>
+        <fastjson.version>1.2.36</fastjson.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka-clients.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.andyadc</groupId>
+            <artifactId>scaffold-util</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+</project>
