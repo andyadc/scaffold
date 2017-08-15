@@ -24,6 +24,7 @@
                 <value>classpath*:/application.properties</value>
                 <value>classpath*:/jdbc.properties</value>
                 <value>classpath*:/redis.properties</value>
+                <value>classpath*:/kafka.properties</value>
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true"/>
@@ -121,5 +122,6 @@
     <import resource="mail/applicationContext-mail.xml"/>
     <import resource="applicationContext-javasimon.xml"/>
     <import resource="applicationContext-executor.xml"/>
+    <import resource="applicationContext-kafka.xml"/>
 
 </beans>

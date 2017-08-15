@@ -10,7 +10,11 @@
     <url>https://github.com/andyadc/scaffold</url>
 
     <properties>
-        <jetty.version>9.4.6.v20170531</jetty.version>
+        <!-- jdk8 -->
+        <!--<jetty.version>9.4.6.v20170531</jetty.version>-->
+
+        <!-- jdk7 -->
+        <jetty.version>9.2.22.v20170606</jetty.version>
         <webserver.port>9999</webserver.port>
 
         <spring.version>4.3.10.RELEASE</spring.version>
@@ -19,8 +23,11 @@
         <ehcache.version>2.6.11</ehcache.version>
         <mybatis.version>3.4.4</mybatis.version>
         <mybatis-spring.version>1.3.1</mybatis-spring.version>
-        <tomcat-jdbc.version>8.5.19</tomcat-jdbc.version>
-        <HikariCP.version>2.6.3</HikariCP.version>
+        <tomcat-jdbc.version>8.5.20</tomcat-jdbc.version>
+        <!-- jdk 7 -->
+        <HikariCP.version>2.4.7</HikariCP.version>
+        <!-- jdk 8 -->
+        <!--<HikariCP.version>2.6.3</HikariCP.version>-->
         <druid.version>1.1.2</druid.version>
         <mysql-driver.version>5.1.43</mysql-driver.version>
         <h2.version>1.4.196</h2.version>
@@ -167,13 +174,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
             <version>${spring-data-redis.version}</version>
-        </dependency>
-
-        <!-- rabbitmq -->
-        <dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>amqp-client</artifactId>
-            <version>4.1.1</version>
         </dependency>
 
         <!-- mail -->
@@ -355,6 +355,12 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.andyadc</groupId>
+            <artifactId>scaffold-middleware</artifactId>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 
