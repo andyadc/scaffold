@@ -1,10 +1,13 @@
 package com.andyadc.scaffold.middleware.kafka;
 
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -17,20 +20,56 @@ public class MessagePoller implements Runnable, InitializingBean, DisposableBean
     private static final Logger LOG = LoggerFactory.getLogger(MessagePoller.class);
 
     private static AtomicLong tid = new AtomicLong(0);
-
+    private Properties props;
+    private String[] topics;
+    private long pollTimeout = 0;
     private volatile boolean running = true;
+
+    public MessagePoller() {
+        this.props = getDefaultConfig();
+    }
 
     @Override
     public void afterPropertiesSet() throws Exception {
 
+        Thread pollerThread = new Thread(this);
+        pollerThread.setName("MessagePoller-" + tid.getAndIncrement());
+        pollerThread.start();
     }
 
     @Override
     public void run() {
 
-        Thread pollerThread = new Thread(this);
-        pollerThread.setName("MessagePoller-" + tid.getAndIncrement());
-        pollerThread.start();
+        while (running) {
+            KafkaConsumer<String, String> kafkaConsumer = null;
+            LOG.info("Starting message poller ....");
+
+            try {
+                kafkaConsumer = new KafkaConsumer<>(props);
+                kafkaConsumer.subscribe(Arrays.asList(topics));
+
+                while (running) {
+                    ConsumerRecords<String, String> records = kafkaConsumer.poll(pollTimeout);
+
+                    if (records.isEmpty())
+                        continue;
+                    LOG.info(records.count() + " records have been polled!");
+
+                    // TODO
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (kafkaConsumer != null) {
+                    LOG.info("Closing message poller ...");
+                    kafkaConsumer.close();
+                }
+            }
+
+        }
+
+        LOG.info("Shutdowned the message poller thread!");
     }
 
     private static Properties getDefaultConfig() {
@@ -45,5 +84,14 @@ public class MessagePoller implements Runnable, InitializingBean, DisposableBean
     @Override
     public void destroy() throws Exception {
         this.running = false;
+    }
+
+    public void setTopics(String[] topics) {
+        LOG.info("Set topic list to: {}", Arrays.toString(topics));
+        this.topics = topics;
+    }
+
+    public void setPollTimeout(long pollTimeout) {
+        this.pollTimeout = pollTimeout;
     }
 }
