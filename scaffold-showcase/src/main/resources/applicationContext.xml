@@ -122,6 +122,6 @@
     <import resource="mail/applicationContext-mail.xml"/>
     <import resource="applicationContext-javasimon.xml"/>
     <import resource="applicationContext-executor.xml"/>
-    <import resource="applicationContext-kafka.xml"/>
+    <!--<import resource="applicationContext-kafka.xml"/>-->
 
 </beans>
