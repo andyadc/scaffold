@@ -1,5 +1,6 @@
 package com.andyadc.scaffold.middleware.kafka;
 
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.slf4j.Logger;
@@ -20,6 +21,8 @@ public class MessagePoller implements Runnable, InitializingBean, DisposableBean
     private static final Logger LOG = LoggerFactory.getLogger(MessagePoller.class);
 
     private static AtomicLong tid = new AtomicLong(0);
+    private String bootstrapServers;
+    private String groupId;
     private Properties props;
     private String[] topics;
     private long pollTimeout = 0;
@@ -31,7 +34,12 @@ public class MessagePoller implements Runnable, InitializingBean, DisposableBean
 
     @Override
     public void afterPropertiesSet() throws Exception {
-
+        if (this.bootstrapServers != null) {
+            props.put("bootstrap.servers", bootstrapServers);
+        }
+        if (this.groupId != null) {
+            props.put("group.id", groupId);
+        }
         Thread pollerThread = new Thread(this);
         pollerThread.setName("MessagePoller-" + tid.getAndIncrement());
         pollerThread.start();
@@ -56,7 +64,9 @@ public class MessagePoller implements Runnable, InitializingBean, DisposableBean
                     LOG.info(records.count() + " records have been polled!");
 
                     // TODO
-
+                    for (ConsumerRecord<String, String> record : records) {
+                        LOG.info("topic: {}, key: {}, value: {}", record.topic(), record.key(), record.value());
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -84,6 +94,14 @@ public class MessagePoller implements Runnable, InitializingBean, DisposableBean
     @Override
     public void destroy() throws Exception {
         this.running = false;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+
+    public void setBootstrapServers(String bootstrapServers) {
+        this.bootstrapServers = bootstrapServers;
     }
 
     public void setTopics(String[] topics) {
