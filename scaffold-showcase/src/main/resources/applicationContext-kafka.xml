@@ -8,7 +8,7 @@
         <property name="bootstrapServers" value="${kafka.bootstrapServers}"/>
     </bean>
 
-    <bean class="com.andyadc.scaffold.middleware.kafka.MessagePoller">
+    <bean id="messagePoller" class="com.andyadc.scaffold.middleware.kafka.MessagePoller">
         <property name="bootstrapServers" value="${kafka.bootstrapServers}"/>
         <property name="pollTimeout" value="100000"/>
         <property name="topics" value="test"/>
