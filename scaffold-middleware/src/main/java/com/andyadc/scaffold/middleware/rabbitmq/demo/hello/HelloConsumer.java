@@ -1,5 +1,6 @@
-package com.andyadc.scaffold.middleware.rabbitmq;
+package com.andyadc.scaffold.middleware.rabbitmq.demo.hello;
 
+import com.andyadc.scaffold.middleware.rabbitmq.demo.RabbitConst;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -17,14 +18,13 @@ import java.io.IOException;
 public class HelloConsumer {
 
     private static final String QUEUE_NAME = "rabbit.test";
-    private static final String HOST = "localhost";
 
     public static void main(String[] args) throws Exception {
         // 创建连接工厂
         ConnectionFactory factory = new ConnectionFactory();
         //设置RabbitMQ地址
-        factory.setHost(HOST);
-        factory.setPort(5672);
+        factory.setHost(RabbitConst.SERVER_HOST);
+        factory.setPort(RabbitConst.SERVER_PORT);
         factory.setUsername("messager");
         factory.setPassword("messager123");
 
