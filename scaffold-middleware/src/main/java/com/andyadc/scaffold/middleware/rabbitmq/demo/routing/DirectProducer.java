@@ -34,6 +34,6 @@ public class DirectProducer {
         }
 
         channel.close();
-        factory.clone();
+        connection.close();
     }
 }
