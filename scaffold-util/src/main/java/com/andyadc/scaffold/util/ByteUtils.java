@@ -5,7 +5,7 @@ package com.andyadc.scaffold.util;
  *
  * @author andaicheng
  */
-public class ByteUtils {
+public final class ByteUtils {
 
     private ByteUtils() {
         throw new UnsupportedOperationException();
@@ -181,7 +181,7 @@ public class ByteUtils {
                 for (int k = targetOffset + 1; j < end && source[j] == target[k]; j++, k++) ;
 
                 if (j == end) {
-					/* Found whole string. */
+                    /* Found whole string. */
                     return i - sourceOffset;
                 }
             }
@@ -364,7 +364,7 @@ public class ByteUtils {
      * @param b byte array
      * @return a short
      */
-    public static final short bytes2short(byte[] b) {
+    public static short bytes2short(byte[] b) {
         return bytes2short(b, 0);
     }
 
@@ -375,7 +375,7 @@ public class ByteUtils {
      * @param off offset of the byte array
      * @return a short
      */
-    public static final short bytes2short(byte[] b, int off) {
+    public static short bytes2short(byte[] b, int off) {
         return (short) ((b[off] & 0xff) << 8 | (b[off + 1] & 0xff));
     }
 
@@ -385,7 +385,7 @@ public class ByteUtils {
      * @param s short
      * @return a byte array
      */
-    public static final byte[] short2bytes(short s) {
+    public static byte[] short2bytes(short s) {
         byte[] b = {0, 0};
         short2bytes(s, b, 0);
         return b;
@@ -409,7 +409,7 @@ public class ByteUtils {
      * @param b byte array
      * @return a short
      */
-    public static final int bytes2int(byte[] b) {
+    public static int bytes2int(byte[] b) {
         return bytes2int(b, 0);
     }
 
@@ -420,7 +420,7 @@ public class ByteUtils {
      * @param off offset of the byte array
      * @return a short
      */
-    public static final int bytes2int(byte[] b, int off) {
+    public static int bytes2int(byte[] b, int off) {
         return b[off] << 24 | (b[off + 1] & 0xff) << 16 | (b[off + 2] & 0xff) << 8 | (b[off + 3] & 0xff);
     }
 
@@ -529,7 +529,7 @@ public class ByteUtils {
      * @param f float
      * @return a byte array
      */
-    public static final byte[] float2bytes(float f) {
+    public static byte[] float2bytes(float f) {
         byte[] b = {0, 0, 0, 0};
         float2bytes(f, b, 0);
         return b;
@@ -578,7 +578,7 @@ public class ByteUtils {
      * @param d double
      * @return a byte array
      */
-    public static final byte[] double2bytes(double d) {
+    public static byte[] double2bytes(double d) {
         byte[] b = {0, 0, 0, 0, 0, 0, 0, 0};
         double2bytes(d, b, 0);
         return b;
@@ -610,28 +610,32 @@ public class ByteUtils {
     /**
      * @deprecated replace by {@link #bytes2short(byte[])}
      */
-    public static final int makeIntFromByte2(byte[] b) {
+    @Deprecated
+    public static int makeIntFromByte2(byte[] b) {
         return makeIntFromByte2(b, 0);
     }
 
     /**
      * @deprecated replace by {@link #bytes2short(byte[], int)}
      */
-    public static final int makeIntFromByte2(byte[] b, int off) {
+    @Deprecated
+    public static int makeIntFromByte2(byte[] b, int off) {
         return (b[off] & 0xff) << 8 | (b[off + 1] & 0xff);
     }
 
     /**
      * @deprecated replace by {@link #bytes2int(byte[])}
      */
-    public static final int makeIntFromByte4(byte[] b) {
+    @Deprecated
+    public static int makeIntFromByte4(byte[] b) {
         return makeIntFromByte4(b, 0);
     }
 
     /**
      * @deprecated replace by {@link #bytes2int(byte[], int)}
      */
-    public static final int makeIntFromByte4(byte[] b, int off) {
+    @Deprecated
+    public static int makeIntFromByte4(byte[] b, int off) {
         return b[off] << 24 | (b[off + 1] & 0xff) << 16 | (b[off + 2] & 0xff) << 8 | (b[off + 3] & 0xff);
     }
 
