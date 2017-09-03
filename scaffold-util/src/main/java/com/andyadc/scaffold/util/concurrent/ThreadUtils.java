@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * @author andaicheng
  * @version 2017/1/8
  */
-public class ThreadUtils {
+public final class ThreadUtils {
 
     /////////// 线程相关功能//////////
 

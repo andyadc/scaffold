@@ -13,7 +13,7 @@ import java.io.ObjectOutputStream;
  * @author andaicheng
  * @version 2016/12/4
  */
-public class SerializationUtils {
+public final class SerializationUtils {
 
     private SerializationUtils() {
     }

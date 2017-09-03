@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author andaicheng
  */
-public class ReflectUtils {
+public final class ReflectUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(ReflectUtils.class);
 

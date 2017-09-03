@@ -11,10 +11,10 @@ import java.util.Random;
  * @author andaicheng
  * @version 2017/1/8
  */
-public class NetUtils {
+public final class NetUtils {
 
-    public static final int PORT_RANGE_MIN = 1024;
-    public static final int PORT_RANGE_MAX = 65535;
+    private static final int PORT_RANGE_MIN = 1024;
+    private static final int PORT_RANGE_MAX = 65535;
 
     private static final Random random = new Random();
 

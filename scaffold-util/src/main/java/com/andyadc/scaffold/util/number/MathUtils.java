@@ -14,7 +14,7 @@ import java.math.RoundingMode;
  * @author andaicheng
  * @version 2017/4/23
  */
-public class MathUtils {
+public final class MathUtils {
 
     private MathUtils() {
     }

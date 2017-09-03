@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 /**
  * @author andaicheng
  */
-public class ChineseUtils {
+public final class ChineseUtils {
 
     private ChineseUtils() {
     }
