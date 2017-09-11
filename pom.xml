@@ -33,11 +33,12 @@
         <module>scaffold-zookeeper</module>
         <module>scaffold-middleware</module>
         <module>scaffold-boot</module>
+        <module>mybatis-generator</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>1.7</java.version>
 
         <junit.version>4.12</junit.version>
         <slf4j.version>1.7.25</slf4j.version>
