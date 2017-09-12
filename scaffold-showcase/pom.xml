@@ -17,7 +17,7 @@
         <jetty.version>9.2.22.v20170606</jetty.version>
         <webserver.port>9999</webserver.port>
 
-        <spring.version>4.3.10.RELEASE</spring.version>
+        <spring.version>4.3.11.RELEASE</spring.version>
         <aspectj.version>1.8.10</aspectj.version>
         <shiro.version>1.4.0</shiro.version>
         <ehcache.version>2.6.11</ehcache.version>
