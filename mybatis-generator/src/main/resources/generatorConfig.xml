@@ -55,8 +55,10 @@
 
         <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
         <table tableName="${table.tableName}" domainObjectName="${table.domainName}"
-               enableSelectByExample="false" enableDeleteByExample="false"
-               enableUpdateByExample="false" selectByExampleQueryId="false"
+               enableSelectByExample="false"
+               enableDeleteByExample="false"
+               enableUpdateByExample="false"
+               selectByExampleQueryId="false"
                enableCountByExample="false">
 
             <!-- 生成主键 -->
