@@ -9,7 +9,7 @@
     <properties resource="config.properties"/>
 
     <!-- classPathEntry:数据库的JDBC驱动 -->
-    <classPathEntry location="${jdbcClassPath}"/>
+    <!--<classPathEntry location="${jdbcClassPath}"/>-->
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
 
