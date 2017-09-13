@@ -1,5 +1,7 @@
 package com.andyadc.scaffold.util.time;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -11,6 +13,16 @@ import java.util.TimeZone;
  * @version 2016/12/4
  */
 public final class DateUtils {
+
+    /**
+     * thread safe
+     */
+    private static final ThreadLocal<DateFormat> DATE_FORMAT = new ThreadLocal<DateFormat>() {
+        @Override
+        protected DateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }
+    };
 
     private DateUtils() {
     }
