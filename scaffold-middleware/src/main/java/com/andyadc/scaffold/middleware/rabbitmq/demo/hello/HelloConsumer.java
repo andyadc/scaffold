@@ -26,7 +26,7 @@ public class HelloConsumer {
         factory.setHost(RabbitConst.SERVER_HOST);
         factory.setPort(RabbitConst.SERVER_PORT);
         factory.setUsername("messager");
-        factory.setPassword("messager123");
+        factory.setPassword("messager");
 
         //创建一个新的连接
         Connection connection = factory.newConnection();

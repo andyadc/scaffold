@@ -18,13 +18,13 @@ public class HelloProducer {
         factory.setHost(RabbitConst.SERVER_HOST);
         factory.setPort(RabbitConst.SERVER_PORT);
         factory.setUsername("messager");
-        factory.setPassword("messager123");
+        factory.setPassword("messager");
 
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        String message = "hello rabbit ";
+        String message = "hello rabbit";
         //发送消息到队列中
         channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
 
