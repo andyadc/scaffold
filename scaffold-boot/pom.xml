@@ -12,6 +12,7 @@
 
     <modules>
         <module>basic</module>
+        <module>kafka</module>
     </modules>
 
 </project>
