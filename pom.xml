@@ -33,6 +33,7 @@
         <module>scaffold-zookeeper</module>
         <module>scaffold-middleware</module>
         <module>mybatis-generator</module>
+        <module>scaffold-boot</module>
     </modules>
 
     <properties>
