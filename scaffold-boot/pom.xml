@@ -13,6 +13,7 @@
     <modules>
         <module>basic</module>
         <module>kafka</module>
+        <module>rabbitmq</module>
     </modules>
 
 </project>
