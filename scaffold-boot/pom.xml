@@ -9,6 +9,7 @@
     <artifactId>scaffold-boot</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
+
     <modules>
         <module>basic</module>
     </modules>
