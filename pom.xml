@@ -32,7 +32,6 @@
         <module>scaffold-lock</module>
         <module>scaffold-zookeeper</module>
         <module>scaffold-middleware</module>
-        <module>scaffold-boot</module>
         <module>mybatis-generator</module>
     </modules>
 
