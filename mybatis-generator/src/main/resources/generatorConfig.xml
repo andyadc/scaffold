@@ -17,6 +17,13 @@
         <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
         <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
 
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
         <!-- 去除自动生成的注释 -->
         <commentGenerator>
             <property name="suppressDate" value="true"/>
@@ -38,6 +45,8 @@
                             targetProject="${javaModel.targetProject}">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
+            <property name="constructorBased" value="false"/>
+            <property name="immutable" value="false"/>
         </javaModelGenerator>
 
         <!-- 生成mapper.xml文件 -->
@@ -47,6 +56,12 @@
         </sqlMapGenerator>
 
         <!-- 生成mapper接口 -->
+        <!--
+        type:
+            1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；
+            2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；
+            3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
+        -->
         <javaClientGenerator targetPackage="${javaClient.targetPackage}"
                              targetProject="${javaClient.targetProject}"
                              type="XMLMAPPER">
