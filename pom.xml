@@ -35,6 +35,7 @@
         <module>mybatis-generator</module>
         <module>scaffold-boot</module>
         <module>scaffold-spring</module>
+        <module>scaffold-cloud</module>
     </modules>
 
     <properties>
