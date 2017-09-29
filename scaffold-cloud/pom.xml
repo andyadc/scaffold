@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.andyadc</groupId>
-    <artifactId>scafflod-cloud</artifactId>
+    <artifactId>scaffold-cloud</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
