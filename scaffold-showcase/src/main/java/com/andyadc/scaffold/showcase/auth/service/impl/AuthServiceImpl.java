@@ -29,13 +29,14 @@ public class AuthServiceImpl implements AuthService {
         return authUserMapper.lockAuthUserByAccount(account) > 0;
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public AuthUser saveAuthUser(AuthUser authUser) {
-        if (authUser.getId() != null && authUser.getId() > 0)
+        if (authUser.getId() != null && authUser.getId() > 0) {
             authUserMapper.updateByPrimaryKeySelective(authUser);
-        else
+        } else {
             authUserMapper.insertSelective(authUser);
+        }
         return authUser;
     }
 
