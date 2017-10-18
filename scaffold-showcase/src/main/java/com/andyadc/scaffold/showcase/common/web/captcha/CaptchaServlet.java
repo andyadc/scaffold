@@ -47,8 +47,9 @@ public final class CaptchaServlet extends HttpServlet {
     private TextRenderer textRenderer = null;
 
     public static boolean validateCaptcha(HttpServletRequest request, String userCaptcha) {
-        if (StringUtils.isBlank(userCaptcha))
+        if (StringUtils.isBlank(userCaptcha)) {
             return false;
+        }
         return userCaptcha.equalsIgnoreCase((String) request.getSession().getAttribute(CAPTCHA_SESSION));
     }
 
