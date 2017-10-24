@@ -18,7 +18,7 @@
         <webserver.port>9999</webserver.port>
 
         <spring.version>4.3.11.RELEASE</spring.version>
-        <aspectj.version>1.8.11</aspectj.version>
+        <aspectj.version>1.8.12</aspectj.version>
         <shiro.version>1.4.0</shiro.version>
         <ehcache.version>2.6.11</ehcache.version>
         <mybatis.version>3.4.5</mybatis.version>
