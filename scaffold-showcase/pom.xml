@@ -17,7 +17,7 @@
         <jetty.version>9.2.22.v20170606</jetty.version>
         <webserver.port>9999</webserver.port>
 
-        <spring.version>4.3.11.RELEASE</spring.version>
+        <spring.version>4.3.12.RELEASE</spring.version>
         <aspectj.version>1.8.12</aspectj.version>
         <shiro.version>1.4.0</shiro.version>
         <ehcache.version>2.6.11</ehcache.version>
@@ -31,7 +31,7 @@
         <druid.version>1.1.4</druid.version>
         <mysql-driver.version>5.1.43</mysql-driver.version>
         <jedis.version>2.9.0</jedis.version>
-        <spring-data-redis.version>1.8.7.RELEASE</spring-data-redis.version>
+        <spring-data-redis.version>1.8.8.RELEASE</spring-data-redis.version>
         <jackson.version>2.9.2</jackson.version>
         <java-mail.version>1.4.7</java-mail.version>
         <quartz.version>2.3.0</quartz.version>
