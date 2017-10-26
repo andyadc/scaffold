@@ -14,6 +14,7 @@
         <module>basic</module>
         <module>kafka</module>
         <module>rabbitmq</module>
+        <module>auth</module>
     </modules>
 
 </project>
