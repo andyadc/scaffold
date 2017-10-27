@@ -18,7 +18,7 @@ public class MyBatisMapperScannerConfig {
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer configurer = new MapperScannerConfigurer();
         configurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
-        configurer.setBasePackage("com.andyadc.auth.mapper");
+        configurer.setBasePackage("com.andyadc.auth.mapper"); // required
         configurer.setAnnotationClass(MyBatisRepository.class);
         return configurer;
     }
