@@ -19,7 +19,7 @@ public class AuthTests {
     private RoleMapper roleMapper;
 
     @Test
-    public void testSelect() {
+    public void testRoleSelect() {
         System.out.println("**************************************");
         String value = roleMapper.selectByPrimaryKey("1").getName();
         System.out.println(value);
