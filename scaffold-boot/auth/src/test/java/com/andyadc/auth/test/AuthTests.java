@@ -1,6 +1,8 @@
 package com.andyadc.auth.test;
 
 import com.andyadc.auth.mapper.RoleMapper;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,17 @@ public class AuthTests {
 
     @Test
     public void testRoleSelect() {
-        System.out.println("**************************************");
         String value = roleMapper.selectByPrimaryKey("1").getName();
         System.out.println(value);
+    }
+
+    @Before
+    public void before() {
+        System.out.println("**************************************");
+    }
+
+    @After
+    public void after() {
         System.out.println("**************************************");
     }
 }
