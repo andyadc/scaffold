@@ -38,7 +38,8 @@
             </fileNamePattern>
             <!-- each file should be at most 10MB, keep 30 days worth of history, but at most 10GB -->
             <maxHistory>30</maxHistory>
-            <maxFileSize>1MB</maxFileSize>
+            <!-- KB/MB/GB-->
+            <maxFileSize>16KB</maxFileSize>
             <totalSizeCap>10GB</totalSizeCap>
         </rollingPolicy>
         <!-- 日志输出格式 -->
