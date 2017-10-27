@@ -23,6 +23,12 @@
         <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
         <!-- 格式化XML代码 -->
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <!-- 当表名或者字段名为 SQL 关键字的时候，可以设置该属性为 true，MBG 会自动给表名或字段名添加 `分隔符` -->
+        <property name="autoDelimitKeywords" value="true"/>
+
+        <!-- 这里的使用的**反单引号(`)**就是**分隔符**，**分隔符**可以用于**表名**或者**列名**。 -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
 
         <!-- 去除自动生成的注释 -->
         <commentGenerator>
