@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +17,8 @@ import javax.sql.DataSource;
  * @author andy.an
  * @since 2017/10/27
  */
-//@MapperScan("com.andyadc.auth.mapper")
 @Configuration
+@MapperScan("com.andyadc.auth")
 public class MyBatisConfig {
 
     @Value("${spring.datasource.driver-class-name}")
