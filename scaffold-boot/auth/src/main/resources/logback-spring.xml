@@ -39,7 +39,7 @@
             <!-- each file should be at most 10MB, keep 30 days worth of history, but at most 10GB -->
             <maxHistory>30</maxHistory>
             <!-- KB/MB/GB-->
-            <maxFileSize>16KB</maxFileSize>
+            <maxFileSize>1MB</maxFileSize>
             <totalSizeCap>10GB</totalSizeCap>
         </rollingPolicy>
         <!-- 日志输出格式 -->
@@ -48,7 +48,7 @@
         </encoder>
     </appender>
 
-    <root level="info">
+    <root level="debug">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>
