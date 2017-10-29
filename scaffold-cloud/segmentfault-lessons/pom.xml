@@ -5,15 +5,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.andyadc</groupId>
-    <artifactId>scaffold-cloud</artifactId>
-    <packaging>pom</packaging>
+    <groupId>com.andyadc.sg</groupId>
+    <artifactId>segmentfault-lessons</artifactId>
     <version>1.0.0</version>
 
-    <modules>
-        <module>cloud-config</module>
-        <module>cloud-discovery</module>
-        <module>segmentfault-lessons</module>
-    </modules>
 
 </project>
