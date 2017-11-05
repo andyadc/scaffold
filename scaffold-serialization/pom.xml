@@ -14,7 +14,7 @@
     <properties>
         <commons.lang3.version>3.6</commons.lang3.version>
         <commons.pool2.version>2.4.2</commons.pool2.version>
-        <fst.version>2.53</fst.version>
+        <fst.version>2.55</fst.version>
         <kryo.version>4.0.1</kryo.version>
         <protostuff.version>1.6.0</protostuff.version>
         <jackson.version>2.9.2</jackson.version>
