@@ -18,6 +18,7 @@ public class SpringEventListenerDemo {
         context.refresh();
 
         context.publishEvent(new MyApplicationEvent("Hello Event!"));
+        context.publishEvent(new MyApplicationEvent(1));
     }
 
     private static class MyApplicationListener implements ApplicationListener<MyApplicationEvent> {
