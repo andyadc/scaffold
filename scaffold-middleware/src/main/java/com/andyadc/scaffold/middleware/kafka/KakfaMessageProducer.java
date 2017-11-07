@@ -36,6 +36,18 @@ public class KakfaMessageProducer implements MessageProducer, InitializingBean, 
         this.props = getDefaultConfig();
     }
 
+    private static Properties getDefaultConfig() {
+        Properties props = new Properties();
+        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("acks", "all");
+        props.put("retries", 0);
+        props.put("batch.size", 16384);
+        props.put("linger.ms", 1);
+        props.put("buffer.memory", 33554432);
+        return props;
+    }
+
     @Override
     public void send(String topic, Message<?> message) {
         this.send(topic, null, message);
@@ -59,18 +71,6 @@ public class KakfaMessageProducer implements MessageProducer, InitializingBean, 
         String json = JSON.toJSONStringWithDateFormat(message, "yyyy-MM-dd HH:mm:ss.SSS");
         LOG.debug("sending topic {} with key {} and message: {}", topic, key, message);
         return kafkaProducer.send(new ProducerRecord<>(topic, key, json));
-    }
-
-    public static Properties getDefaultConfig() {
-        Properties props = new Properties();
-        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("acks", "all");
-        props.put("retries", 0);
-        props.put("batch.size", 16384);
-        props.put("linger.ms", 1);
-        props.put("buffer.memory", 33554432);
-        return props;
     }
 
     public void setBootstrapServers(String bootstrapServers) {
@@ -97,7 +97,7 @@ public class KakfaMessageProducer implements MessageProducer, InitializingBean, 
             LOG.info("kafka producer is closing...");
             kafkaProducer.flush();
             kafkaProducer.close();
-            LOG.info("kafka producer is closed!");
         }
+        LOG.info("kafka producer is closed!");
     }
 }
