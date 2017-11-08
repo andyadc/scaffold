@@ -3,7 +3,7 @@ package com.andyadc.scaffold.middleware.kafka;
 import com.alibaba.fastjson.JSON;
 import com.andyadc.scaffold.middleware.message.Message;
 import com.andyadc.scaffold.middleware.message.MessageProducer;
-import com.andyadc.scaffold.util.StringUtils;
+import com.andyadc.scaffold.middleware.util.StringUtils;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
