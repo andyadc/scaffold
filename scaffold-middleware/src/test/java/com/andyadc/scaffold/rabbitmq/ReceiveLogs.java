@@ -1,12 +1,11 @@
 package com.andyadc.scaffold.rabbitmq;
 
 import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Consumer;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -14,26 +13,27 @@ import java.io.IOException;
  * @author andy.an
  * @since 2017/11/8
  */
-public class Recv {
+public class ReceiveLogs {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Recv.class);
-
-    private final static String QUEUE_NAME = "hello";
+    private static final String EXCHANGE_NAME = "logs";
 
     public static void main(String[] args) throws Exception {
         Channel channel = new ChannelFactory().defaultChannel();
 
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        LOGGER.info(" [*] Waiting for messages. ");
+        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
+        String queueName = channel.queueDeclare().getQueue();
+        channel.queueBind(queueName, EXCHANGE_NAME, "");
 
-        Consumer consumer = new DefaultConsumer(channel) {
+        System.out.println(" [*] Waiting for messages.");
+
+        final Consumer consumer = new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String message = new String(body, "UTF-8");
-                LOGGER.info(" [x] Received '" + message + "'");
+                System.out.println(" [x] Received '" + message + "'");
             }
         };
 
-        channel.basicConsume(QUEUE_NAME, false, consumer);
+        channel.basicConsume(queueName, true, consumer);
     }
 }
