@@ -25,8 +25,8 @@ public class HelloConsumer {
         //设置RabbitMQ地址
         factory.setHost(RabbitConst.SERVER_HOST);
         factory.setPort(RabbitConst.SERVER_PORT);
-        factory.setUsername("messager");
-        factory.setPassword("messager");
+        factory.setUsername(RabbitConst.USERNAME);
+        factory.setPassword(RabbitConst.PASSWORD);
 
         //创建一个新的连接
         Connection connection = factory.newConnection();

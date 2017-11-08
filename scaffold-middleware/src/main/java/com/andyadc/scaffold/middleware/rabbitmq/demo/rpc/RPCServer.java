@@ -23,8 +23,8 @@ public class RPCServer {
         final ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RabbitConst.SERVER_HOST);
         factory.setPort(RabbitConst.SERVER_PORT);
-        factory.setUsername("messager");
-        factory.setPassword("messager123");
+        factory.setUsername(RabbitConst.USERNAME);
+        factory.setPassword(RabbitConst.PASSWORD);
 
         Connection connection = factory.newConnection();
         final Channel channel = connection.createChannel();

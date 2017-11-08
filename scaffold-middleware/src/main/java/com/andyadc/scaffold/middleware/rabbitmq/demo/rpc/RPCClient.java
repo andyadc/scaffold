@@ -29,8 +29,8 @@ public class RPCClient {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RabbitConst.SERVER_HOST);
         factory.setPort(RabbitConst.SERVER_PORT);
-        factory.setUsername("messager");
-        factory.setPassword("messager123");
+        factory.setUsername(RabbitConst.USERNAME);
+        factory.setPassword(RabbitConst.PASSWORD);
 
         connection = factory.newConnection();
         channel = connection.createChannel();
