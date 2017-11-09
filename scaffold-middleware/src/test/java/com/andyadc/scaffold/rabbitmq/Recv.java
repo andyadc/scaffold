@@ -34,6 +34,11 @@ public class Recv {
             }
         };
 
+        // basicConsume 基于push
         channel.basicConsume(QUEUE_NAME, false, consumer);
+
+        // basicGet 基于pull
+//        GetResponse response = channel.basicGet(QUEUE_NAME, false);
+//        System.out.println(new String(response.getBody(), "UTF-8"));
     }
 }
