@@ -1,5 +1,6 @@
 package com.andyadc.scaffold.rabbitmq;
 
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -19,12 +20,14 @@ public class Send {
         factory.setUsername(RabbitConst.USERNAME);
         factory.setPassword(RabbitConst.PASSWORD);
 
-        Connection connection = factory.newConnection();
+        Connection connection = factory.newConnection("生产者");
         Channel channel = connection.createChannel();
 
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         String message = "Hello World!";
-        channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
+
+        AMQP.BasicProperties properties = new AMQP.BasicProperties().builder().contentEncoding("UTF-8").build();
+        channel.basicPublish("", QUEUE_NAME, properties, message.getBytes("UTF-8"));
         LOGGER.info(" [x] Sent '" + message + "'");
 
         channel.close();
