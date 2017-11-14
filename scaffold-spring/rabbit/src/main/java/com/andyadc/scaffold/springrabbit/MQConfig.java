@@ -3,6 +3,7 @@ package com.andyadc.scaffold.springrabbit;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,13 +17,18 @@ public class MQConfig {
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory factory = new CachingConnectionFactory();
-        factory.setUri("amqp://messager:messager@ip:5672");
+        factory.setUri("amqp://username:password@ip:port");
         return factory;
     }
 
     @Bean
-    public RabbitAdmin rabbitAdmin(CachingConnectionFactory factory) {
-        return new RabbitAdmin(factory);
+    public RabbitAdmin rabbitAdmin() {
+        return new RabbitAdmin(connectionFactory());
+    }
+
+    @Bean
+    public RabbitTemplate rabbitTemplate() {
+        return new RabbitTemplate(connectionFactory());
     }
 
 }
