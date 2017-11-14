@@ -1,7 +1,5 @@
 package com.andyadc.scaffold.springrabbit;
 
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -44,10 +42,15 @@ public class RabbitApp {
 
         RabbitTemplate rabbitTemplate = context.getBean(RabbitTemplate.class);
 
-        Message message = new Message("hello".getBytes(), new MessageProperties());
-        rabbitTemplate.setExchange("adc.exchage.direct");
-        rabbitTemplate.setRoutingKey("info");
-        rabbitTemplate.send(message);
+//        MessageProperties messageProperties = new MessageProperties();
+//        messageProperties.setHeader("desc", "from home");
+//        Message message = new Message("hello home".getBytes(), messageProperties);
+//
+//        rabbitTemplate.setExchange("adc.exchage.direct");
+//        rabbitTemplate.setRoutingKey("info");
+//        rabbitTemplate.send(message);
+
+        rabbitTemplate.convertAndSend("adc.exchage.direct", "debug", "this is a message");
 
         context.close();
 
