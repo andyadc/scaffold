@@ -1,5 +1,7 @@
 package com.andyadc.scaffold.springrabbit;
 
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.FanoutExchange;
@@ -18,6 +20,15 @@ import java.util.List;
  */
 @Configuration
 public class DeclareConfig {
+
+    @Bean
+    public List<Binding> directBindings() {
+        List<Binding> bindings = new ArrayList<>();
+        bindings.add(BindingBuilder.bind(new Queue("log.error")).to(new DirectExchange("adc.exchage.direct")).with("error"));
+        bindings.add(BindingBuilder.bind(new Queue("log.info")).to(new DirectExchange("adc.exchage.direct")).with("info"));
+        bindings.add(BindingBuilder.bind(new Queue("log.debug")).to(new DirectExchange("adc.exchage.direct")).with("debug"));
+        return bindings;
+    }
 
     @Bean
     public List<Queue> logQueues() {

@@ -1,6 +1,8 @@
 package com.andyadc.scaffold.springrabbit;
 
-import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -14,8 +16,8 @@ public class RabbitApp {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(RabbitApp.class);
 
-        RabbitAdmin rabbitAdmin = (RabbitAdmin) context.getBean("rabbitAdmin");
-        rabbitAdmin.getQueueProperties("adc");
+        //RabbitAdmin rabbitAdmin = (RabbitAdmin) context.getBean("rabbitAdmin");
+        //rabbitAdmin.getQueueProperties("adc");
 
         //rabbitAdmin.declareExchange(new TopicExchange("adc.exchage.topic", true, false));
         //rabbitAdmin.declareExchange(new DirectExchange("adc.exchage.direct", true, false));
@@ -38,6 +40,14 @@ public class RabbitApp {
 //        rabbitAdmin.declareBinding(errorBinding);
 //
 //        Binding builderBinding = BindingBuilder.bind(new Queue("log.error")).to(new TopicExchange("adc.exchage.topic")).with("error");
+
+
+        RabbitTemplate rabbitTemplate = context.getBean(RabbitTemplate.class);
+
+        Message message = new Message("hello".getBytes(), new MessageProperties());
+        rabbitTemplate.setExchange("adc.exchage.direct");
+        rabbitTemplate.setRoutingKey("info");
+        rabbitTemplate.send(message);
 
         context.close();
 
