@@ -6,7 +6,7 @@ package com.andyadc.scaffold.redis;
  */
 public class RedisConst {
 
-    public static final String HOST = "ip";
+    public static final String HOST = "www.jd-server.com";
     public static final int PORT = 6379;
-    public static final String AUTH = "pwd";
+    public static final String AUTH = "andyadc,./";
 }

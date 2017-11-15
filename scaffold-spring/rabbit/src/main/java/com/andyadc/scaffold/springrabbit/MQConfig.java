@@ -17,7 +17,7 @@ public class MQConfig {
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory factory = new CachingConnectionFactory();
-        factory.setUri("amqp://username:password@ip:port");
+        factory.setUri("amqp://messager:messager@www.jd-server.com:5672");
         return factory;
     }
 
