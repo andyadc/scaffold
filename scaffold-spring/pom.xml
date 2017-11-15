@@ -12,6 +12,7 @@
 
     <modules>
         <module>rabbit</module>
+        <module>rabbit-consumer</module>
     </modules>
 
 </project>
