@@ -5,12 +5,27 @@
        xsi:schemaLocation="http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <rabbit:connection-factory id="connectionFactory"/>
+    <rabbit:connection-factory id="connectionFactory"
+                               username="messager"
+                               password="messager"
+                               host="www.jd-server.com"
+                               port="5672"
+    />
 
-    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory"/>
+    <rabbit:queue name="xmlQueue"/>
 
-    <rabbit:admin connection-factory="connectionFactory"/>
+    <rabbit:template id="rabbitTemplate" connection-factory="connectionFactory"/>
 
-    <rabbit:queue name="myqueue"/>
+    <rabbit:admin id="rabbitAdmin" connection-factory="connectionFactory"/>
+
+    <bean id="retryTemplate" class="org.springframework.retry.support.RetryTemplate">
+        <property name="backOffPolicy">
+            <bean class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
+                <property name="initialInterval" value="500"/>
+                <property name="multiplier" value="10.0"/>
+                <property name="maxInterval" value="10000"/>
+            </bean>
+        </property>
+    </bean>
 
 </beans>
