@@ -6,6 +6,7 @@ import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -53,6 +54,9 @@ public class RabbitConfig {
         queueOrTagToMethodName.put("log.error", "handleError");
         adapter.setQueueOrTagToMethodName(queueOrTagToMethodName);
         adapter.setDefaultListenerMethod("handleMessage");
+
+        MessageConverter converter = new MyMessageConverter();
+        adapter.setMessageConverter(converter);
 
         container.setMessageListener(adapter);
 

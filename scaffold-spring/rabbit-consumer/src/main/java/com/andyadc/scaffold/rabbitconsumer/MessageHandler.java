@@ -13,18 +13,18 @@ public class MessageHandler {
         System.out.println(new String(body));
     }
 
-    public void handleDebug(byte[] body) {
+    public void handleDebug(String message) {
         System.out.println("--------------debug-------------");
-        System.out.println(new String(body));
+        System.out.println(message);
     }
 
-    public void handleInfo(byte[] body) {
+    public void handleInfo(String message) {
         System.out.println("--------------info-------------");
-        System.out.println(new String(body));
+        System.out.println(message);
     }
 
-    public void handleError(byte[] body) {
+    public void handleError(String message) {
         System.out.println("--------------error-------------");
-        System.out.println(new String(body));
+        System.out.println(message);
     }
 }
