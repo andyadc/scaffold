@@ -23,6 +23,11 @@ public class MessageHandler {
         System.out.println(message);
     }
 
+    public void handleInfo(Order order) {
+        System.out.println("--------------info-------------");
+        System.out.println(order);
+    }
+
     public void handleError(String message) {
         System.out.println("--------------error-------------");
         System.out.println(message);

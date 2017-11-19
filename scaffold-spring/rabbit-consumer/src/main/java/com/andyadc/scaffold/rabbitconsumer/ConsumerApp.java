@@ -1,5 +1,6 @@
 package com.andyadc.scaffold.rabbitconsumer;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -9,6 +10,7 @@ import java.util.concurrent.TimeUnit;
  * @author andaicheng
  * @since 2017/11/15
  */
+@EnableRabbit
 @ComponentScan
 public class ConsumerApp {
 
