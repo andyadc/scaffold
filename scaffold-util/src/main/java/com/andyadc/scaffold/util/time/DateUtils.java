@@ -27,6 +27,10 @@ public final class DateUtils {
     private DateUtils() {
     }
 
+    public static String formatCurrentDate() {
+        return DATE_FORMAT.get().format(new Date());
+    }
+
     //-----------------------------------------------------------------------
 
     /**
