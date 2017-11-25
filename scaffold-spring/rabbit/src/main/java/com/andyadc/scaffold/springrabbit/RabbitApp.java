@@ -4,6 +4,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author andy.an
  * @since 2017/11/14
@@ -11,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan
 public class RabbitApp {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(RabbitApp.class);
 
         //RabbitAdmin rabbitAdmin = (RabbitAdmin) context.getBean("rabbitAdmin");
@@ -50,7 +52,9 @@ public class RabbitApp {
 //        rabbitTemplate.setRoutingKey("info");
 //        rabbitTemplate.send(message);
 
-        rabbitTemplate.convertAndSend("adc.exchage.direct", "debug", "this is a message");
+        rabbitTemplate.convertAndSend("adc.exchage.direct", "fatal", "this is a message");
+
+        TimeUnit.SECONDS.sleep(10);
 
         context.close();
 

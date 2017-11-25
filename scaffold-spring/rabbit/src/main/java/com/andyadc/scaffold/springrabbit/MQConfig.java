@@ -1,5 +1,6 @@
 package com.andyadc.scaffold.springrabbit;
 
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
@@ -18,6 +19,8 @@ public class MQConfig {
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory factory = new CachingConnectionFactory();
         factory.setUri("amqp://messager:messager@www.jd-server.com:5672");
+        // return listener
+        factory.setPublisherReturns(true);
         return factory;
     }
 
@@ -28,7 +31,17 @@ public class MQConfig {
 
     @Bean
     public RabbitTemplate rabbitTemplate() {
-        return new RabbitTemplate(connectionFactory());
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
+        // return listener
+        rabbitTemplate.setMandatory(true);
+        rabbitTemplate.setReturnCallback(new RabbitTemplate.ReturnCallback() {
+            @Override
+            public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
+                System.out.println("----------returnedMessage-------------");
+                System.out.println("Return message > " + message);
+            }
+        });
+        return rabbitTemplate;
     }
 
 }
