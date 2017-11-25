@@ -31,7 +31,11 @@ public class ConsumerAck {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 if (properties.getHeaders().get("error") != null) {
-                    this.getChannel().basicNack(envelope.getDeliveryTag(), false, false);
+                    // 支持批量
+                    //this.getChannel().basicNack(envelope.getDeliveryTag(), false, false);
+                    // 单个
+                    this.getChannel().basicReject(envelope.getDeliveryTag(), false);
+
                     System.out.println("Cannot consumer message");
                     return;
 //                    throw new IllegalArgumentException("Has error header");
