@@ -19,4 +19,9 @@ public class SimpleMessageHandler {
         System.out.println("//////////// " + headers);
         System.out.println("//////////// " + body);
     }
+
+    @RabbitListener(queues = "${queue.name.error}")
+    public void errorHandle(byte[] bytes) {
+        System.out.println("\\\\" + new String(bytes));
+    }
 }

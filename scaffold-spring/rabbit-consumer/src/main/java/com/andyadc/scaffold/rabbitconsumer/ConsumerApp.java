@@ -3,6 +3,7 @@ package com.andyadc.scaffold.rabbitconsumer;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
  */
 @EnableRabbit
 @ComponentScan
+@PropertySource("classpath:rabbit.properties")
 public class ConsumerApp {
 
     public static void main(String[] args) throws Exception {
