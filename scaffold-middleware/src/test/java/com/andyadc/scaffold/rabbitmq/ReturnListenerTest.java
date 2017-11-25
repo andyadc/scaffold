@@ -4,7 +4,6 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.ReturnCallback;
 import com.rabbitmq.client.ReturnListener;
 
 import java.io.IOException;
@@ -38,16 +37,14 @@ public class ReturnListenerTest {
             }
         });
 
-        channel.addReturnListener(new ReturnCallback() {
-            @Override
-            public void handle(com.rabbitmq.client.Return returnMessage) {
-                System.out.println("-------------handleReturnCallback-----------");
-                System.out.println(returnMessage);
-            }
-        });
+        channel.addReturnListener((returnMessage -> {
+            System.out.println("-------------handleReturnCallback-----------");
+            System.out.println(returnMessage);
+        }));
 
 
         AMQP.BasicProperties properties = new AMQP.BasicProperties().builder().contentEncoding("UTF-8").build();
+        // set 'mandatory' is true
         channel.basicPublish("adc.exchage.direct", "fatal", true, properties, "No home".getBytes());
 
         TimeUnit.SECONDS.sleep(10);
