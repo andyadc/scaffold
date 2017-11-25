@@ -1,9 +1,11 @@
 package com.andyadc.scaffold.springrabbit;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -52,7 +54,8 @@ public class RabbitApp {
 //        rabbitTemplate.setRoutingKey("info");
 //        rabbitTemplate.send(message);
 
-        rabbitTemplate.convertAndSend("adc.exchage.direct", "fatal", "this is a message");
+        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
+        rabbitTemplate.convertAndSend("adc.exchage.direct", "fatal", "this is a message", correlationData);
 
         TimeUnit.SECONDS.sleep(10);
 
