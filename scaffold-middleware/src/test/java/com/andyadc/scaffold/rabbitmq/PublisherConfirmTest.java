@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @author andaicheng
  * @since 2017/11/25
  */
-public class PublishConfirmTest {
+public class PublisherConfirmTest {
 
     public static void main(String[] args) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
