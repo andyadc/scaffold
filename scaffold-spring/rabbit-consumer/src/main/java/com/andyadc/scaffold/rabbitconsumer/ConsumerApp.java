@@ -19,7 +19,7 @@ public class ConsumerApp {
     public static void main(String[] args) throws Exception {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConsumerApp.class);
 
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(100);
 
         context.close();
     }

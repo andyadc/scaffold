@@ -10,6 +10,7 @@ public class MessageHandler {
      * default method name
      */
     public void handleMessage(byte[] body) {
+        System.out.println("-------------default------------");
         System.out.println(new String(body));
     }
 
