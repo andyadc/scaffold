@@ -13,6 +13,7 @@
     <modules>
         <module>rabbit</module>
         <module>rabbit-consumer</module>
+        <module>rabbit-boot</module>
     </modules>
 
 </project>
