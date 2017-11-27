@@ -13,7 +13,7 @@ public class QueueAwareMessageListener implements ChannelAwareMessageListener {
     @Override
     public void onMessage(Message message, Channel channel) throws Exception {
         System.out.println("--------ChannelAwareMessageListener---------");
-        System.out.println("message: " + message);
+        System.out.println("message: " + new String(message.getBody()));
 
         // manual ack
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

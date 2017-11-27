@@ -5,8 +5,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * @author andaicheng
  * @since 2017/11/15
@@ -19,8 +17,11 @@ public class ConsumerApp {
     public static void main(String[] args) throws Exception {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConsumerApp.class);
 
-        TimeUnit.SECONDS.sleep(100);
+        // only to keep running
+        context.getBean("rabbitAdmin");
 
-        context.close();
+        //TimeUnit.SECONDS.sleep(100);
+
+        //context.close();
     }
 }
