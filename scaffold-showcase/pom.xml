@@ -13,7 +13,7 @@
         <jetty.version>9.4.7.v20170914</jetty.version>
         <webserver.port>9999</webserver.port>
 
-        <spring.version>4.3.12.RELEASE</spring.version>
+        <spring.version>4.3.13.RELEASE</spring.version>
         <aspectj.version>1.8.12</aspectj.version>
         <shiro.version>1.4.0</shiro.version>
         <ehcache.version>2.6.11</ehcache.version>
