@@ -49,6 +49,7 @@
         </dependency>
 
         <!-- A high performance thread-safe map that expires entries -->
+        <!-- https://github.com/jhalterman/expiringmap -->
         <dependency>
             <groupId>net.jodah</groupId>
             <artifactId>expiringmap</artifactId>
@@ -56,6 +57,7 @@
         </dependency>
 
         <!-- JKeyLockManager allows fine-grained locking with application specific keys -->
+        <!-- https://github.com/mojgh/JKeyLockManager -->
         <dependency>
             <groupId>de.jkeylockmanager</groupId>
             <artifactId>jkeylockmanager</artifactId>
