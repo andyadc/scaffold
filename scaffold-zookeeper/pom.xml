@@ -13,7 +13,7 @@
 
     <properties>
         <zookeeper.version>3.4.11</zookeeper.version>
-        <curator.version>3.3.0</curator.version>
+        <curator.version>4.0.0</curator.version>
         <zkclient.version>0.10</zkclient.version>
         <junit.version>4.12</junit.version>
         <slf4j.version>1.7.25</slf4j.version>
