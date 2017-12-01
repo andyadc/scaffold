@@ -13,7 +13,7 @@
 
     <properties>
         <joda-time.version>2.9.9</joda-time.version>
-        <guava.version>20.0</guava.version>
+        <guava.version>23.0</guava.version>
         <orika.version>1.5.2</orika.version>
         <fastjson.version>1.2.41</fastjson.version>
         <commons-lang3.version>3.7</commons-lang3.version>
