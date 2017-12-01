@@ -48,6 +48,20 @@
             <version>${fastjson.version}</version>
         </dependency>
 
+        <!-- A high performance thread-safe map that expires entries -->
+        <dependency>
+            <groupId>net.jodah</groupId>
+            <artifactId>expiringmap</artifactId>
+            <version>0.5.8</version>
+        </dependency>
+
+        <!-- JKeyLockManager allows fine-grained locking with application specific keys -->
+        <dependency>
+            <groupId>de.jkeylockmanager</groupId>
+            <artifactId>jkeylockmanager</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
         <!-- will be removed -->
         <dependency>
             <groupId>org.apache.commons</groupId>
