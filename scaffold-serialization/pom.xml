@@ -13,7 +13,7 @@
 
     <properties>
         <commons.lang3.version>3.7</commons.lang3.version>
-        <commons.pool2.version>2.4.3</commons.pool2.version>
+        <commons.pool2.version>2.5.0</commons.pool2.version>
         <fst.version>2.56</fst.version>
         <kryo.version>4.0.1</kryo.version>
         <protostuff.version>1.6.0</protostuff.version>
