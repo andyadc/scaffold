@@ -37,6 +37,7 @@
         <module>scaffold-spring</module>
         <module>scaffold-cloud</module>
         <module>demo</module>
+        <module>cryptography</module>
     </modules>
 
     <properties>
