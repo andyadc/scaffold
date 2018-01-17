@@ -38,6 +38,7 @@
         <module>scaffold-cloud</module>
         <module>demo</module>
         <module>cryptography</module>
+        <module>middleware</module>
     </modules>
 
     <properties>
