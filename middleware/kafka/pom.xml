@@ -7,7 +7,11 @@
 
     <groupId>com.andyadc.scaffold</groupId>
     <artifactId>kafka</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <modules>
+        <module>kafka-simple</module>
+    </modules>
 
 
 </project>
