@@ -9,9 +9,10 @@
     <artifactId>kafka</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
+
     <modules>
         <module>kafka-simple</module>
+        <module>kafka-spring</module>
     </modules>
-
 
 </project>
