@@ -18,24 +18,11 @@ public final class NetUtils {
 
     private static final int PORT_RANGE_MIN = 1024;
     private static final int PORT_RANGE_MAX = 65535;
-
+    private static final Random random = new Random();
     /**
      * Pre-loaded local address
      */
     private static InetAddress localAddress;
-
-    private static final Random random = new Random();
-
-    private NetUtils() {
-    }
-
-    public static void main(String[] args) {
-        System.out.println(NetUtils.getLocalAddress());
-    }
-
-    public static void main(String[] args) {
-        System.out.println(NetUtils.getLocalAddress());
-    }
 
     static {
         try {
@@ -43,6 +30,13 @@ public final class NetUtils {
         } catch (SocketException e) {
             throw new RuntimeException("Fail to get local ip.");
         }
+    }
+
+    private NetUtils() {
+    }
+
+    public static void main(String[] args) {
+        System.out.println(NetUtils.getLocalAddress());
     }
 
     /**
