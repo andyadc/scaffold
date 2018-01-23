@@ -1,4 +1,4 @@
-package com.andyadc.demo;
+package com.andyadc.scaffold.util;
 
 import javax.xml.bind.ValidationException;
 
