@@ -19,6 +19,7 @@ public final class NetUtils {
     private static final int PORT_RANGE_MIN = 1024;
     private static final int PORT_RANGE_MAX = 65535;
     private static final Random random = new Random();
+
     /**
      * Pre-loaded local address
      */
