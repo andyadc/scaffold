@@ -84,8 +84,7 @@ public abstract class FileSystemUtils {
             try {
                 dest.createNewFile();
             } catch (IOException ex) {
-                IOException ioex = new IOException("Failed to create file: " + dest);
-                ioex.initCause(ex);
+                IOException ioex = new IOException("Failed to create file: " + dest, ex);
                 LOG.error("createNewFile error", ex);
                 throw ioex;
             }

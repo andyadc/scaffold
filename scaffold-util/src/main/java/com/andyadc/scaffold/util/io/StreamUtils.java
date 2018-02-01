@@ -221,7 +221,7 @@ public abstract class StreamUtils {
         }
 
         @Override
-        public void close() throws IOException {
+        public void close() {
         }
     }
 
@@ -239,7 +239,7 @@ public abstract class StreamUtils {
         }
 
         @Override
-        public void close() throws IOException {
+        public void close() {
         }
     }
 }
