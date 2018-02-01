@@ -20,6 +20,6 @@ public abstract class BaseEntity implements Serializable {
     public String toString() {
         return "BaseEntity{" +
                 "id=" + id +
-                '}';
+                "}";
     }
 }

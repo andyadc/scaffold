@@ -138,14 +138,18 @@ public class AuthUser extends BaseEntity {
     @Override
     public String toString() {
         return "AuthUser{" +
-                "identifier='" + identifier + '\'' +
-                ", name='" + name + '\'' +
-                ", account='" + account + '\'' +
-                ", salt='" + salt + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
+                "identifier=" + identifier +
+                ", name=" + name +
+                ", account=" + account +
+                ", password=" + password +
+                ", salt=" + salt +
+                ", phone=" + phone +
+                ", email=" + email +
                 ", state=" + state +
                 ", isDeleted=" + isDeleted +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
                 "} " + super.toString();
     }
 }
