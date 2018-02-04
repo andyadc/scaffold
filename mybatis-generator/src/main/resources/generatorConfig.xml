@@ -85,9 +85,9 @@
             <!-- 生成主键 -->
             <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
             <!-- 忽略列，不生成bean 字段 -->
-            <ignoreColumn column="ignore_column"/>
+            <!--<ignoreColumn column="ignore_column"/>-->
             <!-- 指定列的java数据类型 -->
-            <columnOverride column="specify_column" jdbcType="VARCHAR"/>
+            <!--<columnOverride column="specify_column" jdbcType="VARCHAR"/>-->
         </table>
 
     </context>
