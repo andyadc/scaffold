@@ -15,20 +15,20 @@ import java.util.List;
  */
 public class MyBatisGeneratorMain {
 
+    private static final boolean OVERWRITE = true;
+    private static final String GENCFG_PATH = "/generatorConfig.xml";
+
     public static void main(String[] args) {
-
         List<String> warnings = new ArrayList<>();
-        boolean overwrite = true;
 
-        DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+        DefaultShellCallback callback = new DefaultShellCallback(OVERWRITE);
 
         ConfigurationParser parser = new ConfigurationParser(warnings);
 
         MyBatisGenerator generator;
         Configuration configuration;
-        String genCfg = "/generatorConfig.xml";
         try {
-            File configFile = new File(MyBatisGeneratorMain.class.getResource(genCfg).getFile());
+            File configFile = new File(MyBatisGeneratorMain.class.getResource(GENCFG_PATH).getFile());
             System.out.println(configFile.getAbsolutePath());
             configuration = parser.parseConfiguration(configFile);
 
@@ -39,9 +39,12 @@ public class MyBatisGeneratorMain {
             e.printStackTrace();
         }
 
-        System.out.println("------warnings-------");
-        for (String warning : warnings) {
-            System.out.printf("%s %n", warning);
+        if (warnings.size() > 0) {
+            System.out.println("------warnings-------");
+            for (String warning : warnings) {
+                System.out.printf("%s %n", warning);
+            }
         }
+
     }
 }
