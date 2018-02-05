@@ -36,6 +36,7 @@
         <module>scaffold-spring</module>
         <module>cryptography</module>
         <module>middleware</module>
+        <module>scaffold-framework</module>
     </modules>
 
     <properties>
