@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * @author andaicheng
  * @version 2017/1/4
@@ -33,8 +35,11 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public AuthUser saveAuthUser(AuthUser authUser) {
         if (authUser.getId() != null && authUser.getId() > 0) {
+            authUser.setUpdateTime(new Date());
             authUserMapper.updateByPrimaryKeySelective(authUser);
         } else {
+            authUser.setCreateTime(new Date());
+            authUser.setUpdateTime(new Date());
             authUserMapper.insertSelective(authUser);
         }
         return authUser;

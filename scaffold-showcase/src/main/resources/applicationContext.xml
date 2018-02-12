@@ -123,6 +123,6 @@
     <import resource="applicationContext-javasimon.xml"/>
     <import resource="applicationContext-executor.xml"/>
     <!--<import resource="applicationContext-kafka.xml"/>-->
-    <import resource="applicationContext-map.xml"/>
+    <!--<import resource="applicationContext-map.xml"/>-->
 
 </beans>
