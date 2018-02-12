@@ -26,6 +26,35 @@
         id, identifier, account, password, salt, auth_type, state, is_deleted
     </sql>
 
+    <sql id="Where_Condition">
+        <where>
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="identifier != null and identifier != ''">
+                AND identifier = #{identifier,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null and name != ''">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="account != null and account != ''">
+                AND account = #{account,jdbcType=VARCHAR}
+            </if>
+            <if test="phone != null and phone != ''">
+                AND phone = #{phone,jdbcType=VARCHAR}
+            </if>
+            <if test="email != null and email != ''">
+                AND email = #{email,jdbcType=VARCHAR}
+            </if>
+            <if test="state != null">
+                AND state = #{state,jdbcType=INTEGER}
+            </if>
+            <if test="isDeleted != null">
+                AND is_deleted = #{isDeleted,jdbcType=INTEGER}
+            </if>
+        </where>
+    </sql>
+
     <update id="lockAuthUserByAccount" parameterType="java.lang.String">
         UPDATE t_auth_user SET state = 2 WHERE account = #{account,jdbcType=VARCHAR}
     </update>
