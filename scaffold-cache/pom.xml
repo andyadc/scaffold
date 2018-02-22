@@ -12,6 +12,7 @@
     <url>https://github.com/andyadc/scaffold</url>
 
     <properties>
+        <lettuce.version>5.0.2.RELEASE</lettuce.version>
         <jedis.version>2.9.0</jedis.version>
         <ehcache.version>3.4.0</ehcache.version>
         <spymemcached.version>2.12.3</spymemcached.version>
@@ -24,6 +25,15 @@
     </properties>
 
     <dependencies>
+        <!--
+        Advanced and thread-safe Java Redis client for synchronous, asynchronous, and reactive usage. Supports Cluster, Sentinel, Pipelining, Auto-Reconnect, Codecs and much more.
+        -->
+        <dependency>
+            <groupId>io.lettuce</groupId>
+            <artifactId>lettuce-core</artifactId>
+            <version>${lettuce.version}</version>
+        </dependency>
+
         <!-- Jedis is a blazingly small and sane Redis java client. -->
         <dependency>
             <groupId>redis.clients</groupId>

@@ -13,7 +13,7 @@
 
     <properties>
         <jedis.version>2.9.0</jedis.version>
-        <redisson.version>3.5.7</redisson.version>
+        <redisson.version>3.6.1</redisson.version>
 
         <zookeeper.version>3.4.11</zookeeper.version>
         <curator.version>4.0.0</curator.version>
