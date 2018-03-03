@@ -17,8 +17,8 @@ public class ServletUtils {
     /**
      * 获取所有请求参数
      */
-    public static Map<String, String> getRequestParameters(HttpServletRequest request) {
-        Map<String, String> params = new HashMap<>(16);
+    public static Map<String, String> getReqParameters(HttpServletRequest request) {
+        Map<String, String> params = new HashMap<>(32);
         if (request == null) {
             return params;
         }

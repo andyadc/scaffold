@@ -6,7 +6,7 @@ import com.andyadc.scaffold.showcase.common.entity.BaseEntity;
 
 import java.util.Date;
 
-@MetaData(value = "系统权限用户", tableName = "t_auth_user")
+@MetaData(desc = "系统权限用户", tableName = "t_auth_user")
 public class AuthUser extends BaseEntity {
 
     private static final long serialVersionUID = -7830790559829715043L;

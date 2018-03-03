@@ -59,7 +59,7 @@ public final class CaptchaServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("image/png");
         resp.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate"); // HTTP
         resp.setHeader("Pragma", "no-cache"); // HTTP 1.0
@@ -121,7 +121,7 @@ public final class CaptchaServlet extends HttpServlet {
     }
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         configurableCaptchaService = new ConfigurableCaptchaService();
 
         // 颜色创建工厂

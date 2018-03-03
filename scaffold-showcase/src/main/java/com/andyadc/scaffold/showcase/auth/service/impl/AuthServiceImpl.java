@@ -34,6 +34,9 @@ public class AuthServiceImpl implements AuthService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public AuthUser saveAuthUser(AuthUser authUser) {
+        if (authUser == null) {
+            return null;
+        }
         if (authUser.getId() != null && authUser.getId() > 0) {
             authUser.setUpdateTime(new Date());
             authUserMapper.updateByPrimaryKeySelective(authUser);

@@ -24,7 +24,7 @@ public class LogAspect {
         } finally {
             long to = System.currentTimeMillis();
             LOG.info("Invoked {}, request {}, response {}, cost={}", signature,
-                    Arrays.toString(proceedingJoinPoint.getArgs()), result, to - from);
+                    Arrays.toString(proceedingJoinPoint.getArgs()), result, (to - from));
         }
         return result;
     }

@@ -4,7 +4,13 @@ import com.andyadc.scaffold.showcase.auth.entity.AuthUser;
 import com.andyadc.scaffold.showcase.auth.enums.AuthUserState;
 import com.andyadc.scaffold.showcase.auth.service.AuthService;
 import com.andyadc.scaffold.showcase.common.enums.DeletionEnum;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -102,13 +108,8 @@ public class ShiroDbRealm extends AuthorizingRealm {
             }
             ShiroUser other = (ShiroUser) obj;
             if (account == null) {
-                if (other.account != null) {
-                    return false;
-                }
-            } else if (!account.equals(other.account)) {
-                return false;
-            }
-            return true;
+                return other.account == null;
+            } else return account.equals(other.account);
         }
     }
 }
