@@ -9,9 +9,10 @@
     <artifactId>cryptography</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
+
     <modules>
         <module>bouncycastle</module>
+        <module>demo</module>
     </modules>
-
 
 </project>
