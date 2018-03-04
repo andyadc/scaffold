@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Digital Signature Algorithm
+ *
  * @author andy.an
  * @since 2018/3/4
  */
