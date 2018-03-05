@@ -22,7 +22,7 @@ import java.util.Map;
  * @author andy.an
  * @since 2018/3/4
  */
-public class DSAEncrypt {
+public class DSASignature {
 
     //数字签名，密钥算法
     private static final String KEY_ALGORITHM = "DSA";
@@ -143,12 +143,12 @@ public class DSAEncrypt {
     public static void main(String[] args) throws Exception {
         //初始化密钥
         //生成密钥对
-//        Map<String, Object> keyMap = DSAEncrypt.initKey();
+//        Map<String, Object> keyMap = DSASignature.initKey();
 //        //公钥
-//        byte[] publicKey = DSAEncrypt.getPublicKey(keyMap);
+//        byte[] publicKey = DSASignature.getPublicKey(keyMap);
 //
 //        //私钥
-//        byte[] privateKey = DSAEncrypt.getPrivateKey(keyMap);
+//        byte[] privateKey = DSASignature.getPrivateKey(keyMap);
 //        System.out.println("公钥:\n" + Base64.getEncoder().encodeToString(publicKey));
 //        System.out.println("私钥:\n" + Base64.getEncoder().encodeToString(privateKey));
 //
@@ -157,17 +157,17 @@ public class DSAEncrypt {
 //        String str = "1andaicheng";
 //        System.out.println("原文:\n" + str);
 //        //甲方进行数据的加密
-//        byte[] sign = DSAEncrypt.sign(str.getBytes(), privateKey);
+//        byte[] sign = DSASignature.sign(str.getBytes(), privateKey);
 //        System.out.println("签名:\n" + Base64.getEncoder().encodeToString(sign));
 //        //验证签名
-//        boolean status = DSAEncrypt.verify(str.getBytes(), publicKey, sign);
+//        boolean status = DSASignature.verify(str.getBytes(), publicKey, sign);
 //        System.out.println("校验结果:" + status + "\n");
 
         String pubKeyStr = "MIIBuDCCASwGByqGSM44BAEwggEfAoGBAP1/U4EddRIpUt9KnC7s5Of2EbdSPO9EAMMeP4C2USZpRV1AIlH7WT2NWPq/xfW6MPbLm1Vs14E7gB00b/JmYLdrmVClpJ+f6AR7ECLCT7up1/63xhv4O1fnxqimFQ8E+4P208UewwI1VBNaFpEy9nXzrith1yrv8iIDGZ3RSAHHAhUAl2BQjxUjC8yykrmCouuEC/BYHPUCgYEA9+GghdabPd7LvKtcNrhXuXmUr7v6OuqC+VdMCz0HgmdRWVeOutRZT+ZxBxCBgLRJFnEj6EwoFhO3zwkyjMim4TwWeotUfI0o4KOuHiuzpnWRbqN/C/ohNWLx+2J6ASQ7zKTxvqhRkImog9/hWuWfBpKLZl6Ae1UlZAFMO/7PSSoDgYUAAoGBAIWIXB/QAAPLBPOgYOQUKiFM3W+tB90n5l4S+RceWbO5GiwhWUf2mD3f01cfn92UivWzmlgfwh4GEOO3YoFYGHSFX6Mr8WjwzWAjJFDyOOCsu8w1g6gWUwd5CD1aPcYeGsrNB56+FlAe193pCQ+kBPr4knekK9ij654kyycU0z+M";
 //        String priKeyStr = "MIIBSwIBADCCASwGByqGSM44BAEwggEfAoGBAP1/U4EddRIpUt9KnC7s5Of2EbdSPO9EAMMeP4C2USZpRV1AIlH7WT2NWPq/xfW6MPbLm1Vs14E7gB00b/JmYLdrmVClpJ+f6AR7ECLCT7up1/63xhv4O1fnxqimFQ8E+4P208UewwI1VBNaFpEy9nXzrith1yrv8iIDGZ3RSAHHAhUAl2BQjxUjC8yykrmCouuEC/BYHPUCgYEA9+GghdabPd7LvKtcNrhXuXmUr7v6OuqC+VdMCz0HgmdRWVeOutRZT+ZxBxCBgLRJFnEj6EwoFhO3zwkyjMim4TwWeotUfI0o4KOuHiuzpnWRbqN/C/ohNWLx+2J6ASQ7zKTxvqhRkImog9/hWuWfBpKLZl6Ae1UlZAFMO/7PSSoEFgIUAf7YLtCad4X2pN1stLDhyOOnaiA=";
         String priKeyStr = "MIIBTAIBADCCASwGByqGSM44BAEwggEfAoGBAP1/U4EddRIpUt9KnC7s5Of2EbdSPO9EAMMeP4C2USZpRV1AIlH7WT2NWPq/xfW6MPbLm1Vs14E7gB00b/JmYLdrmVClpJ+f6AR7ECLCT7up1/63xhv4O1fnxqimFQ8E+4P208UewwI1VBNaFpEy9nXzrith1yrv8iIDGZ3RSAHHAhUAl2BQjxUjC8yykrmCouuEC/BYHPUCgYEA9+GghdabPd7LvKtcNrhXuXmUr7v6OuqC+VdMCz0HgmdRWVeOutRZT+ZxBxCBgLRJFnEj6EwoFhO3zwkyjMim4TwWeotUfI0o4KOuHiuzpnWRbqN/C/ohNWLx+2J6ASQ7zKTxvqhRkImog9/hWuWfBpKLZl6Ae1UlZAFMO/7PSSoEFwIVAIzwk3drUF/2d2SOxtQIwmALOn4V";
-        byte[] bytes = DSAEncrypt.sign("a".getBytes(), Base64.getDecoder().decode(priKeyStr));
-        boolean flag = DSAEncrypt.verify("a".getBytes(), Base64.getDecoder().decode(pubKeyStr), bytes);
+        byte[] bytes = DSASignature.sign("a".getBytes(), Base64.getDecoder().decode(priKeyStr));
+        boolean flag = DSASignature.verify("a".getBytes(), Base64.getDecoder().decode(pubKeyStr), bytes);
         System.out.println(flag);
 
     }
