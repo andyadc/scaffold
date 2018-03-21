@@ -13,10 +13,10 @@
 
     <properties>
         <jedis.version>2.9.0</jedis.version>
-        <redisson.version>3.6.1</redisson.version>
+        <redisson.version>3.6.3</redisson.version>
 
         <zookeeper.version>3.4.11</zookeeper.version>
-        <curator.version>4.0.0</curator.version>
+        <curator.version>4.0.1</curator.version>
         <zkclient.version>0.10</zkclient.version>
 
         <junit.version>4.12</junit.version>
@@ -29,12 +29,6 @@
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>com.andyadc</groupId>
-            <artifactId>scaffold-zookeeper</artifactId>
-            <version>1.0.0</version>
-        </dependency>
 
         <dependency>
             <groupId>redis.clients</groupId>

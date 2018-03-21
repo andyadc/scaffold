@@ -12,7 +12,6 @@
 
     <modules>
         <module>scaffold-util</module>
-        <module>scaffold-cache</module>
         <module>scaffold-serialization</module>
         <module>scaffold-showcase</module>
         <module>scaffold-lock</module>
@@ -48,6 +47,7 @@
         <tomcat-jdbc.version>8.5.29</tomcat-jdbc.version>
         <HikariCP.version>2.7.8</HikariCP.version>
         <druid.version>1.1.9</druid.version>
+        <redisson.version>3.6.3</redisson.version>
         <jedis.version>2.9.0</jedis.version>
         <lettuce.version>5.0.2.RELEASE</lettuce.version>
         <jackson.version>2.9.3</jackson.version>
@@ -115,6 +115,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.lettuce</groupId>
