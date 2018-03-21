@@ -336,12 +336,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.andyadc</groupId>
-            <artifactId>scaffold-middleware</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
