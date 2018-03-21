@@ -1,4 +1,4 @@
-package com.andyadc.zookeeper;
+package com.andyadc.scaffold.zookeeper;
 
 /**
  * A Listener which is fired when certain connection events happen with respect to the

@@ -1,4 +1,4 @@
-package com.andyadc.zookeeper;
+package com.andyadc.scaffold.zookeeper;
 
 import org.apache.zookeeper.ZooKeeper;
 

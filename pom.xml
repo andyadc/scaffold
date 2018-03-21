@@ -16,7 +16,6 @@
         <module>scaffold-serialization</module>
         <module>scaffold-showcase</module>
         <module>scaffold-lock</module>
-        <module>scaffold-zookeeper</module>
         <module>mybatis-generator</module>
         <module>scaffold-spring</module>
         <module>cryptography</module>
