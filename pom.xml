@@ -21,24 +21,6 @@
         <module>middleware</module>
     </modules>
 
-    <developers>
-        <developer>
-            <id>andyadc</id>
-            <name>andyadc</name>
-            <email>andaicheng@gmail.com</email>
-            <url>http://andyadc.com</url>
-            <roles>
-                <role>developer</role>
-            </roles>
-            <timezone>+8</timezone>
-        </developer>
-    </developers>
-
-    <scm>
-        <connection>https://github.com/andyadc/scaffold.git</connection>
-        <url>https://github.com/andyadc/scaffold</url>
-    </scm>
-
     <properties>
         <spring.version>5.0.4.RELEASE</spring.version>
         <httpcomponents.version>4.5.5</httpcomponents.version>
@@ -57,10 +39,10 @@
         <commons-lang3.version>3.7</commons-lang3.version>
         <commons-codec.version>1.11</commons-codec.version>
         <commons-collections4.version>4.1</commons-collections4.version>
+        <mysql-driver.version>5.1.46</mysql-driver.version>
         <slf4j.version>1.7.25</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <junit.version>4.12</junit.version>
-        <mysql-driver.version>5.1.45</mysql-driver.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.8</jdk.version>
@@ -228,5 +210,23 @@
             <url>http://repo.maven.apache.org/maven2</url>
         </repository>
     </repositories>
+
+    <developers>
+        <developer>
+            <id>andyadc</id>
+            <name>andyadc</name>
+            <email>andaicheng@gmail.com</email>
+            <url>http://andyadc.com</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>https://github.com/andyadc/scaffold.git</connection>
+        <url>https://github.com/andyadc/scaffold</url>
+    </scm>
 
 </project>
