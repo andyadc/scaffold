@@ -19,6 +19,7 @@
         <module>scaffold-spring</module>
         <module>cryptography</module>
         <module>middleware</module>
+        <module>commons</module>
     </modules>
 
     <properties>
