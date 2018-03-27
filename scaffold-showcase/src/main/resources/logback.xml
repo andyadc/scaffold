@@ -8,8 +8,8 @@
 -->
 <configuration scan="false" scanPeriod="60 second" debug="true">
 
-    <!-- windows path -->
-    <property name="LOG_PATH" value="d:/temp/showcase/logs"/>
+    <property name="LOG_PATH" value="/opt/log/showcase"/>
+
     <!-- log pattern -->
     <property name="LOG_PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS}\t[level=%level]\t[thread=%thread]\t[class=%logger]\t%msg%n"/>
