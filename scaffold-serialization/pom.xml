@@ -15,9 +15,9 @@
         <commons.lang3.version>3.7</commons.lang3.version>
         <commons.pool2.version>2.5.0</commons.pool2.version>
         <fst.version>2.56</fst.version>
-        <kryo.version>4.0.1</kryo.version>
+        <kryo.version>4.0.2</kryo.version>
         <protostuff.version>1.6.0</protostuff.version>
-        <jackson.version>2.9.3</jackson.version>
+        <jackson.version>2.9.5</jackson.version>
         <fastjson.version>1.2.47</fastjson.version>
         <logback.version>1.2.3</logback.version>
         <junit.version>4.12</junit.version>
