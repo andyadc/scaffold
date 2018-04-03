@@ -10,9 +10,6 @@
     <url>https://github.com/andyadc/scaffold</url>
 
     <properties>
-        <jetty.version>9.4.7.v20170914</jetty.version>
-        <webserver.port>9999</webserver.port>
-
         <spring.version>5.0.4.RELEASE</spring.version>
         <aspectj.version>1.8.13</aspectj.version>
         <shiro.version>1.4.0</shiro.version>
@@ -37,6 +34,9 @@
         <slf4j.version>1.7.25</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <junit.version>4.12</junit.version>
+
+        <jetty.version>9.4.9.v20180320</jetty.version>
+        <webserver.port>9999</webserver.port>
 
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
