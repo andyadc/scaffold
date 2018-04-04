@@ -16,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +23,6 @@ import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.BufferedImageOp;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -36,38 +34,37 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class CaptchaServlet extends HttpServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(CaptchaServlet.class);
+    private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 6786094675668899270L;
     private static final String CHARACTERS = "AaBbCcDdEeFfGgHhJjKkMmNnQqXxYyPpWwSsTtRrUui123456789";
     private final ThreadLocalRandom random = ThreadLocalRandom.current();
     private static final String CAPTCHA_SESSION = "_VerCode";
+
     private ConfigurableCaptchaService configurableCaptchaService = null;
     private RandomWordFactory wordFactory = null;
     private RandomFontFactory fontFactory = null;
     private TextRenderer textRenderer = null;
 
     public static boolean validateCaptcha(HttpServletRequest request, String userCaptcha) {
-        if (StringUtils.isBlank(userCaptcha)) {
-            return false;
-        }
-        return userCaptcha.equalsIgnoreCase((String) request.getSession().getAttribute(CAPTCHA_SESSION));
+        return request != null
+                && StringUtils.isNotBlank(userCaptcha)
+                && userCaptcha.equalsIgnoreCase(String.valueOf(request.getSession().getAttribute(CAPTCHA_SESSION)));
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         doPost(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         resp.setContentType("image/png");
-        resp.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate"); // HTTP
-        resp.setHeader("Pragma", "no-cache"); // HTTP 1.0
+        resp.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
+        resp.setHeader("Pragma", "no-cache");
 
         set(req);
 
         HttpSession session = req.getSession(true);
-        OutputStream outputStream = resp.getOutputStream();
 
         Captcha captcha = configurableCaptchaService.getCaptcha();
         String code = captcha.getChallenge();
@@ -75,13 +72,11 @@ public final class CaptchaServlet extends HttpServlet {
 
         BufferedImage bufferedImage = captcha.getImage();
 
-        try {
+        try (OutputStream outputStream = resp.getOutputStream()) {
             ImageIO.write(bufferedImage, "png", outputStream);
             outputStream.flush();
         } catch (Exception e) {
             LOG.error("doPost error!", e);
-        } finally {
-            outputStream.close();
         }
     }
 
