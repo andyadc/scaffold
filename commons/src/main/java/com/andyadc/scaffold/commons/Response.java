@@ -20,6 +20,10 @@ public class Response implements Serializable {
         this.message = message;
     }
 
+    public static Response success() {
+        return new Response(StatusCode.SUCCESS.getCode(), StatusCode.SUCCESS.getMessage());
+    }
+
     public String getCode() {
         return code;
     }
