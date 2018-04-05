@@ -15,7 +15,6 @@
         <module>scaffold-serialization</module>
         <module>scaffold-showcase</module>
         <module>scaffold-lock</module>
-        <module>cryptography</module>
         <module>middleware</module>
         <module>commons</module>
     </modules>
